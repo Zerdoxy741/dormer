@@ -19,6 +19,11 @@
   <a href="https://zerdoxy741.github.io/dormer/"><img src="docs/banner.png" alt="Dormer: your notch, wide awake" width="860"></a>
 </p>
 
+<p align="center">
+  <a href="https://zerdoxy741.github.io/dormer/#film"><img src="docs/film/thumb.jpg" alt="Watch the Dormer film (2 min)" width="760"></a><br>
+  <sub>▶︎ <a href="https://zerdoxy741.github.io/dormer/#film"><b>Watch the 2-minute film</b></a> · <a href="docs/film/dormer.mp4">MP4</a></sub>
+</p>
+
 <p align="center"><a href="#-en-français">🇫🇷 Lire en français</a></p>
 
 ---
@@ -68,6 +73,8 @@ Requires a MacBook with a notch and **macOS 14.2 or later**. To quit: right-clic
 ## 🇫🇷 En français
 
 **Ta notch, enfin réveillée.** Dormer transforme l'encoche de ton MacBook en île dynamique : musique, Shazam, AirDrop, presse-papiers, IA, alertes… et un petit chat en pixels qui vit dedans. *(Anciennement Notchy.)*
+
+▶︎ **[Regarde le film de 2 minutes](https://zerdoxy741.github.io/dormer/#film)**
 
 **Seulement sur Dormer**
 - 🐱 **Un compagnon dans ta notch** : il cligne des yeux, suit ta souris, danse sur ta musique, s'endort quand tu pars, et sort sauter de fenêtre en fenêtre pour attraper sa balle.

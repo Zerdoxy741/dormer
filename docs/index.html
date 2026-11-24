@@ -207,6 +207,10 @@ section{padding:90px 0}
 h2{font-size:clamp(30px,4.6vw,50px);line-height:1.08;letter-spacing:-.03em;font-weight:800;margin-top:10px}
 .lead{color:var(--ink2);font-size:18px;max-width:620px;margin-top:14px}
 .center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+#film{padding:40px 0 30px}
+.film{position:relative;margin:34px auto 0;max-width:1000px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line2);background:#000;box-shadow:0 30px 90px -30px rgba(139,92,255,.45),0 0 0 1px rgba(255,255,255,.03)}
+.film video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
+.film-meta{color:var(--mute);font-size:14px;margin-top:14px}
 
 /* only dormer */
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
@@ -302,6 +306,7 @@ footer a:hover{color:var(--ink)}
   <div class="wrap">
     <a class="brand" href="#"><img src="icon.png" alt="">Dormer</a>
     <div class="links">
+      <a href="#film"><span lang="en">Film</span><span lang="fr">Film</span></a>
       <a href="#only"><span lang="en">Only on Dormer</span><span lang="fr">Exclusif</span></a>
       <a href="#features"><span lang="en">Features</span><span lang="fr">Fonctions</span></a>
       <a href="#pricing"><span lang="en">Pricing</span><span lang="fr">Prix</span></a>
@@ -417,6 +422,22 @@ footer a:hover{color:var(--ink)}
     <p class="meta"><span lang="en">macOS 14.2 or later · MacBooks with a notch · No account needed</span><span lang="fr">macOS 14.2 ou plus récent · MacBook avec encoche · Sans compte</span></p>
   </div>
 </header>
+
+<section id="film">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow"><span lang="en">The film</span><span lang="fr">Le film</span></div>
+      <h2><span lang="en">Two minutes in the notch.</span><span lang="fr">Deux minutes dans la notch.</span></h2>
+      <p class="lead"><span lang="en">Music, AI, widgets, messages… and a cat that won't stay put.</span><span lang="fr">Musique, IA, widgets, messages… et un chat qui ne tient pas en place.</span></p>
+    </div>
+    <div class="film reveal">
+      <video controls playsinline preload="none" poster="film/poster.jpg" aria-label="Dormer film">
+        <source src="film/dormer.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="center film-meta"><span lang="en">2:00 · sound on</span><span lang="fr">2:00 · avec le son</span></p>
+  </div>
+</section>
 
 <section id="only">
   <div class="wrap">
