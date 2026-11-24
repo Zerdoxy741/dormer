@@ -59,7 +59,7 @@ Requires a MacBook with a notch and **macOS 14.2 or later**. To quit: right-clic
 
 **Privacy:** clipboard history stays in memory on your Mac and is never sent anywhere.
 
-## Built with
+<br>
 
 <img src="docs/languages.svg" alt="Built with Swift 99.4%, Python 0.4%, Shell 0.3%" width="420">
 
