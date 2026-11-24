@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dormer — Dynamic Island for your Mac's notch</title>
+<meta name="description" content="Dormer turns your MacBook notch into a living Dynamic Island: music player, Shazam, listen together with nearby Macs, AirDrop shelf, clipboard history, per-app volume, ChatGPT & Claude, and a pixel cat that lives in your notch.">
+<meta name="keywords" content="MacBook notch app, Dynamic Island Mac, notch music player, macOS notch, AirDrop shelf, clipboard history Mac, per-app volume, NotchNook alternative">
+<link rel="icon" href="favicon.png">
+<link rel="canonical" href="https://zerdoxy741.github.io/dormer/">
+<meta property="og:title" content="Dormer — your notch, wide awake">
+<meta property="og:description" content="A Dynamic Island for your MacBook notch, with a pixel cat that lives in it.">
+<meta property="og:image" content="https://zerdoxy741.github.io/dormer/banner.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Dormer","operatingSystem":"macOS 14.2+","applicationCategory":"UtilitiesApplication","description":"Dynamic Island for your MacBook notch.","downloadUrl":"https://github.com/Zerdoxy741/dormer/releases/latest","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Free 14-day trial of Dormer Pro"}}
+</script>
+<style>
+:root{
+  --bg:#07070a; --bg2:#0e0e13; --card:#13131a; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+  --ink:#f4f2f7; --ink2:#b9b6c3; --mute:#7d7a88;
+  --pink:#ff5fa2; --violet:#8b5cff; --orange:#ff9f43; --cream:#ffeed6;
+  --grad:linear-gradient(90deg,#ff5fa2,#b06bff 50%,#6c8bff);
+  --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+html[lang=en] [lang=fr], html[lang=fr] [lang=en]{display:none!important}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.6) blur(18px);-webkit-backdrop-filter:saturate(1.6) blur(18px);background:rgba(7,7,10,.66);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.01em}
+.brand img{width:28px;height:28px;border-radius:7px}
+nav .links{display:flex;gap:22px;margin-left:auto;font-size:14px;color:var(--ink2)}
+nav .links a:hover{color:var(--ink)}
+.lang{border:1px solid var(--line2);border-radius:99px;padding:4px 10px;font-size:12.5px;font-weight:600;color:var(--ink2);background:none;cursor:pointer;font-family:inherit}
+.lang:hover{color:var(--ink);border-color:rgba(255,255,255,.3)}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:99px;padding:12px 22px;font-weight:650;font-size:15px;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn.pri{background:#fff;color:#000}
+.btn.pri:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(255,255,255,.18)}
+.btn.sec{border:1px solid var(--line2);color:var(--ink)}
+.btn.sec:hover{background:rgba(255,255,255,.06)}
+.btn.sm{padding:8px 15px;font-size:13.5px}
+.btn svg{width:17px;height:17px}
+
+/* hero */
+.hero{position:relative;padding:0 0 90px;text-align:center;overflow:hidden}
+.hero:before{content:"";position:absolute;left:50%;top:-260px;width:1300px;height:900px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(139,92,255,.33),rgba(255,95,162,.12) 45%,transparent 75%);pointer-events:none}
+.screen{position:relative;margin:0 auto;max-width:980px;height:380px;border-radius:0 0 28px 28px;overflow:hidden;
+  background:radial-gradient(600px 300px at 20% 110%,#ff5fa255,transparent 70%),radial-gradient(700px 360px at 85% 100%,#6c8bff55,transparent 70%),linear-gradient(180deg,#1b1530,#0d0b16);
+  border:1px solid var(--line);border-top:none;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.menubar{height:28px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:12px;color:rgba(255,255,255,.75);background:rgba(0,0,0,.18)}
+.menubar .l,.menubar .r{display:flex;gap:16px}
+.menubar b{font-weight:700;color:#fff}
+
+/* the notch */
+.notch{position:absolute;left:50%;top:0;transform:translateX(-50%);transform-origin:top center;background:#000;color:#fff;overflow:hidden;
+  width:190px;height:30px;border-radius:0 0 14px 14px;
+  transition:width .55s cubic-bezier(.34,1.45,.5,1),height .55s cubic-bezier(.34,1.45,.5,1),border-radius .45s;
+  box-shadow:0 10px 40px rgba(0,0,0,.55);cursor:pointer;z-index:5}
+.notch .st{position:absolute;inset:0;opacity:0;filter:blur(6px);transform:scale(.96);transition:opacity .3s,filter .3s,transform .4s;pointer-events:none;text-align:left}
+.notch .st.on{opacity:1;filter:none;transform:none;transition-delay:.12s}
+.n-row{display:flex;align-items:center;gap:12px}
+/* music */
+.mu{padding:18px 20px 0}
+.art{width:64px;height:64px;border-radius:14px;flex:none;background:conic-gradient(from 200deg,#ff5fa2,#ff9f43,#ffd36b,#b06bff,#ff5fa2);position:relative}
+.art:after{content:"";position:absolute;inset:22px;border-radius:50%;background:#000;opacity:.85}
+.mu .t{font-weight:700;font-size:15px}.mu .a{color:#9c99a8;font-size:13px}
+.bars{display:flex;gap:3px;align-items:flex-end;height:22px;margin-left:auto}
+.bars i{width:4px;border-radius:2px;background:var(--grad);animation:eq 1s ease-in-out infinite}
+.bars i:nth-child(2){animation-delay:-.3s}.bars i:nth-child(3){animation-delay:-.6s}.bars i:nth-child(4){animation-delay:-.15s}
+@keyframes eq{0%,100%{height:5px}50%{height:22px}}
+.scrub{display:flex;align-items:center;gap:10px;margin:14px 0 0;font-size:11px;color:#8a8796;font-variant-numeric:tabular-nums}
+.scrub .tr{flex:1;height:5px;border-radius:3px;background:#2a2930;overflow:hidden}
+.scrub .tr b{display:block;height:100%;width:38%;background:#fff;border-radius:3px;animation:prog 14s linear infinite}
+@keyframes prog{from{width:12%}to{width:92%}}
+.ctl{display:flex;justify-content:center;gap:30px;margin-top:10px;font-size:20px;color:#fff}
+/* airpods */
+.ap{padding:0 18px;display:flex;align-items:center;height:100%;gap:12px}
+.ap .pods{font-size:22px}
+.ring{width:26px;height:26px;border-radius:50%;background:conic-gradient(#34d399 0 82%,#2a2930 82%);display:grid;place-items:center;margin-left:auto}
+.ring:after{content:"";width:18px;height:18px;border-radius:50%;background:#000}
+/* shelf */
+.sh{padding:16px 18px}
+.sh h5{font-size:12px;color:#8a8796;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px}
+.files{display:flex;gap:12px}
+.file{width:62px;text-align:center;font-size:10.5px;color:#cfccd8}
+.file i{display:block;width:44px;height:54px;margin:0 auto 5px;border-radius:7px;background:linear-gradient(160deg,#fff,#d9d6e4);position:relative}
+.file i:after{content:attr(data-x);position:absolute;bottom:6px;left:0;right:0;font-style:normal;font-size:9px;font-weight:800;color:#6c5cff}
+.drop{margin-left:auto;align-self:center;border:1.5px dashed #444;border-radius:14px;padding:14px 16px;font-size:12px;color:#9c99a8;text-align:center}
+/* companion */
+.co{display:flex;align-items:center;justify-content:center;height:100%;gap:14px;padding:0 18px}
+.co canvas{image-rendering:pixelated}
+.bubble{background:#fff;color:#000;border-radius:14px;padding:8px 12px;font-size:13px;font-weight:600;position:relative}
+.bubble:before{content:"";position:absolute;left:-6px;top:50%;margin-top:-6px;border:6px solid transparent;border-right-color:#fff;border-left:0}
+/* ai */
+.ai{padding:16px 18px}
+.ai .q{display:flex;align-items:center;gap:8px;background:#1b1a21;border-radius:12px;padding:9px 12px;font-size:13px;color:#cfccd8}
+.ai .q span.c{width:2px;height:15px;background:#b06bff;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.ai .rep{margin-top:10px;font-size:13px;color:#e9e7ef;line-height:1.5}
+.ai .rep em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+.dots{display:flex;gap:7px;justify-content:center;margin-top:18px}
+.dots button{width:8px;height:8px;border-radius:50%;border:0;background:rgba(255,255,255,.25);cursor:pointer;padding:0;transition:width .3s,background .3s}
+.dots button.on{width:22px;border-radius:4px;background:#fff}
+.hint{position:absolute;left:50%;transform:translateX(-50%);bottom:18px;font-size:12.5px;color:rgba(255,255,255,.55)}
+.hero h1{font-size:clamp(40px,7vw,78px);line-height:1.02;letter-spacing:-.035em;font-weight:800;margin-top:56px}
+.hero h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:640px;margin:20px auto 0;font-size:clamp(16px,2.1vw,20px);color:var(--ink2)}
+.ctas{display:flex;gap:12px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+.meta{margin-top:16px;font-size:13px;color:var(--mute)}
+
+/* sections */
+section{padding:90px 0}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:clamp(30px,4.6vw,50px);line-height:1.08;letter-spacing:-.03em;font-weight:800;margin-top:10px}
+.lead{color:var(--ink2);font-size:18px;max-width:620px;margin-top:14px}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+
+/* only dormer */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+.big{position:relative;border-radius:28px;border:1px solid var(--line);background:var(--card);overflow:hidden;padding:34px;min-height:430px;display:flex;flex-direction:column}
+.big h3{font-size:28px;letter-spacing:-.02em;line-height:1.15}
+.big p{color:var(--ink2);margin-top:10px;max-width:420px}
+.big .tag{display:inline-block;font-size:12px;font-weight:700;color:#000;background:var(--cream);border-radius:99px;padding:3px 10px;margin-bottom:16px;align-self:flex-start}
+.stage{position:relative;flex:1;margin-top:26px;border-radius:18px;background:linear-gradient(180deg,#1a1726,#0f0e15);border:1px solid var(--line);overflow:hidden;min-height:220px}
+.stage .mini{position:absolute;left:50%;top:0;transform:translateX(-50%);width:150px;height:24px;background:#000;border-radius:0 0 11px 11px}
+.win{position:absolute;border-radius:10px;background:#24222e;border:1px solid rgba(255,255,255,.07);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.win:before{content:"";position:absolute;left:10px;top:9px;width:30px;height:7px;background:radial-gradient(circle at 3.5px 3.5px,#ff5f57 3px,transparent 3.5px),radial-gradient(circle at 15px 3.5px,#febc2e 3px,transparent 3.5px),radial-gradient(circle at 26.5px 3.5px,#28c840 3px,transparent 3.5px)}
+#catStage canvas{position:absolute;image-rendering:pixelated}
+.ball{position:absolute;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ffd36b,#ff7a3d)}
+.macs{display:flex;gap:14px;align-items:center;justify-content:center;height:100%;padding:20px}
+.mac{flex:1;max-width:220px;aspect-ratio:16/10;border-radius:12px;background:linear-gradient(160deg,#2a2342,#141221);border:1px solid rgba(255,255,255,.1);position:relative}
+.mac .mini{width:92px;height:15px;border-radius:0 0 8px 8px}
+.mac .mini.open{width:150px;height:52px;border-radius:0 0 14px 14px;display:flex;align-items:center;gap:8px;padding:0 10px;font-size:9.5px;color:#fff;text-align:left}
+.mac .mini.open i{width:30px;height:30px;border-radius:7px;flex:none;background:conic-gradient(from 200deg,#ff5fa2,#ff9f43,#ffd36b,#b06bff,#ff5fa2)}
+.mac .mini.open b{display:block;font-size:10px}
+.mac .lbl{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-size:11px;color:var(--mute)}
+.wave{position:relative;width:64px;height:2px;flex:none}
+.wave i{position:absolute;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--grad);animation:fly 1.8s linear infinite}
+.wave i:nth-child(2){animation-delay:-.6s}.wave i:nth-child(3){animation-delay:-1.2s}
+@keyframes fly{from{left:-6px;opacity:0}20%{opacity:1}80%{opacity:1}to{left:60px;opacity:0}}
+.sync{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:12px;color:#8a8796}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:44px}
+.tile{grid-column:span 2;border-radius:var(--r);border:1px solid var(--line);background:var(--card);padding:26px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+.tile:hover{border-color:var(--line2);transform:translateY(-2px)}
+.tile.w3{grid-column:span 3}
+.tile .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:21px;margin-bottom:16px}
+.tile h4{font-size:18px;letter-spacing:-.01em}
+.tile p{color:var(--ink2);font-size:14.5px;margin-top:6px}
+.pro{position:absolute;top:18px;right:18px;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#000;background:var(--cream);border-radius:99px;padding:2px 8px}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px;max-width:880px;margin-left:auto;margin-right:auto}
+.plan{border-radius:26px;border:1px solid var(--line);background:var(--card);padding:32px;display:flex;flex-direction:column}
+.plan.hl{border:1px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box}
+.plan h3{font-size:22px}
+.plan .pr{font-size:15px;color:var(--ink2);margin-top:4px}
+.plan ul{list-style:none;margin:22px 0 26px;display:flex;flex-direction:column;gap:9px;font-size:15px}
+.plan li{display:flex;gap:10px}
+.plan li:before{content:"✓";color:#34d399;font-weight:800}
+.plan .btn{margin-top:auto;justify-content:center}
+
+/* install */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.step{border-radius:var(--r);border:1px solid var(--line);background:var(--card);padding:24px}
+.step .n{width:30px;height:30px;border-radius:50%;background:#fff;color:#000;font-weight:800;display:grid;place-items:center;font-size:14px;margin-bottom:14px}
+.step h4{font-size:16.5px}.step p{color:var(--ink2);font-size:14.5px;margin-top:6px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;background:#1d1c24;border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:block;margin-top:10px;color:#e8e6ef;overflow-x:auto;white-space:nowrap}
+
+/* faq */
+.faq{max-width:780px;margin:40px auto 0}
+details{border-bottom:1px solid var(--line);padding:20px 4px}
+summary{cursor:pointer;font-weight:650;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-weight:400;font-size:22px;line-height:1;color:var(--mute);transition:transform .25s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{color:var(--ink2);margin-top:10px;font-size:15.5px}
+
+.final{text-align:center;padding:110px 0 120px;position:relative}
+.final:before{content:"";position:absolute;left:50%;top:50%;width:900px;height:500px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(255,95,162,.18),transparent);pointer-events:none}
+.final img{width:104px;height:104px;border-radius:24px;box-shadow:0 20px 60px rgba(139,92,255,.35)}
+footer{border-top:1px solid var(--line);padding:30px 0 40px;font-size:13.5px;color:var(--mute)}
+footer .wrap{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+footer .r{margin-left:auto;display:flex;gap:18px}
+footer a:hover{color:var(--ink)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:860px){
+  nav .links{display:none}
+  .duo,.plans{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr 1fr}
+  .tile,.tile.w3{grid-column:span 1}
+  .steps{grid-template-columns:1fr}
+  .screen{height:320px;border-radius:0 0 20px 20px}
+  .big{min-height:0;padding:26px}
+}
+@media (max-width:520px){
+  .bento{grid-template-columns:1fr}
+  .screen{height:250px}
+  .menubar .l span:nth-child(n+3),.menubar .r span:nth-child(n+3){display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="icon.png" alt="">Dormer</a>
+    <div class="links">
+      <a href="#only"><span lang="en">Only on Dormer</span><span lang="fr">Exclusif</span></a>
+      <a href="#features"><span lang="en">Features</span><span lang="fr">Fonctions</span></a>
+      <a href="#pricing"><span lang="en">Pricing</span><span lang="fr">Prix</span></a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <button class="lang" id="lang" aria-label="Language">FR</button>
+    <a class="btn pri sm" href="https://github.com/Zerdoxy741/dormer/releases/latest"><span lang="en">Download</span><span lang="fr">Télécharger</span></a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="screen" id="screen">
+      <div class="menubar">
+        <div class="l"><span><b>Finder</b></span><span>File</span><span>Edit</span><span>View</span><span>Go</span></div>
+        <div class="r"><span>⌁ 84%</span><span>◉</span><span id="clock">Tue 9:41</span></div>
+      </div>
+      <div class="notch" id="notch" aria-label="Dormer notch demo">
+        <div class="st" data-s="music" data-w="440" data-h="170">
+          <div class="mu">
+            <div class="n-row"><div class="art"></div><div><div class="t">Neon Nocturne</div><div class="a">The Fireflies</div></div><div class="bars"><i></i><i></i><i></i><i></i></div></div>
+            <div class="scrub"><span>1:12</span><div class="tr"><b></b></div><span>3:41</span></div>
+            <div class="ctl"><span>⏮</span><span>⏸</span><span>⏭</span></div>
+          </div>
+        </div>
+        <div class="st" data-s="airpods" data-w="360" data-h="52">
+          <div class="ap"><span class="pods">🎧</span><b style="font-size:14px">AirPods Pro</b><span style="color:#9c99a8;font-size:13px"><span lang="en">Connected</span><span lang="fr">Connectés</span></span><span class="ring"></span></div>
+        </div>
+        <div class="st" data-s="shelf" data-w="460" data-h="150">
+          <div class="sh"><h5><span lang="en">Shelf</span><span lang="fr">Étagère</span></h5>
+            <div class="files" style="display:flex">
+              <div class="file"><i data-x="PDF"></i>Invoice.pdf</div>
+              <div class="file"><i data-x="PNG"></i>Shot.png</div>
+              <div class="file"><i data-x="ZIP"></i>Site.zip</div>
+              <div class="drop">📡<br>AirDrop</div>
+            </div></div>
+        </div>
+        <div class="st" data-s="cat" data-w="340" data-h="80">
+          <div class="co"><canvas id="catN" width="24" height="20" style="width:58px;height:48px"></canvas><div class="bubble"><span lang="en">Psst… drink some water 💧</span><span lang="fr">Psst… bois un peu d'eau 💧</span></div></div>
+        </div>
+        <div class="st" data-s="ai" data-w="460" data-h="132">
+          <div class="ai"><div class="q">✨ <span lang="en">Summarize this page</span><span lang="fr">Résume cette page</span><span class="c"></span></div>
+          <div class="rep"><em>Claude</em> · <span lang="en">Your answer is ready. Three key points: …</span><span lang="fr">Ta réponse est prête. Trois points clés : …</span></div></div>
+        </div>
+      </div>
+      <div class="hint"><span lang="en">Psst… hover the notch</span><span lang="fr">Psst… survole l'encoche</span></div>
+    </div>
+    <div class="dots" id="dots"></div>
+
+    <h1 class="reveal"><span lang="en">Your notch,<br><span class="g">wide awake.</span></span><span lang="fr">Ta notch,<br><span class="g">enfin réveillée.</span></span></h1>
+    <p class="sub reveal">
+      <span lang="en">Dormer turns the notch on your MacBook into a living island: music, Shazam, AirDrop, AI, alerts… and a tiny pixel cat that lives up there.</span>
+      <span lang="fr">Dormer transforme l'encoche de ton MacBook en île vivante : musique, Shazam, AirDrop, IA, alertes… et un petit chat en pixels qui vit là-haut.</span>
+    </p>
+    <div class="ctas reveal">
+      <a class="btn pri" href="https://github.com/Zerdoxy741/dormer/releases/latest">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4L11 13.6V4a1 1 0 0 1 1-1zM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2z"/></svg>
+        <span lang="en">Download for Mac</span><span lang="fr">Télécharger pour Mac</span></a>
+      <a class="btn sec" href="#pricing"><span lang="en">Try Pro free for 14 days</span><span lang="fr">Essai Pro gratuit 14 jours</span></a>
+    </div>
+    <p class="meta"><span lang="en">macOS 14.2 or later · MacBooks with a notch · No account needed</span><span lang="fr">macOS 14.2 ou plus récent · MacBook avec encoche · Sans compte</span></p>
+  </div>
+</header>
+
+<section id="only">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow"><span lang="en">Only on Dormer</span><span lang="fr">Seulement sur Dormer</span></div>
+      <h2><span lang="en">Things other notch apps don't do.</span><span lang="fr">Ce que les autres apps de notch ne font pas.</span></h2>
+    </div>
+    <div class="duo">
+      <div class="big reveal">
+        <span class="tag"><span lang="en">Companion</span><span lang="fr">Compagnon</span></span>
+        <h3><span lang="en">A pixel cat lives in your notch.</span><span lang="fr">Un chat en pixels vit dans ta notch.</span></h3>
+        <p><span lang="en">It blinks, follows your cursor, dances to your music and falls asleep when you leave. Throw it a ball and it jumps out across your windows to catch it. Pick a cat, dog, bunny, robot or ghost.</span><span lang="fr">Il cligne des yeux, suit ta souris, danse sur ta musique et s'endort quand tu t'en vas. Lance-lui une balle : il sort et saute de fenêtre en fenêtre pour l'attraper. Chat, chien, lapin, robot ou fantôme.</span></p>
+        <div class="stage" id="catStage">
+          <div class="mini"></div>
+          <div class="win" style="left:7%;top:38%;width:38%;height:50%"></div>
+          <div class="win" style="left:52%;top:56%;width:40%;height:36%"></div>
+          <canvas id="catR" width="24" height="20"></canvas>
+          <div class="ball" id="ball"></div>
+        </div>
+      </div>
+      <div class="big reveal">
+        <span class="tag"><span lang="en">Listen together</span><span lang="fr">Écouter ensemble</span></span>
+        <h3><span lang="en">Share what you're playing with Macs nearby.</span><span lang="fr">Partage ta musique avec les Mac autour de toi.</span></h3>
+        <p><span lang="en">Friends see your song right in their notch and can listen in sync, with Spotify or Apple Music. Straight between Macs, no server, no account.</span><span lang="fr">Tes amis voient ton morceau dans leur notch et l'écoutent en même temps que toi, avec Spotify ou Musique. Directement entre Mac : pas de serveur, pas de compte.</span></p>
+        <div class="stage">
+          <div class="macs">
+            <div class="mac"><div class="mini open" style="position:absolute;left:50%;top:0;transform:translateX(-50%)"><i></i><span><b>Neon Nocturne</b>The Fireflies</span></div><div class="lbl"><span lang="en">Your Mac</span><span lang="fr">Ton Mac</span></div></div>
+            <div class="wave"><i></i><i></i><i></i></div>
+            <div class="mac"><div class="mini open" style="position:absolute;left:50%;top:0;transform:translateX(-50%)"><i></i><span><b>Neon Nocturne</b><span lang="en">from Sam's Mac</span><span lang="fr">depuis le Mac de Sam</span></span></div><div class="lbl"><span lang="en">Friend's Mac</span><span lang="fr">Le Mac d'un ami</span></div></div>
+          </div>
+          <div class="sync">● <span lang="en">In sync · 1:12</span><span lang="fr">Synchronisé · 1:12</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" style="padding-top:30px">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow"><span lang="en">Everything else</span><span lang="fr">Et tout le reste</span></div>
+      <h2><span lang="en">One notch. Everything you need.</span><span lang="fr">Une notch. Tout ce qu'il te faut.</span></h2>
+    </div>
+    <div class="bento">
+      <div class="tile w3 reveal"><div class="ic" style="background:#ff5fa222">🎵</div><h4><span lang="en">Music player</span><span lang="fr">Lecteur de musique</span></h4><p><span lang="en">Artwork, controls, scrubbing, output device and synced lyrics. Works with Spotify and Apple Music.</span><span lang="fr">Pochette, lecture, barre de progression, sortie audio et paroles synchronisées. Avec Spotify et Musique.</span></p></div>
+      <div class="tile w3 reveal"><span class="pro">PRO</span><div class="ic" style="background:#6c8bff22">🔎</div><h4>Shazam</h4><p><span lang="en">What's this song? Ask the notch. It listens and names it in a second.</span><span lang="fr">C'est quoi ce morceau ? Demande à la notch : elle écoute et te le dit en une seconde.</span></p></div>
+      <div class="tile reveal"><div class="ic" style="background:#34d39922">📡</div><h4><span lang="en">Shelf & AirDrop</span><span lang="fr">Étagère et AirDrop</span></h4><p><span lang="en">Drop any file on the notch to keep it, or AirDrop it in one move.</span><span lang="fr">Glisse un fichier sur la notch pour le garder, ou l'envoyer par AirDrop.</span></p></div>
+      <div class="tile reveal"><span class="pro">PRO</span><div class="ic" style="background:#b06bff22">✨</div><h4>ChatGPT & Claude</h4><p><span lang="en">See when an answer is being written, and get pinged when it's ready.</span><span lang="fr">Vois quand une réponse s'écrit, et sois prévenu quand elle est prête.</span></p></div>
+      <div class="tile reveal"><span class="pro">PRO</span><div class="ic" style="background:#ff9f4322">🎚️</div><h4>MixVol</h4><p><span lang="en">Set the volume of each app separately, from the notch or the menu bar.</span><span lang="fr">Règle le volume de chaque app séparément, depuis la notch ou la barre des menus.</span></p></div>
+      <div class="tile reveal"><span class="pro">PRO</span><div class="ic" style="background:#2dd4bf22">📋</div><h4><span lang="en">Clipboard history</span><span lang="fr">Presse-papiers</span></h4><p><span lang="en">Your latest copies, one per line. Images get a title written on-device. Nothing leaves your Mac.</span><span lang="fr">Tes derniers éléments copiés. Les images reçoivent un titre écrit sur ton Mac. Rien n'est envoyé.</span></p></div>
+      <div class="tile reveal"><span class="pro">PRO</span><div class="ic" style="background:#f8717122">🔔</div><h4><span lang="en">Alerts & calls</span><span lang="fr">Alertes et appels</span></h4><p><span lang="en">AirPods and case battery, low battery, calls, upcoming events.</span><span lang="fr">Batterie des AirPods et du boîtier, batterie faible, appels, événements à venir.</span></p></div>
+      <div class="tile reveal"><span class="pro">PRO</span><div class="ic" style="background:#facc1522">🎨</div><h4><span lang="en">Make it yours</span><span lang="fr">À ton image</span></h4><p><span lang="en">Notch style, size, colors, widgets, tab order, clock and HUDs.</span><span lang="fr">Style, taille, couleurs, widgets, ordre des onglets, horloge et HUD.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow"><span lang="en">Pricing</span><span lang="fr">Prix</span></div>
+      <h2><span lang="en">Start free. Go Pro when you love it.</span><span lang="fr">Commence gratuitement. Passe Pro quand tu l'adores.</span></h2>
+      <p class="lead"><span lang="en">Every download includes 14 days of Dormer Pro. No account, no card.</span><span lang="fr">Chaque téléchargement inclut 14 jours de Dormer Pro. Sans compte, sans carte.</span></p>
+    </div>
+    <div class="plans">
+      <div class="plan reveal">
+        <h3>Dormer</h3>
+        <div class="pr"><span lang="en">Free, forever</span><span lang="fr">Gratuit, pour toujours</span></div>
+        <ul>
+          <li><span lang="en">Music player & lyrics</span><span lang="fr">Lecteur de musique et paroles</span></li>
+          <li><span lang="en">Shelf & AirDrop</span><span lang="fr">Étagère et AirDrop</span></li>
+          <li><span lang="en">Calendar, weather & timer</span><span lang="fr">Calendrier, météo et minuteur</span></li>
+          <li><span lang="en">Built-in updates</span><span lang="fr">Mises à jour intégrées</span></li>
+        </ul>
+        <a class="btn sec" href="https://github.com/Zerdoxy741/dormer/releases/latest"><span lang="en">Download</span><span lang="fr">Télécharger</span></a>
+      </div>
+      <div class="plan hl reveal">
+        <h3>Dormer Pro</h3>
+        <div class="pr"><span lang="en">One license per Mac · 14-day free trial</span><span lang="fr">Une licence par Mac · 14 jours d'essai gratuit</span></div>
+        <ul>
+          <li><span lang="en">Everything in Dormer</span><span lang="fr">Tout Dormer</span></li>
+          <li><span lang="en">The pixel companion</span><span lang="fr">Le compagnon en pixels</span></li>
+          <li><span lang="en">Listen together & Shazam</span><span lang="fr">Écouter ensemble et Shazam</span></li>
+          <li><span lang="en">ChatGPT & Claude, MixVol, clipboard</span><span lang="fr">ChatGPT et Claude, MixVol, presse-papiers</span></li>
+          <li><span lang="en">Alerts, calls & full customization</span><span lang="fr">Alertes, appels et personnalisation</span></li>
+        </ul>
+        <a class="btn pri" href="https://buy.polar.sh/polar_cl_i0J4wAjf6ZKOnhGaEk4EFbYijV0jW689W7zpv001BK6"><span lang="en">Get Dormer Pro</span><span lang="fr">Obtenir Dormer Pro</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="install" style="padding-top:20px">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow"><span lang="en">Install</span><span lang="fr">Installer</span></div>
+      <h2><span lang="en">Up and running in a minute.</span><span lang="fr">Prêt en une minute.</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h4><span lang="en">Download & unzip</span><span lang="fr">Télécharge et décompresse</span></h4><p><span lang="en">Drag <b>Dormer.app</b> into your Applications folder.</span><span lang="fr">Glisse <b>Dormer.app</b> dans le dossier Applications.</span></p></div>
+      <div class="step reveal"><div class="n">2</div><h4><span lang="en">Open it once</span><span lang="fr">Ouvre-le une fois</span></h4><p><span lang="en">Dormer isn't on the App Store, so macOS asks first. Go to System Settings › Privacy & Security › <b>Open Anyway</b>. Or run:</span><span lang="fr">Dormer n'est pas sur l'App Store, macOS demande donc d'abord. Va dans Réglages Système › Confidentialité et sécurité › <b>Ouvrir quand même</b>. Ou lance :</span></p><code>xattr -dr com.apple.quarantine /Applications/Dormer.app</code></div>
+      <div class="step reveal"><div class="n">3</div><h4><span lang="en">Hover the notch</span><span lang="fr">Survole la notch</span></h4><p><span lang="en">Accept permissions as they come. Settings are behind the ⚙︎ icon in the open notch.</span><span lang="fr">Accepte les autorisations au fur et à mesure. Les réglages sont derrière l'icône ⚙︎ de la notch ouverte.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:30px">
+  <div class="wrap">
+    <div class="center reveal"><h2>FAQ</h2></div>
+    <div class="faq">
+      <details><summary><span lang="en">Does it work on my Mac?</span><span lang="fr">Est-ce que ça marche sur mon Mac ?</span></summary><p><span lang="en">Dormer is made for MacBooks with a notch running macOS 14.2 (Sonoma) or later.</span><span lang="fr">Dormer est fait pour les MacBook avec encoche, sous macOS 14.2 (Sonoma) ou plus récent.</span></p></details>
+      <details><summary><span lang="en">How does the free trial work?</span><span lang="fr">Comment marche l'essai gratuit ?</span></summary><p><span lang="en">Pro features are on for 14 days after you first open Dormer. After that, the free features keep working and you can unlock Pro with a license key.</span><span lang="fr">Les fonctions Pro sont actives 14 jours après la première ouverture. Ensuite, les fonctions gratuites continuent de marcher et tu peux débloquer Pro avec une clé de licence.</span></p></details>
+      <details><summary><span lang="en">How many Macs can I use my license on?</span><span lang="fr">Sur combien de Mac puis-je utiliser ma licence ?</span></summary><p><span lang="en">One license activates one Mac. Moving to a new Mac? Deactivate it in Dormer's settings first, then activate it on the new one.</span><span lang="fr">Une licence active un Mac. Tu changes de Mac ? Désactive-la d'abord dans les réglages de Dormer, puis active-la sur le nouveau.</span></p></details>
+      <details><summary><span lang="en">Is my data private?</span><span lang="fr">Mes données restent-elles privées ?</span></summary><p><span lang="en">Yes. Clipboard history stays in memory on your Mac and is never sent anywhere. Listen together talks directly between nearby Macs, without a server.</span><span lang="fr">Oui. L'historique du presse-papiers reste en mémoire sur ton Mac et n'est jamais envoyé. L'écoute à plusieurs passe directement entre les Mac proches, sans serveur.</span></p></details>
+      <details><summary><span lang="en">How do I update?</span><span lang="fr">Comment mettre à jour ?</span></summary><p><span lang="en">Updates are built in: open settings › Updates › Check for updates. Your settings are kept.</span><span lang="fr">Les mises à jour sont intégrées : réglages › Mises à jour › Rechercher les mises à jour. Tes réglages sont gardés.</span></p></details>
+      <details><summary><span lang="en">How do I quit Dormer?</span><span lang="fr">Comment quitter Dormer ?</span></summary><p><span lang="en">Right-click the notch › Quit Dormer.</span><span lang="fr">Clic droit sur la notch › Quitter Dormer.</span></p></details>
+    </div>
+  </div>
+</section>
+
+<div class="final">
+  <div class="wrap reveal">
+    <img src="icon.png" alt="Dormer icon">
+    <h2 style="margin-top:26px"><span lang="en">Dormer.<br>No more dormant notch.</span><span lang="fr">Dormer.<br>Fini la notch endormie.</span></h2>
+    <div class="ctas"><a class="btn pri" href="https://github.com/Zerdoxy741/dormer/releases/latest"><span lang="en">Download for Mac</span><span lang="fr">Télécharger pour Mac</span></a></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Dormer</span>
+    <div class="r">
+      <a href="https://github.com/Zerdoxy741/dormer">GitHub</a>
+      <a href="https://github.com/Zerdoxy741/dormer/releases"><span lang="en">Releases</span><span lang="fr">Versions</span></a>
+      <a href="https://buy.polar.sh/polar_cl_i0J4wAjf6ZKOnhGaEk4EFbYijV0jW689W7zpv001BK6">Dormer Pro</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// language
+(function(){
+  const h = document.documentElement, b = document.getElementById('lang');
+  let L = 'en';
+  try { L = localStorage.getItem('lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'en'); } catch(e) {}
+  const set = l => { h.lang = l; b.textContent = l === 'en' ? 'FR' : 'EN'; try { localStorage.setItem('lang', l); } catch(e) {} };
+  set(L); b.onclick = () => set(h.lang === 'en' ? 'fr' : 'en');
+})();
+
+// Dormer's real cat sprite (Companion.swift)
+const CAT = ["........................","..oo................oo..",".o#oo..............oo#o.",".o#ppo............opp#o.",".o#pp#ooooo..ooooo#pp#o.","o#pp#######oo#######pp#o","o######################o","o######################o","o######################o","o######################o","o######################o",".o####################o.","..o##################o..","..ooddddddddddddddddoo..","...o##llllllllllll##o...","...o#llllllllllllll#o...","...o#llllllllllllll#o...","...o##llllllllllll##o...","...o################o...","....o###oooooooo###o...."];
+const FUR=[255,237,214], mix=(c,t,k)=>c.map((v,i)=>Math.round(v+(t-v)*k));
+const PAL={'#':FUR,'o':mix(FUR,0,.5),'d':mix(FUR,0,.18),'l':mix(FUR,255,.55),'p':[255,158,173]};
+const INK='rgb(41,31,36)';
+function drawCat(cv, eyes){ // eyes: 'open' | 'left' | 'right' | 'closed' | 'happy'
+  const x = cv.getContext('2d'); x.clearRect(0,0,24,20);
+  CAT.forEach((r,y)=>[...r].forEach((ch,i)=>{const c=PAL[ch]; if(c){x.fillStyle=`rgb(${c})`; x.fillRect(i,y,1,1);}}));
+  const dot=(i,y,c)=>{x.fillStyle=c;x.fillRect(i,y,1,1);};
+  for (const ex0 of [6,16]) {
+    const y=7;
+    if (eyes==='closed'){dot(ex0-1,y+1,INK);dot(ex0,y+2,INK);dot(ex0+1,y+2,INK);dot(ex0+2,y+1,INK);}
+    else if (eyes==='happy'){dot(ex0,y+1,INK);dot(ex0+1,y+1,INK);dot(ex0-1,y+2,INK);dot(ex0+2,y+2,INK);}
+    else { const ex=ex0+(eyes==='left'?-1:eyes==='right'?1:0); for(let d=0;d<3;d++){dot(ex,y+d,INK);dot(ex+1,y+d,INK);} dot(ex+1,y,'#fff'); }
+  }
+  dot(10,10,INK);dot(11,11,INK);dot(12,11,INK);dot(13,10,INK); // mouth
+  if (eyes==='happy'){ for(const c of [3,19]){dot(c,10,'rgb(255,158,173)');dot(c+1,10,'rgb(255,158,173)');} }
+}
+
+// hero notch: morphs between states (one black shape, never cut)
+(function(){
+  const n = document.getElementById('notch'), sts=[...n.querySelectorAll('.st')], dots=document.getElementById('dots'), cat=document.getElementById('catN');
+  let i = -1, hover=false, timer;
+  sts.forEach((s,k)=>{const b=document.createElement('button'); b.setAttribute('aria-label',s.dataset.s); b.onclick=()=>{go(k);restart();}; dots.appendChild(b);});
+  function go(k){
+    i=k; const s=sts[k], w=+s.dataset.w;
+    const sc=Math.min(1,(document.getElementById('screen').clientWidth-24)/w);
+    n.style.transform=`translateX(-50%) scale(${sc})`;
+    n.style.width=w+'px'; n.style.height=s.dataset.h+'px'; n.style.borderRadius=`0 0 ${Math.min(30,s.dataset.h/2.4)}px ${Math.min(30,s.dataset.h/2.4)}px`;
+    sts.forEach((x,j)=>x.classList.toggle('on',j===k)); [...dots.children].forEach((d,j)=>d.classList.toggle('on',j===k));
+  }
+  function close(){ n.style.transform='translateX(-50%)'; n.style.width='190px'; n.style.height='30px'; n.style.borderRadius='0 0 14px 14px'; sts.forEach(x=>x.classList.remove('on')); }
+  function step(){ close(); setTimeout(()=>go((i+1)%sts.length), 650); }
+  function restart(){ clearInterval(timer); timer=setInterval(()=>{ if(!hover) step(); }, 3600); }
+  n.addEventListener('mouseenter',()=>{hover=true; if(i<0) go(0);});
+  n.addEventListener('mouseleave',()=>{hover=false;});
+  n.addEventListener('click',()=>{go((i+1)%sts.length);restart();});
+  setTimeout(()=>{go(0);restart();}, 700);
+  // cat in notch: blinks and follows the cursor
+  let ey='open';
+  addEventListener('mousemove',e=>{ const r=n.getBoundingClientRect(), cx=r.left+r.width/2; ey = e.clientX < cx-120 ? 'left' : e.clientX > cx+120 ? 'right' : 'open'; });
+  (function loop(){ const bl = (performance.now()%3200)<140; drawCat(cat, bl?'closed':ey); requestAnimationFrame(loop); })();
+  // live clock
+  const c=document.getElementById('clock'); const tick=()=>{const d=new Date(); c.textContent=d.toLocaleDateString('en-US',{weekday:'short'})+' '+d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});}; tick(); setInterval(tick,20000);
+})();
+
+// companion stage: the cat hops from window to window chasing the ball
+(function(){
+  const st=document.getElementById('catStage'), cv=document.getElementById('catR'), ball=document.getElementById('ball');
+  const P=3; cv.style.width=24*P+'px'; cv.style.height=20*P+'px';
+  const spots=()=>{ const W=st.clientWidth,H=st.clientHeight; return [
+    {x:W*.5, y:24},             // notch
+    {x:W*.26, y:H*.38},         // window 1 top
+    {x:W*.72, y:H*.56},         // window 2 top
+  ];};
+  const path=[0,1,2,1,0], seg=1.5, hop=.55;
+  const t0=performance.now();
+  function frame(now){
+    const S=spots(), t=((now-t0)/1000)%(seg*(path.length-1)), k=Math.floor(t/seg), f=t-k*seg;
+    const a=S[path[k]], b=S[path[k+1]];
+    let x,y,eyes='open',sq=1;
+    if (f<seg-hop){ x=a.x; y=a.y; eyes=(f%1.2<.1)?'closed':(b.x<a.x?'left':'right'); sq=1+.04*Math.sin(f*8); }
+    else { const u=(f-(seg-hop))/hop, e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2; x=a.x+(b.x-a.x)*e; y=a.y+(b.y-a.y)*e-Math.sin(Math.PI*u)*70; eyes='happy'; sq=u<.15?.85:u>.9?.9:1.06; }
+    drawCat(cv,eyes);
+    const w=24*P, h=20*P*sq;
+    cv.style.left=(x-w/2)+'px'; cv.style.top=(y-h)+'px'; cv.style.height=h+'px';
+    // the ball always flies ahead to the next spot
+    const nb=S[path[(k+1)%path.length]], bu=Math.min(1,f/seg);
+    ball.style.left=(nb.x+30-7)+'px'; ball.style.top=(nb.y-14-Math.abs(Math.sin(bu*Math.PI*3))*18)+'px';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+// reveal on scroll
+(function(){
+  const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
