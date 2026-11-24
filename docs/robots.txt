@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zerdoxy741.github.io/dormer/sitemap.xml
