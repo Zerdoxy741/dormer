@@ -53,7 +53,7 @@ nav .links a:hover{color:var(--ink)}
 .hero:before{content:"";position:absolute;left:50%;top:-260px;width:1300px;height:900px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(139,92,255,.33),rgba(255,95,162,.12) 45%,transparent 75%);pointer-events:none}
 /* ───── interactive Mac screen ───── */
 .stagewrap{position:relative;margin:0 auto;max-width:1000px;aspect-ratio:1000/560}
-.stage{position:absolute;left:0;top:0;width:1000px;height:560px;transform-origin:0 0;border-radius:0 0 26px 26px;overflow:hidden;
+.macscreen{position:absolute;left:0;top:0;width:1000px;height:560px;transform-origin:0 0;border-radius:0 0 26px 26px;overflow:hidden;
   background:radial-gradient(560px 320px at 15% 105%,#ff5fa280,transparent 70%),radial-gradient(640px 360px at 90% 105%,#6c8bff80,transparent 70%),radial-gradient(500px 260px at 55% 60%,#8b5cff30,transparent 70%),linear-gradient(180deg,#21183a,#0f0c1a);
   border:1px solid var(--line);border-top:none;box-shadow:0 40px 120px rgba(0,0,0,.6);user-select:none;-webkit-user-select:none;touch-action:manipulation;text-align:left}
 .menubar{height:32px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:12.5px;color:rgba(255,255,255,.78);background:rgba(0,0,0,.2)}
@@ -165,7 +165,7 @@ nav .links a:hover{color:var(--ink)}
 /* timer */
 .tim{align-items:center;gap:30px;justify-content:center}
 .tim svg{width:130px;height:130px;transform:rotate(-90deg)}
-.tim .big{position:absolute;font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
+.tim .tbig{position:absolute;font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
 .tim .ringw{position:relative;display:grid;place-items:center}
 .tim .bt{display:flex;flex-direction:column;gap:8px}
 .tbtn{border:0;border-radius:12px;background:rgba(255,255,255,.08);color:#fff;padding:9px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit}
@@ -315,7 +315,7 @@ footer a:hover{color:var(--ink)}
 <header class="hero">
   <div class="wrap">
     <div class="stagewrap" id="wrap">
-    <div class="stage" id="stage">
+    <div class="macscreen" id="stage">
       <div class="menubar">
         <div class="l"><span><b>Finder</b></span><span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Window</span></div>
         <div class="r"><span>⌁ 84%</span><span>◉</span><span id="clock">Tue 9:41</span></div>
@@ -379,7 +379,7 @@ footer a:hover{color:var(--ink)}
               <div class="ans" id="ans"></div>
             </div>
             <div class="pn tim" data-p="timer">
-              <div class="ringw"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" stroke="rgba(255,255,255,.1)" stroke-width="7" fill="none"/><circle id="tring" cx="50" cy="50" r="44" stroke="#f59e0b" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="276.5" stroke-dashoffset="276.5"/></svg><div class="big" id="tbig">0:00</div></div>
+              <div class="ringw"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" stroke="rgba(255,255,255,.1)" stroke-width="7" fill="none"/><circle id="tring" cx="50" cy="50" r="44" stroke="#f59e0b" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="276.5" stroke-dashoffset="276.5"/></svg><div class="tbig" id="tbig">0:00</div></div>
               <div class="bt"><button class="tbtn" data-m="1">1 min</button><button class="tbtn" data-m="5">5 min</button><button class="tbtn go" data-m="25">25 min</button></div>
             </div>
             <div class="pn mix" data-p="mixer" id="mix"></div>
