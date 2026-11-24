@@ -31,7 +31,7 @@
 ## Only on Dormer
 
 - 🐱 **A companion that lives in your notch.** A pixel cat (or dog, bunny, robot, ghost) that blinks, follows your cursor, dances to your music and falls asleep when you leave. Throw it a ball and it jumps out across your windows to catch it. Not your thing? Turn it off anytime in **Settings › Customize › Companion**.
-- 🎧 **Listen together.** Share what you're playing with Macs nearby. Friends see your song in their notch and listen in sync, with Spotify or Apple Music. Straight between Macs: no server, no account.
+- 🎧 **Listen together.** Share what you're playing with Macs nearby. Friends see your song in their notch and listen in sync, with Spotify or Apple Music. Straight between Macs: no server, no account. Works with Macs that also have **Dormer** (Pro or free trial): turn it on in **Settings › Music & Shazam › Share nearby**.
 
 ## Everything else
 
@@ -78,7 +78,7 @@ Requires a MacBook with a notch and **macOS 14.2 or later**. To quit: right-clic
 
 **Seulement sur Dormer**
 - 🐱 **Un compagnon dans ta notch** : il cligne des yeux, suit ta souris, danse sur ta musique, s'endort quand tu pars, et sort sauter de fenêtre en fenêtre pour attraper sa balle. Pas ton truc ? Désactive-le quand tu veux dans **Réglages › Personnalisation › Compagnon**.
-- 🎧 **Écouter ensemble** : partage ta musique avec les Mac autour de toi, synchronisée, avec Spotify ou Musique. Sans serveur, sans compte.
+- 🎧 **Écouter ensemble** : partage ta musique avec les Mac autour de toi, synchronisée, avec Spotify ou Musique. Sans serveur, sans compte. Marche avec les Mac qui ont aussi **Dormer** (Pro ou essai gratuit) : à activer dans **Réglages › Musique et Shazam › Partager à proximité**.
 
 **Et aussi** : lecteur de musique et paroles, Shazam, étagère et AirDrop, ChatGPT et Claude, MixVol (volume par app), presse-papiers, alertes (AirPods, batterie, appels, événements), personnalisation, mises à jour intégrées.
 
