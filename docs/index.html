@@ -450,6 +450,7 @@ footer a:hover{color:var(--ink)}
         <span class="tag"><span lang="en">Companion</span><span lang="fr">Compagnon</span></span>
         <h3><span lang="en">A pixel cat lives in your notch.</span><span lang="fr">Un chat en pixels vit dans ta notch.</span></h3>
         <p><span lang="en">It blinks, follows your cursor, dances to your music and falls asleep when you leave. Throw it a ball and it jumps out across your windows to catch it. Pick a cat, dog, bunny, robot or ghost.</span><span lang="fr">Il cligne des yeux, suit ta souris, danse sur ta musique et s'endort quand tu t'en vas. Lance-lui une balle : il sort et saute de fenêtre en fenêtre pour l'attraper. Chat, chien, lapin, robot ou fantôme.</span></p>
+        <p style="font-size:13.5px;margin-top:8px"><span lang="en">Not your thing? Turn it off anytime in Settings › Customize › Companion.</span><span lang="fr">Pas ton truc ? Désactive-le quand tu veux dans Réglages › Personnalisation › Compagnon.</span></p>
         <div class="stage" id="catStage">
           <div class="mini"></div>
           <div class="win" style="left:7%;top:38%;width:38%;height:50%"></div>
@@ -550,6 +551,7 @@ footer a:hover{color:var(--ink)}
       <details><summary><span lang="en">Does it work on my Mac?</span><span lang="fr">Est-ce que ça marche sur mon Mac ?</span></summary><p><span lang="en">Dormer is made for MacBooks with a notch running macOS 14.2 (Sonoma) or later.</span><span lang="fr">Dormer est fait pour les MacBook avec encoche, sous macOS 14.2 (Sonoma) ou plus récent.</span></p></details>
       <details><summary><span lang="en">How does the free trial work?</span><span lang="fr">Comment marche l'essai gratuit ?</span></summary><p><span lang="en">Pro features are on for 14 days after you first open Dormer. After that, the free features keep working and you can unlock Pro with a license key.</span><span lang="fr">Les fonctions Pro sont actives 14 jours après la première ouverture. Ensuite, les fonctions gratuites continuent de marcher et tu peux débloquer Pro avec une clé de licence.</span></p></details>
       <details><summary><span lang="en">How many Macs can I use my license on?</span><span lang="fr">Sur combien de Mac puis-je utiliser ma licence ?</span></summary><p><span lang="en">One license activates one Mac. Moving to a new Mac? Deactivate it in Dormer's settings first, then activate it on the new one.</span><span lang="fr">Une licence active un Mac. Tu changes de Mac ? Désactive-la d'abord dans les réglages de Dormer, puis active-la sur le nouveau.</span></p></details>
+      <details><summary><span lang="en">Can I turn off the companion?</span><span lang="fr">Je peux enlever le compagnon ?</span></summary><p><span lang="en">Yes. Open Settings › Customize › Companion and switch off “Notch companion”. You can also keep it in the notch but stop it from walking on your windows.</span><span lang="fr">Oui. Ouvre Réglages › Personnalisation › Compagnon et désactive « Compagnon dans la notch ». Tu peux aussi le garder dans la notch sans qu'il se promène sur tes fenêtres.</span></p></details>
       <details><summary><span lang="en">Is my data private?</span><span lang="fr">Mes données restent-elles privées ?</span></summary><p><span lang="en">Yes. Clipboard history stays in memory on your Mac and is never sent anywhere. Listen together talks directly between nearby Macs, without a server.</span><span lang="fr">Oui. L'historique du presse-papiers reste en mémoire sur ton Mac et n'est jamais envoyé. L'écoute à plusieurs passe directement entre les Mac proches, sans serveur.</span></p></details>
       <details><summary><span lang="en">How do I update?</span><span lang="fr">Comment mettre à jour ?</span></summary><p><span lang="en">Updates are built in: open settings › Updates › Check for updates. Your settings are kept.</span><span lang="fr">Les mises à jour sont intégrées : réglages › Mises à jour › Rechercher les mises à jour. Tes réglages sont gardés.</span></p></details>
       <details><summary><span lang="en">How do I quit Dormer?</span><span lang="fr">Comment quitter Dormer ?</span></summary><p><span lang="en">Right-click the notch › Quit Dormer.</span><span lang="fr">Clic droit sur la notch › Quitter Dormer.</span></p></details>
@@ -882,7 +884,7 @@ function drawCat(cv, eyes){ // eyes: 'open' | 'left' | 'right' | 'closed' | 'hap
   const path=[0,1,2,1,0], seg=1.5, hop=.55;
   const t0=performance.now();
   function frame(now){
-    const S=spots(), t=((now-t0)/1000)%(seg*(path.length-1)), k=Math.floor(t/seg), f=t-k*seg;
+    const S=spots(), t=(Math.max(0,now-t0)/1000)%(seg*(path.length-1)), k=Math.floor(t/seg), f=t-k*seg;
     const a=S[path[k]], b=S[path[k+1]];
     let x,y,eyes='open',sq=1;
     if (f<seg-hop){ x=a.x; y=a.y; eyes=(f%1.2<.1)?'closed':(b.x<a.x?'left':'right'); sq=1+.04*Math.sin(f*8); }
