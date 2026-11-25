@@ -223,7 +223,7 @@ MATRIX = [
 
 ALT = {
     "en": {
-        "nav": "Compare",
+        "nav": "Compare", "nav_home": "Home",
         "title": "Mac notch apps compared: Dormer vs NotchNook, Alcove, DynamicLake, Boring Notch & Atoll",
         "desc": ("Dormer, NotchNook, Alcove, DynamicLake, DynamicHorizon, Boring Notch and Atoll side by side: "
                  "features, free versions, trials and what only Dormer does."),
@@ -262,7 +262,7 @@ ALT = {
         "lang_label": "FR", "lang_aria": "Version française", "download": "Download",
     },
     "fr": {
-        "nav": "Comparatif",
+        "nav": "Comparatif", "nav_home": "Accueil",
         "title": "Comparatif des apps de notch pour Mac : Dormer, NotchNook, Alcove, DynamicLake, Boring Notch, Atoll",
         "desc": ("Dormer, NotchNook, Alcove, DynamicLake, DynamicHorizon, Boring Notch et Atoll côte à côte : "
                  "fonctions, versions gratuites, essais, et ce que seul Dormer fait."),
@@ -438,7 +438,7 @@ def alt_page(lang: str) -> str:
   <a class="brand" href="{home}"><img src="/icon.png" alt=""><span>Dormer</span></a>
   <span class="sp"></span>
   <a class="lang" href="{PAGES['alt'][other]}" hreflang="{other}" aria-label="{t['lang_aria']}" onclick="try{{localStorage.setItem('lang','{other}')}}catch(e){{}}">{t['lang_label']}</a>
-  <a class="navlink" href="{PAGES['alt'][lang]}" aria-current="page">{e(t['nav'])}</a>
+  <a class="navlink" href="{home}">{e(t['nav_home'])}</a>
   <a class="btn sm" href="{DOWNLOAD}">{e(t['download'])}</a>
 </div></nav>
 <header><div class="wrap">
