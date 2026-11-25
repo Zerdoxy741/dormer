@@ -413,7 +413,10 @@ def alt_page(lang: str) -> str:
 <title>{e(t['title'])}</title>
 <meta name="description" content="{html.escape(t['desc'], quote=True)}">
 <meta name="theme-color" content="#1b2147">
-<link rel="icon" href="/favicon.png?v=2">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon-96.png?v=2" type="image/png" sizes="96x96">
+<link rel="icon" href="/logo.svg?v=2" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <link rel="canonical" href="{url}">
 {alternates('alt')}
 <meta property="og:title" content="{html.escape(t['title'], quote=True)}">
