@@ -10,7 +10,7 @@ It rewrites:
   - the SEO block (<!--seo--> … <!--/seo-->) in docs/index.html: hreflang links,
     language redirect, and structured data (app, video, FAQ built from the page's FAQ)
   - docs/fr/index.html, the French page
-  - docs/notchnook-alternative/ and docs/fr/alternative-notchnook/
+  - docs/compare/ and docs/fr/compare/ (old URLs redirected in docs/_redirects)
   - docs/sitemap.xml
   - the Dormer Pro price (<!--pro-price--> … <!--/pro-price-->) and the comparison table prices,
     from data/prices.json (kept up to date by scripts/sync_prices.py)
@@ -63,7 +63,7 @@ def set_pro_price(page: str) -> str:
 
 PAGES = {  # language -> URL path
     "home": {"en": "/", "fr": "/fr/"},
-    "alt": {"en": "/notchnook-alternative/", "fr": "/fr/alternative-notchnook/"},
+    "alt": {"en": "/compare/", "fr": "/fr/compare/"},
 }
 
 TEXT = {
@@ -179,7 +179,7 @@ def french(page: str) -> str:
     for a, b in [('href="favicon.png"', 'href="/favicon.png"'), ('src="icon.png"', 'src="/icon.png"'),
                  ('poster="film/poster.jpg"', 'poster="/film/poster.jpg"'), ('src="film/dormer.mp4"', 'src="/film/dormer.mp4"')]:
         s = s.replace(a, b)
-    s = s.replace('href="/notchnook-alternative/"', 'href="/fr/alternative-notchnook/"')
+    s = s.replace('href="/compare/"', 'href="/fr/compare/"')
     return set_seo(s, "fr")
 
 
@@ -501,8 +501,8 @@ def main():
     en = set_seo(src, "en")
     write("index.html", en)
     write("fr/index.html", french(en))
-    write("notchnook-alternative/index.html", alt_page("en"))
-    write("fr/alternative-notchnook/index.html", alt_page("fr"))
+    write("compare/index.html", alt_page("en"))
+    write("fr/compare/index.html", alt_page("fr"))
     write("sitemap.xml", sitemap())
 
 
