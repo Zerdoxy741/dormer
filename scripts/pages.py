@@ -104,7 +104,7 @@ def _page(key: str, lang: str, title: str, desc: str, h1: str, lead: str, body: 
 PRIVACY = {
 "fr": f"""<h2>L'essentiel</h2>
 <p>Pour toute question sur tes données : {CONTACT}.</p>
-<p>Dormer n'a pas de compte, pas de publicité et pas de mesure d'audience. Il ne collecte rien en arrière-plan. Presque tout reste sur ton Mac. Quand une fonction a besoin d'Internet, elle n'envoie que le strict nécessaire, et seulement si tu l'as activée.</p>
+<p>Dormer n'a pas de compte, pas de publicité et aucune mesure d'audience dans l'app. Il ne collecte rien en arrière-plan. Presque tout reste sur ton Mac. Quand une fonction a besoin d'Internet, elle n'envoie que le strict nécessaire, et seulement si tu l'as activée.</p>
 
 <h2>Les autorisations demandées</h2>
 <p>macOS te demande chaque autorisation au moment où une fonction en a besoin. Tu peux en refuser : seules les fonctions concernées ne marcheront pas.</p>
@@ -138,6 +138,9 @@ PRIVACY = {
 <p><strong>Combien de temps :</strong> chaque diagnostic est effacé automatiquement un an après son envoi, ou plus tôt si tu le demandes.</p>
 <p><strong>Pourquoi :</strong> pour comprendre et corriger le problème que tu signales. C'est la seule utilisation, avec ton accord, que tu donnes en cliquant sur Envoyer.</p>
 
+<h2>Le site dormernotch.com</h2>
+<p>Le site utilise Cloudflare Web Analytics pour compter ses visites : nombre de pages vues, pays, navigateur, site d'où vient le visiteur. Il n'y a ni cookie ni suivi d'une page à l'autre ou d'un site à l'autre, et aucune donnée n'est utilisée pour te reconnaître ni pour de la publicité. On ne voit que des totaux.</p>
+
 <h2>Les fonctions qui utilisent Internet</h2>
 <ul>
 <li><strong>Mises à jour :</strong> Dormer demande à GitHub s'il existe une nouvelle version, et n'installe une mise à jour que si elle est signée avec le même certificat que l'app installée.</li>
@@ -155,7 +158,7 @@ PRIVACY = {
 
 "en": f"""<h2>The short version</h2>
 <p>Questions about your data: {CONTACT}.</p>
-<p>Dormer has no account, no ads and no analytics. It collects nothing in the background. Almost everything stays on your Mac. When a feature needs the internet, it sends only what it needs, and only if you turned it on.</p>
+<p>Dormer has no account, no ads and no analytics in the app. It collects nothing in the background. Almost everything stays on your Mac. When a feature needs the internet, it sends only what it needs, and only if you turned it on.</p>
 
 <h2>Permissions</h2>
 <p>macOS asks for each permission when a feature needs it. You can say no: only the features that need it won't work.</p>
@@ -188,6 +191,9 @@ PRIVACY = {
 <p><strong>Where it goes:</strong> the diagnostic passes through <code>diag.dormernotch.com</code>, a small service hosted by Cloudflare that keeps nothing and doesn't log the content. It's then stored in a private GitHub repository (GitHub, Inc., United States) that only Dormer's creator can read. Your IP address is only used to limit sends per minute against spam. It isn't stored with the diagnostic.</p>
 <p><strong>How long:</strong> each diagnostic is deleted automatically one year after it was sent, or sooner if you ask.</p>
 <p><strong>Why:</strong> to understand and fix the problem you report. That's its only use, with the consent you give by clicking Send.</p>
+
+<h2>The dormernotch.com website</h2>
+<p>The website uses Cloudflare Web Analytics to count visits: page views, country, browser, referring site. There are no cookies and no tracking across pages or sites, and no data is used to recognize you or for ads. Only totals are visible.</p>
 
 <h2>Features that use the internet</h2>
 <ul>
