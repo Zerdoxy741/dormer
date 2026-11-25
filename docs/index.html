@@ -7,14 +7,16 @@
 <meta name="description" content="Dormer turns your MacBook notch into a living Dynamic Island: music player, Shazam, listen together with nearby Macs, AirDrop shelf, clipboard history, per-app volume, ChatGPT & Claude, and a pixel cat that lives in your notch.">
 <meta name="keywords" content="MacBook notch app, Dynamic Island Mac, notch music player, macOS notch, AirDrop shelf, clipboard history Mac, per-app volume, NotchNook alternative">
 <link rel="icon" href="favicon.png">
-<link rel="canonical" href="https://zerdoxy741.github.io/dormer/">
+<link rel="canonical" href="https://dormernotch.com/">
 <meta property="og:title" content="Dormer — your notch, wide awake">
 <meta property="og:description" content="A Dynamic Island for your MacBook notch, with a pixel cat that lives in it.">
-<meta property="og:image" content="https://zerdoxy741.github.io/dormer/banner.png">
+<meta property="og:image" content="https://dormernotch.com/banner.png">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://dormernotch.com/">
+<meta property="og:site_name" content="Dormer">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Dormer","operatingSystem":"macOS 14.2+","applicationCategory":"UtilitiesApplication","description":"Dynamic Island for your MacBook notch.","downloadUrl":"https://github.com/Zerdoxy741/dormer/releases/latest","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Free 14-day trial of Dormer Pro"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Dormer","url":"https://dormernotch.com/","image":"https://dormernotch.com/icon.png","operatingSystem":"macOS 14.2+","applicationCategory":"UtilitiesApplication","description":"Dynamic Island for your MacBook notch.","downloadUrl":"https://github.com/Zerdoxy741/dormer/releases/latest","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Free 14-day trial of Dormer Pro"}}
 </script>
 <style>
 :root{
@@ -688,7 +690,7 @@ function drawCat(cv, eyes){ // eyes: 'open' | 'left' | 'right' | 'closed' | 'hap
   // ── clipboard
   function paintClip(){
     const items = [
-      { ic:'🔗', bg:'#3b82f622', tx:'https://zerdoxy741.github.io/dormer/', copy:'https://zerdoxy741.github.io/dormer/', ago:tr('now','à l\'instant') },
+      { ic:'🔗', bg:'#3b82f622', tx:'https://dormernotch.com/', copy:'https://dormernotch.com/', ago:tr('now','à l\'instant') },
       { ic:'🖼️', bg:'#f59e0b22', tx:tr('Sunset over the lake','Coucher de soleil sur le lac'), tag:tr('✨ AI title','✨ titre IA'), ago:'2 min' },
       { ic:'📝', bg:'#34d39922', tx:tr('Meeting moved to 3 pm, room B','Réunion déplacée à 15 h, salle B'), copy:tr('Meeting moved to 3 pm, room B','Réunion déplacée à 15 h, salle B'), ago:'8 min' },
     ];

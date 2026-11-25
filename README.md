@@ -11,17 +11,17 @@
 
 <p align="center">
   <a href="https://github.com/Zerdoxy741/dormer/releases/latest"><img src="https://img.shields.io/github/v/release/Zerdoxy741/dormer?label=Download&style=for-the-badge&color=8b5cff" alt="Download"></a>
-  <a href="https://zerdoxy741.github.io/dormer/"><img src="https://img.shields.io/badge/Website-dormer-ff5fa2?style=for-the-badge" alt="Website"></a>
+  <a href="https://dormernotch.com/"><img src="https://img.shields.io/badge/Website-dormer-ff5fa2?style=for-the-badge" alt="Website"></a>
   <img src="https://img.shields.io/badge/macOS-14.2%2B-111?style=for-the-badge&logo=apple" alt="macOS 14.2+">
 </p>
 
 <p align="center">
-  <a href="https://zerdoxy741.github.io/dormer/"><img src="docs/banner.png" alt="Dormer: your notch, wide awake" width="860"></a>
+  <a href="https://dormernotch.com/"><img src="docs/banner.png" alt="Dormer: your notch, wide awake" width="860"></a>
 </p>
 
 <p align="center">
-  <a href="https://zerdoxy741.github.io/dormer/#film"><img src="docs/film/thumb.jpg" alt="Watch the Dormer film (2 min)" width="760"></a><br>
-  <sub>▶︎ <a href="https://zerdoxy741.github.io/dormer/#film"><b>Watch the 2-minute film</b></a> · <a href="docs/film/dormer.mp4">MP4</a></sub>
+  <a href="https://dormernotch.com/#film"><img src="docs/film/thumb.jpg" alt="Watch the Dormer film (2 min)" width="760"></a><br>
+  <sub>▶︎ <a href="https://dormernotch.com/#film"><b>Watch the 2-minute film</b></a> · <a href="docs/film/dormer.mp4">MP4</a></sub>
 </p>
 
 <p align="center"><a href="#-en-français">🇫🇷 Lire en français</a></p>
@@ -74,7 +74,7 @@ Requires a MacBook with a notch and **macOS 14.2 or later**. To quit: right-clic
 
 **Ta notch, enfin réveillée.** Dormer transforme l'encoche de ton MacBook en île dynamique : musique, Shazam, AirDrop, presse-papiers, IA, alertes… et un petit chat en pixels qui vit dedans. *(Anciennement Notchy.)*
 
-▶︎ **[Regarde le film de 2 minutes](https://zerdoxy741.github.io/dormer/#film)**
+▶︎ **[Regarde le film de 2 minutes](https://dormernotch.com/#film)**
 
 **Seulement sur Dormer**
 - 🐱 **Un compagnon dans ta notch** : il cligne des yeux, suit ta souris, danse sur ta musique, s'endort quand tu pars, et sort sauter de fenêtre en fenêtre pour attraper sa balle. Pas ton truc ? Désactive-le quand tu veux dans **Réglages › Personnalisation › Compagnon**.
