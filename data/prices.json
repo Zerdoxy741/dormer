@@ -1,0 +1,56 @@
+{
+  "_about": "Prices shown on dormernotch.com. scripts/sync_prices.py refreshes the apps that have a 'sync' method (a GitHub Action runs it every day); the others are checked by hand. Regular prices, not sales.",
+  "apps": {
+    "Dormer": {
+      "sync": "polar",
+      "product_id": "b7c81bb9-b807-46da-b618-b20a12aea518",
+      "free": true,
+      "lifetime": 10.99,
+      "currency": "EUR",
+      "checked": "2026-11-25",
+      "source": "https://buy.polar.sh/polar_cl_i0J4wAjf6ZKOnhGaEk4EFbYijV0jW689W7zpv001BK6"
+    },
+    "NotchNook": {
+      "sync": "notchnook",
+      "lifetime": 19.0,
+      "monthly": 3.0,
+      "currency": "EUR",
+      "checked": "2026-11-25",
+      "source": "https://lo.cafe/notchnook/"
+    },
+    "Alcove": {
+      "sync": null,
+      "lifetime": 12.99,
+      "currency": "USD",
+      "checked": "2026-11-25",
+      "source": "https://tryalcove.com"
+    },
+    "DynamicLake": {
+      "sync": "gumroad",
+      "lifetime": 13.9,
+      "minimum": true,
+      "currency": "USD",
+      "checked": "2026-11-25",
+      "source": "https://avirok1.gumroad.com/l/nyyfw"
+    },
+    "DynamicHorizon": {
+      "sync": null,
+      "lifetime": 11.99,
+      "currency": "USD",
+      "checked": "2026-11-25",
+      "source": "https://www.dynamichorizon.app"
+    },
+    "Boring Notch": {
+      "sync": null,
+      "free": true,
+      "checked": "2026-11-25",
+      "source": "https://github.com/TheBoredTeam/boring.notch"
+    },
+    "Atoll": {
+      "sync": null,
+      "free": true,
+      "checked": "2026-11-25",
+      "source": "https://github.com/Ebullioscopic/Atoll"
+    }
+  }
+}
