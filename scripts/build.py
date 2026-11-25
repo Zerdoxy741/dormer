@@ -11,6 +11,8 @@ It rewrites:
     language redirect, and structured data (app, video, FAQ built from the page's FAQ)
   - docs/fr/index.html, the French page
   - docs/compare/ and docs/fr/compare/ (old URLs redirected in docs/_redirects)
+  - docs/privacy/, docs/legal/, docs/changelog/ and their French pages (scripts/pages.py,
+    the changelog from data/releases.json, written by release.sh)
   - docs/sitemap.xml
   - the Dormer Pro price (<!--pro-price--> … <!--/pro-price-->) and the comparison table prices,
     from data/prices.json (kept up to date by scripts/sync_prices.py)
@@ -61,9 +63,12 @@ def set_pro_price(page: str) -> str:
     return re.sub(r"<!--pro-price-->.*?<!--/pro-price-->", lambda _: pro_price_block(), page, flags=re.S)
 
 
+import pages  # Confidentialité, Mentions légales, Versions
+
 PAGES = {  # language -> URL path
     "home": {"en": "/", "fr": "/fr/"},
     "alt": {"en": "/compare/", "fr": "/fr/compare/"},
+    **pages.PATHS,
 }
 
 TEXT = {
@@ -180,6 +185,8 @@ def french(page: str) -> str:
                  ('poster="film/poster.jpg"', 'poster="/film/poster.jpg"'), ('src="film/dormer.mp4"', 'src="/film/dormer.mp4"')]:
         s = s.replace(a, b)
     s = s.replace('href="/compare/"', 'href="/fr/compare/"')
+    for key, p in pages.PATHS.items():
+        s = s.replace(f'href="{p["en"]}"', f'href="{p["fr"]}"')
     return set_seo(s, "fr")
 
 
@@ -506,6 +513,7 @@ def main():
     write("fr/index.html", french(en))
     write("compare/index.html", alt_page("en"))
     write("fr/compare/index.html", alt_page("fr"))
+    pages.build(write)
     write("sitemap.xml", sitemap())
 
 

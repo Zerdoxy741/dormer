@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Confidentialité · Dormer</title>
-<meta name="description" content="Ce que Dormer envoie, ce qu'il garde sur ton Mac, et le diagnostic : ce qui part, ce qui est retiré, où il va et combien de temps il est gardé.">
+<meta name="description" content="Ce que Dormer envoie, ce qu&#x27;il garde sur ton Mac, ses autorisations et le diagnostic.">
 <meta name="theme-color" content="#1b2147">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon-96.png?v=2" type="image/png" sizes="96x96">
@@ -47,7 +47,15 @@ h2{font-size:clamp(28px,3.4vw,38px);line-height:1.12;margin-bottom:22px}
 footer{border-top:1px solid var(--line);padding:30px 0 44px;font-size:14.5px;color:var(--faint)}
 footer .wrap{display:flex;gap:20px;flex-wrap:wrap}
 footer a:hover{color:var(--ink)}
-.doc h2{margin-top:44px}.doc h2:first-child{margin-top:0}.doc p,.doc li{color:var(--mist);max-width:68ch}.doc p+p{margin-top:12px}.doc ul{margin:10px 0 0 22px}.doc li{margin-top:6px}.doc strong{color:var(--ink);font-weight:600}.doc a{text-decoration:underline;text-underline-offset:3px}.doc a:hover{color:var(--ink)}.updated{color:var(--faint);font-size:14px;margin-top:14px}
+.doc h2{margin-top:44px}.doc h2:first-child{margin-top:0}.doc h3{font-size:18px;font-weight:600;margin-top:22px}
+.doc p,.doc li{color:var(--mist);max-width:68ch}.doc p+p{margin-top:12px}.doc ul{margin:10px 0 0 22px}.doc li{margin-top:6px}
+.doc strong{color:var(--ink);font-weight:600}.doc a{text-decoration:underline;text-underline-offset:3px}.doc a:hover{color:var(--ink)}
+.doc code{font-size:14px;background:rgba(243,234,216,.08);border-radius:6px;padding:2px 6px;word-break:break-all}
+.doc pre{background:rgba(243,234,216,.06);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-top:10px;overflow-x:auto;font-size:14px;color:var(--ink)}
+.updated{color:var(--faint);font-size:14px;margin-top:14px}
+.rel{border-top:1px solid var(--line);padding-top:22px;margin-top:26px}.rel:first-of-type{border-top:0;margin-top:0;padding-top:0}
+.rel h3{margin-top:0;font-family:var(--serif);font-weight:400;font-size:24px}.rel .when{color:var(--faint);font-size:14px;margin-top:2px}
+.rel .sum{color:var(--faint);font-size:13.5px;margin-top:10px}
 @media (max-width:640px){header{padding-top:56px}.wrap{padding:0 18px}.brand span{display:none}nav .wrap{gap:12px}}
 </style>
 </head>
@@ -69,6 +77,22 @@ footer a:hover{color:var(--ink)}
 <p>Pour toute question sur tes données : <a href="mailto:info@dormernotch.com">info@dormernotch.com</a>.</p>
 <p>Dormer n'a pas de compte, pas de publicité et pas de mesure d'audience. Il ne collecte rien en arrière-plan. Presque tout reste sur ton Mac. Quand une fonction a besoin d'Internet, elle n'envoie que le strict nécessaire, et seulement si tu l'as activée.</p>
 
+<h2>Les autorisations demandées</h2>
+<p>macOS te demande chaque autorisation au moment où une fonction en a besoin. Tu peux en refuser : seules les fonctions concernées ne marcheront pas.</p>
+<ul>
+<li><strong>Accessibilité :</strong> pour afficher le volume et la luminosité dans la notch à la place des fenêtres de macOS, et suivre les appels et ChatGPT. Dormer ne lit pas ce que tu tapes.</li>
+<li><strong>Son du Mac :</strong> pour animer l'égaliseur au rythme de la musique. Le son est analysé en direct, rien n'est enregistré.</li>
+<li><strong>Musique et Spotify :</strong> pour afficher et contrôler le morceau en cours.</li>
+<li><strong>Calendrier et Rappels :</strong> pour tes prochains événements et pour reporter un rappel depuis la notch. Rien ne quitte ton Mac.</li>
+<li><strong>Micro (facultatif) :</strong> seulement pour Shazam, quelques secondes, quand tu le demandes.</li>
+<li><strong>Position (facultatif) :</strong> pour la météo, arrondie à environ 1 km.</li>
+<li><strong>Bluetooth et réseau local :</strong> pour l'animation de tes AirPods et pour trouver les Mac proches qui ont Dormer (Écouter ensemble).</li>
+<li><strong>Enregistrement de l'écran (facultatif) :</strong> seulement si tu actives « voir l'écran » quand tu poses une question à Claude ou ChatGPT. Cette option est désactivée par défaut.</li>
+</ul>
+
+<h2>Le presse-papiers</h2>
+<p>L'historique du presse-papiers reste en mémoire : il n'est jamais écrit sur le disque, jamais envoyé, et il disparaît quand tu quittes Dormer. Il ignore les mots de passe : les copies que les gestionnaires de mots de passe marquent comme confidentielles, et tout ce qui est copié depuis le Trousseau, l'app Mots de passe, 1Password, Bitwarden, KeePassXC, Dashlane, LastPass, Proton Pass et quelques autres. Tu peux le désactiver dans les réglages.</p>
+
 <h2>Le diagnostic</h2>
 <p>Quand tu cliques sur <strong>Réglages › Général › Signaler un problème…</strong>, puis sur <strong>Envoyer</strong>, Dormer envoie un diagnostic à son créateur. Rien ne part sans ce clic, et tu peux relire tout le contenu avant l'envoi.</p>
 <p><strong>Ce qui part :</strong></p>
@@ -79,7 +103,7 @@ footer a:hover{color:var(--ink)}
 <li>les réglages de Dormer : nombres, interrupteurs et petits mots-clés seulement ;</li>
 <li>les derniers journaux de Dormer et le résumé de son dernier plantage, s'il y en a un.</li>
 </ul>
-<p><strong>Ce qui est retiré avant l'envoi :</strong> les noms de fichiers, les chemins, ton nom d'utilisateur et ton nom complet, les adresses e-mail, les liens, les adresses Bluetooth et IP, les prénoms dans les noms d'appareils (« AirPods de… »), le contenu de tes images et du texte lu à l'écran, le contenu du presse-papiers, et les textes libres des réglages (ville, morceau, nom du compagnon…).</p>
+<p><strong>Ce qui est retiré avant l'envoi :</strong> les noms de fichiers, les chemins, ton nom d'utilisateur et ton nom complet, les adresses e-mail, les liens, les adresses Bluetooth et IP, les prénoms dans les noms d'appareils (« AirPods de… »), le contenu de tes images et du texte lu à l'écran, le contenu du presse-papiers, et les textes libres des réglages (ville, morceau, nom du compagnon…). <a href="https://github.com/Zerdoxy741/dormer/tree/main/source">Le code qui fait ce nettoyage est public.</a></p>
 <p><strong>La signature :</strong> chaque diagnostic porte une signature comme <code>D-7F3A-91C2</code>. Elle est tirée au hasard sur ton Mac et sert seulement à regrouper tes diagnostics. Elle n'a aucun lien avec ton Mac ni avec toi.</p>
 <p><strong>Où il va :</strong> le diagnostic passe par <code>diag.dormernotch.com</code>, un petit service hébergé chez Cloudflare qui ne garde rien et ne journalise pas le contenu. Il est ensuite rangé dans un dépôt privé sur GitHub (GitHub, Inc., États-Unis), que seul le créateur de Dormer peut lire. Ton adresse IP sert seulement à limiter le nombre d'envois par minute, contre le spam. Elle n'est pas enregistrée avec le diagnostic.</p>
 <p><strong>Combien de temps :</strong> chaque diagnostic est effacé automatiquement un an après son envoi, ou plus tôt si tu le demandes.</p>
@@ -87,22 +111,25 @@ footer a:hover{color:var(--ink)}
 
 <h2>Les fonctions qui utilisent Internet</h2>
 <ul>
-<li><strong>Mises à jour :</strong> Dormer demande à GitHub s'il existe une nouvelle version.</li>
+<li><strong>Mises à jour :</strong> Dormer demande à GitHub s'il existe une nouvelle version, et n'installe une mise à jour que si elle est signée avec le même certificat que l'app installée.</li>
 <li><strong>Licence Pro :</strong> ta clé de licence est vérifiée auprès de Polar, qui gère les achats.</li>
 <li><strong>Météo :</strong> la position approximative du Mac (à environ 1 km près) ou le nom de la ville est envoyé à Open-Meteo.</li>
 <li><strong>Paroles et pochettes :</strong> le titre et l'artiste du morceau sont envoyés à lrclib.net et à la recherche iTunes d'Apple.</li>
 <li><strong>Shazam :</strong> une empreinte du son, et non l'enregistrement, est envoyée à Shazam (Apple) pour reconnaître le morceau.</li>
-<li><strong>Poser une question à Claude ou ChatGPT :</strong> la question part par l'outil Claude Code ou ChatGPT installé sur ton Mac, avec ton propre compte. Dormer n'a pas de serveur entre les deux.</li>
+<li><strong>Poser une question à Claude ou ChatGPT :</strong> la question part par l'outil Claude Code ou ChatGPT installé sur ton Mac, avec ton propre compte. Dormer n'a pas de serveur entre les deux. Une capture de l'écran n'est jointe que si tu as activé « voir l'écran ».</li>
 <li><strong>Écouter ensemble :</strong> les Mac se parlent directement, chiffrés, sur le réseau local ou en Bluetooth. Aucun serveur n'est utilisé.</li>
 </ul>
 
 <h2>Tes droits</h2>
 <p>Tu peux demander à voir, corriger ou effacer tes diagnostics à tout moment. Écris à <a href="mailto:info@dormernotch.com">info@dormernotch.com</a> en donnant ta signature (affichée dans la fenêtre du diagnostic). Pour obtenir une nouvelle signature, efface les réglages de Dormer. Tu peux aussi adresser une réclamation à la CNIL.</p>
+<p>Le responsable de ces données est l'éditeur de Dormer : voir les <a href="/fr/mentions-legales/">mentions légales</a>.</p>
 </section>
 </main>
 <footer><div class="wrap">
   <span>© 2026 Dormer</span>
   <a href="/fr/">Retour à Dormer</a>
+  <a href="/fr/mentions-legales/">Mentions légales</a>
+  <a href="/fr/versions/">Versions</a>
   <a href="https://github.com/Zerdoxy741/dormer">GitHub</a>
 </div></footer>
 </body>

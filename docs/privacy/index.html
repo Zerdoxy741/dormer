@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy · Dormer</title>
-<meta name="description" content="What Dormer sends, what stays on your Mac, and diagnostics: what is sent, what is removed, where it goes and how long it is kept.">
+<meta name="description" content="What Dormer sends, what stays on your Mac, its permissions and diagnostics.">
 <meta name="theme-color" content="#1b2147">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon-96.png?v=2" type="image/png" sizes="96x96">
@@ -47,7 +47,15 @@ h2{font-size:clamp(28px,3.4vw,38px);line-height:1.12;margin-bottom:22px}
 footer{border-top:1px solid var(--line);padding:30px 0 44px;font-size:14.5px;color:var(--faint)}
 footer .wrap{display:flex;gap:20px;flex-wrap:wrap}
 footer a:hover{color:var(--ink)}
-.doc h2{margin-top:44px}.doc h2:first-child{margin-top:0}.doc p,.doc li{color:var(--mist);max-width:68ch}.doc p+p{margin-top:12px}.doc ul{margin:10px 0 0 22px}.doc li{margin-top:6px}.doc strong{color:var(--ink);font-weight:600}.doc a{text-decoration:underline;text-underline-offset:3px}.doc a:hover{color:var(--ink)}.updated{color:var(--faint);font-size:14px;margin-top:14px}
+.doc h2{margin-top:44px}.doc h2:first-child{margin-top:0}.doc h3{font-size:18px;font-weight:600;margin-top:22px}
+.doc p,.doc li{color:var(--mist);max-width:68ch}.doc p+p{margin-top:12px}.doc ul{margin:10px 0 0 22px}.doc li{margin-top:6px}
+.doc strong{color:var(--ink);font-weight:600}.doc a{text-decoration:underline;text-underline-offset:3px}.doc a:hover{color:var(--ink)}
+.doc code{font-size:14px;background:rgba(243,234,216,.08);border-radius:6px;padding:2px 6px;word-break:break-all}
+.doc pre{background:rgba(243,234,216,.06);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-top:10px;overflow-x:auto;font-size:14px;color:var(--ink)}
+.updated{color:var(--faint);font-size:14px;margin-top:14px}
+.rel{border-top:1px solid var(--line);padding-top:22px;margin-top:26px}.rel:first-of-type{border-top:0;margin-top:0;padding-top:0}
+.rel h3{margin-top:0;font-family:var(--serif);font-weight:400;font-size:24px}.rel .when{color:var(--faint);font-size:14px;margin-top:2px}
+.rel .sum{color:var(--faint);font-size:13.5px;margin-top:10px}
 @media (max-width:640px){header{padding-top:56px}.wrap{padding:0 18px}.brand span{display:none}nav .wrap{gap:12px}}
 </style>
 </head>
@@ -69,6 +77,22 @@ footer a:hover{color:var(--ink)}
 <p>Questions about your data: <a href="mailto:info@dormernotch.com">info@dormernotch.com</a>.</p>
 <p>Dormer has no account, no ads and no analytics. It collects nothing in the background. Almost everything stays on your Mac. When a feature needs the internet, it sends only what it needs, and only if you turned it on.</p>
 
+<h2>Permissions</h2>
+<p>macOS asks for each permission when a feature needs it. You can say no: only the features that need it won't work.</p>
+<ul>
+<li><strong>Accessibility:</strong> to show volume and brightness in the notch instead of macOS's own overlays, and to follow calls and ChatGPT. Dormer doesn't read what you type.</li>
+<li><strong>Mac's sound:</strong> to move the equalizer with the music. The sound is analyzed live; nothing is recorded.</li>
+<li><strong>Music and Spotify:</strong> to show and control the current song.</li>
+<li><strong>Calendar and Reminders:</strong> for your next events and to snooze a reminder from the notch. Nothing leaves your Mac.</li>
+<li><strong>Microphone (optional):</strong> only for Shazam, for a few seconds, when you ask.</li>
+<li><strong>Location (optional):</strong> for the weather, rounded to about 1 km.</li>
+<li><strong>Bluetooth and local network:</strong> for the AirPods animation and to find nearby Macs running Dormer (Listen together).</li>
+<li><strong>Screen recording (optional):</strong> only if you turn on "see the screen" when asking Claude or ChatGPT. It's off by default.</li>
+</ul>
+
+<h2>Clipboard</h2>
+<p>Clipboard history stays in memory: it's never written to disk, never sent, and it's gone when you quit Dormer. It skips passwords: copies that password managers mark as concealed, and anything copied from Keychain Access, the Passwords app, 1Password, Bitwarden, KeePassXC, Dashlane, LastPass, Proton Pass and a few others. You can turn it off in settings.</p>
+
 <h2>Diagnostics</h2>
 <p>When you click <strong>Settings › General › Report a problem…</strong> and then <strong>Send</strong>, Dormer sends a diagnostic to its creator. Nothing leaves without that click, and you can read everything before it's sent.</p>
 <p><strong>What's sent:</strong></p>
@@ -79,7 +103,7 @@ footer a:hover{color:var(--ink)}
 <li>Dormer's settings: numbers, switches and short keywords only;</li>
 <li>Dormer's recent logs and a summary of its last crash, if any.</li>
 </ul>
-<p><strong>Removed before sending:</strong> file names, paths, your user name and full name, email addresses, links, Bluetooth and IP addresses, first names in device names ("Anna's AirPods"), the content of your images and of on-screen text, clipboard content, and free text in settings (city, song, companion name…).</p>
+<p><strong>Removed before sending:</strong> file names, paths, your user name and full name, email addresses, links, Bluetooth and IP addresses, first names in device names ("Anna's AirPods"), the content of your images and of on-screen text, clipboard content, and free text in settings (city, song, companion name…). <a href="https://github.com/Zerdoxy741/dormer/tree/main/source">The code that does this cleaning is public.</a></p>
 <p><strong>The signature:</strong> each diagnostic carries a signature like <code>D-7F3A-91C2</code>. It's drawn at random on your Mac and only groups your diagnostics together. It has no link to your Mac or to you.</p>
 <p><strong>Where it goes:</strong> the diagnostic passes through <code>diag.dormernotch.com</code>, a small service hosted by Cloudflare that keeps nothing and doesn't log the content. It's then stored in a private GitHub repository (GitHub, Inc., United States) that only Dormer's creator can read. Your IP address is only used to limit sends per minute against spam. It isn't stored with the diagnostic.</p>
 <p><strong>How long:</strong> each diagnostic is deleted automatically one year after it was sent, or sooner if you ask.</p>
@@ -87,22 +111,25 @@ footer a:hover{color:var(--ink)}
 
 <h2>Features that use the internet</h2>
 <ul>
-<li><strong>Updates:</strong> Dormer asks GitHub whether a new version exists.</li>
+<li><strong>Updates:</strong> Dormer asks GitHub whether a new version exists, and only installs an update signed with the same certificate as the installed app.</li>
 <li><strong>Pro license:</strong> your license key is checked with Polar, which handles purchases.</li>
 <li><strong>Weather:</strong> the Mac's approximate location (to about 1 km) or the city name is sent to Open-Meteo.</li>
 <li><strong>Lyrics and artwork:</strong> the song title and artist are sent to lrclib.net and Apple's iTunes search.</li>
 <li><strong>Shazam:</strong> a sound fingerprint, not the recording, is sent to Shazam (Apple) to recognize the song.</li>
-<li><strong>Asking Claude or ChatGPT:</strong> the question goes through the Claude Code or ChatGPT tool installed on your Mac, with your own account. Dormer has no server in between.</li>
+<li><strong>Asking Claude or ChatGPT:</strong> the question goes through the Claude Code or ChatGPT tool installed on your Mac, with your own account. Dormer has no server in between. A screenshot is attached only if you turned on "see the screen".</li>
 <li><strong>Listen together:</strong> Macs talk directly, encrypted, over the local network or Bluetooth. No server is used.</li>
 </ul>
 
 <h2>Your rights</h2>
 <p>You can ask to see, correct or delete your diagnostics at any time. Email <a href="mailto:info@dormernotch.com">info@dormernotch.com</a> with your signature (shown in the diagnostic window). To get a new signature, reset Dormer's settings. You can also complain to your data protection authority.</p>
+<p>The controller of this data is Dormer's publisher: see the <a href="/legal/">legal notice</a>.</p>
 </section>
 </main>
 <footer><div class="wrap">
   <span>© 2026 Dormer</span>
   <a href="/">Back to Dormer</a>
+  <a href="/legal/">Legal notice</a>
+  <a href="/changelog/">Versions</a>
   <a href="https://github.com/Zerdoxy741/dormer">GitHub</a>
 </div></footer>
 </body>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Versions et empreintes · Dormer</title>
+<meta name="description" content="Ce qui change dans chaque version de Dormer, avec l&#x27;empreinte SHA-256 pour vérifier ton téléchargement.">
+<meta name="theme-color" content="#1b2147">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon-96.png?v=2" type="image/png" sizes="96x96">
+<link rel="icon" href="/logo.svg?v=2" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="canonical" href="https://dormernotch.com/fr/versions/">
+<link rel="alternate" hreflang="en" href="https://dormernotch.com/changelog/">
+<link rel="alternate" hreflang="fr" href="https://dormernotch.com/fr/versions/">
+<link rel="alternate" hreflang="x-default" href="https://dormernotch.com/changelog/">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=young-serif:400|figtree:400,500,600,700&display=swap">
+<style>
+:root{--sky:#1b2147;--sky2:#141936;--deep:#0f1330;--lamp:#ffcf70;--lamp-ink:#241c33;--ink:#f3ead8;--mist:#b3b8da;--faint:#8a91bb;--line:rgba(243,234,216,.13);--line2:rgba(243,234,216,.24);--serif:"Young Serif",Georgia,serif;--sans:"Figtree",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip;background:var(--deep);scrollbar-color:#6b4a5a var(--deep)}
+body{background:linear-gradient(180deg,var(--sky) 0,var(--sky) 900px,var(--sky2) 2200px,var(--deep) 100%);color:var(--ink);font:17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+::selection{background:var(--lamp);color:var(--lamp-ink)}
+:focus-visible{outline:2px solid var(--lamp);outline-offset:3px;border-radius:6px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.narrow{max-width:820px}
+nav{position:sticky;top:0;z-index:5;background:rgba(27,33,71,.94);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:21px}
+.brand img{width:30px;height:30px;border-radius:8px}
+.sp{margin-left:auto}
+.lang{display:inline-block;border:1px solid var(--line2);border-radius:8px;padding:4px 9px;font-size:13px;font-weight:600;color:var(--mist)}
+.lang:hover{color:var(--ink);border-color:var(--ink)}
+.navlink{font-size:15px;font-weight:600;color:var(--mist)}
+.navlink:hover,.navlink[aria-current]{color:var(--lamp)}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:12px;padding:14px 22px;font-weight:600;font-size:16px;background:var(--lamp);color:var(--lamp-ink);transition:background .2s,box-shadow .2s}
+.btn:hover{background:#ffdb8f;box-shadow:0 10px 28px -8px rgba(255,207,112,.55)}
+.btn.sm{padding:9px 15px;font-size:14.5px;border-radius:10px}
+header{padding:84px 0 20px}
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.012em;text-wrap:balance}
+h1{font-size:clamp(38px,5.8vw,68px);line-height:1.02;max-width:16ch}
+.lead{color:var(--mist);font-size:19px;margin-top:20px;max-width:62ch}
+section{padding:56px 0}
+h2{font-size:clamp(28px,3.4vw,38px);line-height:1.12;margin-bottom:22px}
+footer{border-top:1px solid var(--line);padding:30px 0 44px;font-size:14.5px;color:var(--faint)}
+footer .wrap{display:flex;gap:20px;flex-wrap:wrap}
+footer a:hover{color:var(--ink)}
+.doc h2{margin-top:44px}.doc h2:first-child{margin-top:0}.doc h3{font-size:18px;font-weight:600;margin-top:22px}
+.doc p,.doc li{color:var(--mist);max-width:68ch}.doc p+p{margin-top:12px}.doc ul{margin:10px 0 0 22px}.doc li{margin-top:6px}
+.doc strong{color:var(--ink);font-weight:600}.doc a{text-decoration:underline;text-underline-offset:3px}.doc a:hover{color:var(--ink)}
+.doc code{font-size:14px;background:rgba(243,234,216,.08);border-radius:6px;padding:2px 6px;word-break:break-all}
+.doc pre{background:rgba(243,234,216,.06);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-top:10px;overflow-x:auto;font-size:14px;color:var(--ink)}
+.updated{color:var(--faint);font-size:14px;margin-top:14px}
+.rel{border-top:1px solid var(--line);padding-top:22px;margin-top:26px}.rel:first-of-type{border-top:0;margin-top:0;padding-top:0}
+.rel h3{margin-top:0;font-family:var(--serif);font-weight:400;font-size:24px}.rel .when{color:var(--faint);font-size:14px;margin-top:2px}
+.rel .sum{color:var(--faint);font-size:13.5px;margin-top:10px}
+@media (max-width:640px){header{padding-top:56px}.wrap{padding:0 18px}.brand span{display:none}nav .wrap{gap:12px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/fr/"><img src="/icon.png?v=2" alt=""><span>Dormer</span></a>
+  <span class="sp"></span>
+  <a class="lang" href="/changelog/" hreflang="en" onclick="try{localStorage.setItem('lang','en')}catch(e){}">EN</a>
+  <a class="navlink" href="/fr/">Accueil</a>
+</div></nav>
+<header><div class="wrap narrow">
+  <h1>Versions</h1>
+  <p class="lead">Ce qui change à chaque version, et comment vérifier ton téléchargement.</p>
+  <p class="updated">Mis à jour le 25 novembre 2026</p>
+</div></header>
+<main class="wrap narrow doc">
+<section>
+<h2>Vérifier ton téléchargement</h2>
+<p>Dormer n'est pas notarisé par Apple : c'est pour ça que macOS affiche un avertissement à la première ouverture. Voici comment vérifier que ton fichier vient bien de son créateur et n'a pas été modifié.</p>
+<h3>1. L'empreinte du fichier</h3>
+<p>Dans le Terminal, dans le dossier où se trouve le fichier :</p>
+<pre>shasum -a 256 Dormer.zip</pre>
+<p>Le résultat doit être identique à l'empreinte SHA-256 de ta version ci-dessous. Elle est aussi écrite dans les notes de la version sur GitHub.</p>
+<h3>2. Le certificat de signature</h3>
+<p>Toutes les versions sont signées avec le même certificat, <strong>Notchy Local Signing</strong>. Son empreinte SHA-256 :</p>
+<p><code>01:19:CA:20:48:E5:6E:A9:2A:A3:A7:BF:A0:16:26:B9:9C:23:57:00:12:7B:69:78:B7:00:5A:7C:EC:6F:76:8C</code></p>
+<p>Pour la comparer :</p>
+<pre>codesign -d --extract-certificates=/tmp/dormer /Applications/Dormer.app
+openssl x509 -inform der -in /tmp/dormer0 -noout -fingerprint -sha256</pre>
+<p>Dormer fait lui-même cette vérification à chaque mise à jour : il refuse toute nouvelle version qui n'est pas signée avec ce certificat.</p>
+<h3>Avec Homebrew</h3>
+<pre>brew install --cask zerdoxy741/dormer/dormer</pre>
+<p>Homebrew vérifie l'empreinte du fichier pour toi. L'avertissement de macOS apparaît quand même à la première ouverture.</p>
+<h2>Toutes les versions</h2>
+<div class="rel"><h3>Dormer 0.6.1</h3><p class="when">25 novembre 2026 · <a href="https://github.com/Zerdoxy741/dormer/releases/tag/v35">GitHub</a></p><ul><li>Nouvelle icône : une lucarne allumée sur un toit de tuiles, avec le chat en pixels assis dans la notch.</li><li>Même contenu que la version précédente, avec un numéro qui suit enfin la 0.6.</li></ul><p class="sum">SHA-256 : <code>938cf99d8b895428e0213bcb1bb1ad4b7109599c96c856d6aa5c16f1ed5e9fac</code></p></div>
+<div class="rel"><h3>Dormer 0.5.9</h3><p class="when">25 novembre 2026 · <a href="https://github.com/Zerdoxy741/dormer/releases/tag/v34">GitHub</a></p><ul><li>Cache-cache revu : des rideaux de théâtre en pixel art se ferment sur l&#x27;écran, le compagnon se cache n&#x27;importe où (sans gravité), 3 vibrations sur le trackpad au top départ, puis chaud / froid en vibrations quand ta souris approche</li><li>Nouvelle pastille Performances (à gauche d&#x27;Anki) : compteur dont l&#x27;aiguille suit le CPU ; au survol, fenêtre avec CPU, GPU, mémoire, disque, réseau, apps les plus gourmandes et température</li><li>Batterie : au survol, la batterie de tes appareils Bluetooth (AirPods, souris, clavier…)</li><li>Effet verre liquide sur les pastilles et sur tous les boutons du lecteur (petit et grand), qui suit la souris</li><li>Survol des pastilles plus fiable</li><li>Animation heure ↔ lecteur dans la grande bannière plus propre</li><li>La grande pochette n&#x27;apparaît plus hors de l&#x27;onglet Accueil ni après une notification</li><li>Le compagnon s&#x27;intègre mieux quand on ouvre la notch pendant qu&#x27;il est dans sa bulle</li></ul></div>
+<div class="rel"><h3>Dormer 0.6</h3><p class="when">25 novembre 2026 · <a href="https://github.com/Zerdoxy741/dormer/releases/tag/v33">GitHub</a></p><ul><li>Batterie de tes appareils : laisse le curseur sur la batterie, une petite fenêtre s&#x27;ouvre en douceur avec le Mac et tes accessoires Bluetooth.</li><li>Performances du Mac : un compteur à aiguille (à gauche d&#x27;Anki) suit le processeur. Au survol, une fenêtre détaille CPU, GPU, mémoire, disque, réseau et les apps les plus gourmandes. À activer ou couper dans Réglages › Personnalisation.</li><li>Effet verre liquide : les pastilles de la barre (batterie, performances, Anki) se remplissent de verre au survol avant d&#x27;ouvrir leur fenêtre, et le survol est plus fiable.</li><li>Effet loupe sur tous les boutons du lecteur, dans la grande bannière comme dans l&#x27;aperçu musique : une goutte de verre grossit l&#x27;icône et suit un peu la souris.</li><li>Passage plus fluide entre l&#x27;heure et le lecteur quand tu fais défiler la grande bannière.</li><li>Moins gourmande en énergie : l&#x27;horloge ne tourne que quand elle est affichée, les reflets animés sont limités à 30 images/s, la détection du plein écran est plus économe et les réveils de l&#x27;app sont regroupés.</li><li>Correction : la grande pochette n&#x27;apparaît plus quand tu n&#x27;es pas dans l&#x27;onglet Accueil.</li></ul></div>
+<div class="rel"><h3>Dormer 0.5.8</h3><p class="when">25 novembre 2026 · <a href="https://github.com/Zerdoxy741/dormer/releases/tag/v32">GitHub</a></p><ul><li>La pochette voyage : elle glisse de l&#x27;aile à l&#x27;aperçu musique, et de la notch jusqu&#x27;au grand lecteur quand tu l&#x27;ouvres (et revient à la fermeture).</li><li>Animations plus douces : les panneaux et onglets apparaissent en fondu au lieu de glisser depuis la droite, et le contenu de la notch ouverte arrive par le haut.</li><li>La pastille d&#x27;activité en direct (Claude, minuteur…) reste devant la pochette.</li><li>Le compagnon rentre proprement dans la notch quand tu l&#x27;ouvres ou la survoles pendant qu&#x27;il est dans sa bulle.</li><li>Corrections : plus de grande pochette qui apparaît à la fermeture ou après une notification, plus de saut de taille de la pochette en pause.</li></ul></div>
+<div class="rel"><h3>Dormer 0.5.7</h3><p class="when">25 novembre 2026 · <a href="https://github.com/Zerdoxy741/dormer/releases/tag/v31">GitHub</a></p><ul><li>Dormer consomme beaucoup moins de batterie et de processeur : le compagnon se dessine moins souvent quand il est calme, l&#x27;encoche fermée s&#x27;allège et se met en pause quand l&#x27;écran dort, le mélangeur réagit directement aux changements de sortie et de volume, et la fenêtre Réglages ne se redessine plus pour rien. / Dormer now uses much less battery and CPU: the companion redraws less often when calm, the closed notch is lighter and pauses while the display sleeps, the mixer reacts instantly to output and volume changes, and the Settings window no longer redraws for nothing.</li></ul></div>
+</section>
+</main>
+<footer><div class="wrap">
+  <span>© 2026 Dormer</span>
+  <a href="/fr/">Retour à Dormer</a>
+  <a href="/fr/confidentialite/">Confidentialité</a>
+  <a href="/fr/mentions-legales/">Mentions légales</a>
+  <a href="https://github.com/Zerdoxy741/dormer">GitHub</a>
+</div></footer>
+</body>
+</html>

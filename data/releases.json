@@ -1,0 +1,47 @@
+[
+ {
+  "version": "0.6.1",
+  "build": "v35",
+  "date": "2026-11-25",
+  "notes": "Nouveautés de Dormer 0.6.1 :\n• Nouvelle icône : une lucarne allumée sur un toit de tuiles, avec le chat en pixels assis dans la notch.\n• Même contenu que la version précédente, avec un numéro qui suit enfin la 0.6.",
+  "sha256": "938cf99d8b895428e0213bcb1bb1ad4b7109599c96c856d6aa5c16f1ed5e9fac",
+  "virustotal": null,
+  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v35"
+ },
+ {
+  "version": "0.5.9",
+  "build": "v34",
+  "date": "2026-11-25",
+  "notes": "• Cache-cache revu : des rideaux de théâtre en pixel art se ferment sur l'écran, le compagnon se cache n'importe où (sans gravité), 3 vibrations sur le trackpad au top départ, puis chaud / froid en vibrations quand ta souris approche\n• Nouvelle pastille Performances (à gauche d'Anki) : compteur dont l'aiguille suit le CPU ; au survol, fenêtre avec CPU, GPU, mémoire, disque, réseau, apps les plus gourmandes et température\n• Batterie : au survol, la batterie de tes appareils Bluetooth (AirPods, souris, clavier…)\n• Effet verre liquide sur les pastilles et sur tous les boutons du lecteur (petit et grand), qui suit la souris\n• Survol des pastilles plus fiable\n• Animation heure ↔ lecteur dans la grande bannière plus propre\n• La grande pochette n'apparaît plus hors de l'onglet Accueil ni après une notification\n• Le compagnon s'intègre mieux quand on ouvre la notch pendant qu'il est dans sa bulle",
+  "sha256": null,
+  "virustotal": null,
+  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v34"
+ },
+ {
+  "version": "0.6",
+  "build": "v33",
+  "date": "2026-11-25",
+  "notes": "Nouveautés de Dormer 0.6 :\n• Batterie de tes appareils : laisse le curseur sur la batterie, une petite fenêtre s'ouvre en douceur avec le Mac et tes accessoires Bluetooth.\n• Performances du Mac : un compteur à aiguille (à gauche d'Anki) suit le processeur. Au survol, une fenêtre détaille CPU, GPU, mémoire, disque, réseau et les apps les plus gourmandes. À activer ou couper dans Réglages › Personnalisation.\n• Effet verre liquide : les pastilles de la barre (batterie, performances, Anki) se remplissent de verre au survol avant d'ouvrir leur fenêtre, et le survol est plus fiable.\n• Effet loupe sur tous les boutons du lecteur, dans la grande bannière comme dans l'aperçu musique : une goutte de verre grossit l'icône et suit un peu la souris.\n• Passage plus fluide entre l'heure et le lecteur quand tu fais défiler la grande bannière.\n• Moins gourmande en énergie : l'horloge ne tourne que quand elle est affichée, les reflets animés sont limités à 30 images/s, la détection du plein écran est plus économe et les réveils de l'app sont regroupés.\n• Correction : la grande pochette n'apparaît plus quand tu n'es pas dans l'onglet Accueil.",
+  "sha256": null,
+  "virustotal": null,
+  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v33"
+ },
+ {
+  "version": "0.5.8",
+  "build": "v32",
+  "date": "2026-11-25",
+  "notes": "Nouveautés de Dormer 0.5.8 :\n• La pochette voyage : elle glisse de l'aile à l'aperçu musique, et de la notch jusqu'au grand lecteur quand tu l'ouvres (et revient à la fermeture).\n• Animations plus douces : les panneaux et onglets apparaissent en fondu au lieu de glisser depuis la droite, et le contenu de la notch ouverte arrive par le haut.\n• La pastille d'activité en direct (Claude, minuteur…) reste devant la pochette.\n• Le compagnon rentre proprement dans la notch quand tu l'ouvres ou la survoles pendant qu'il est dans sa bulle.\n• Corrections : plus de grande pochette qui apparaît à la fermeture ou après une notification, plus de saut de taille de la pochette en pause.",
+  "sha256": null,
+  "virustotal": null,
+  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v32"
+ },
+ {
+  "version": "0.5.7",
+  "build": "v31",
+  "date": "2026-11-25",
+  "notes": "Dormer consomme beaucoup moins de batterie et de processeur : le compagnon se dessine moins souvent quand il est calme, l'encoche fermée s'allège et se met en pause quand l'écran dort, le mélangeur réagit directement aux changements de sortie et de volume, et la fenêtre Réglages ne se redessine plus pour rien. / Dormer now uses much less battery and CPU: the companion redraws less often when calm, the closed notch is lighter and pauses while the display sleeps, the mixer reacts instantly to output and volume changes, and the Settings window no longer redraws for nothing.",
+  "sha256": null,
+  "virustotal": null,
+  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v31"
+ }
+]
