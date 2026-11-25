@@ -176,7 +176,7 @@ def french(page: str) -> str:
     s = s.replace('<a class="lang" id="lang" href="/fr/" hreflang="fr" aria-label="Version française">FR</a>',
                   '<a class="lang" id="lang" href="/" hreflang="en" aria-label="English version">EN</a>', 1)
     # the French page sits one folder down: make asset paths absolute
-    for a, b in [('href="favicon.png"', 'href="/favicon.png"'), ('src="icon.png"', 'src="/icon.png"'),
+    for a, b in [('href="favicon.png?v=2"', 'href="/favicon.png?v=2"'), ('src="icon.png?v=2"', 'src="/icon.png?v=2"'),
                  ('poster="film/poster.jpg"', 'poster="/film/poster.jpg"'), ('src="film/dormer.mp4"', 'src="/film/dormer.mp4"')]:
         s = s.replace(a, b)
     s = s.replace('href="/compare/"', 'href="/fr/compare/"')
@@ -413,12 +413,12 @@ def alt_page(lang: str) -> str:
 <title>{e(t['title'])}</title>
 <meta name="description" content="{html.escape(t['desc'], quote=True)}">
 <meta name="theme-color" content="#1b2147">
-<link rel="icon" href="/favicon.png">
+<link rel="icon" href="/favicon.png?v=2">
 <link rel="canonical" href="{url}">
 {alternates('alt')}
 <meta property="og:title" content="{html.escape(t['title'], quote=True)}">
 <meta property="og:description" content="{html.escape(t['desc'], quote=True)}">
-<meta property="og:image" content="{SITE}/banner.png">
+<meta property="og:image" content="{SITE}/banner.png?v=2">
 <meta property="og:url" content="{url}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dormer">
@@ -435,7 +435,7 @@ def alt_page(lang: str) -> str:
 </head>
 <body>
 <nav><div class="wrap">
-  <a class="brand" href="{home}"><img src="/icon.png" alt=""><span>Dormer</span></a>
+  <a class="brand" href="{home}"><img src="/icon.png?v=2" alt=""><span>Dormer</span></a>
   <span class="sp"></span>
   <a class="lang" href="{PAGES['alt'][other]}" hreflang="{other}" aria-label="{t['lang_aria']}" onclick="try{{localStorage.setItem('lang','{other}')}}catch(e){{}}">{t['lang_label']}</a>
   <a class="navlink" href="{home}">{e(t['nav_home'])}</a>
