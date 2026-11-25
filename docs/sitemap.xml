@@ -40,6 +40,16 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://dormernotch.com/fr/mentions-legales/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dormernotch.com/legal/"/>
   </url>
+  <url><loc>https://dormernotch.com/terms/</loc><lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dormernotch.com/terms/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dormernotch.com/fr/conditions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dormernotch.com/terms/"/>
+  </url>
+  <url><loc>https://dormernotch.com/fr/conditions/</loc><lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dormernotch.com/terms/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dormernotch.com/fr/conditions/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dormernotch.com/terms/"/>
+  </url>
   <url><loc>https://dormernotch.com/changelog/</loc><lastmod>2026-11-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://dormernotch.com/changelog/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://dormernotch.com/fr/versions/"/>

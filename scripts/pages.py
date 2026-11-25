@@ -1,4 +1,4 @@
-"""Pages Confidentialité, Mentions légales et Versions (FR et EN), générées par build.py.
+"""Pages Confidentialité, Mentions légales, Conditions d'utilisation et Versions (FR et EN), générées par build.py.
 
 Le texte se modifie ici ; les fichiers de docs/ sont réécrits à chaque `python3 scripts/build.py`.
 Le journal des versions vient de data/releases.json (mis à jour par release.sh dans le dépôt de l'app).
@@ -9,22 +9,26 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent / "docs"
 SITE = "https://dormernotch.com"
-UPDATED = {"en": "Updated November 25, 2026", "fr": "Mis à jour le 25 novembre 2026"}
+UPDATED = {"en": "Updated November 26, 2026", "fr": "Mis à jour le 26 novembre 2026"}
 CONTACT = '<a href="mailto:info@dormernotch.com">info@dormernotch.com</a>'
 CERT_SHA256 = "01:19:CA:20:48:E5:6E:A9:2A:A3:A7:BF:A0:16:26:B9:9C:23:57:00:12:7B:69:78:B7:00:5A:7C:EC:6F:76:8C"
 CERT_NAME = "Notchy Local Signing"
 BREW = "brew install --cask zerdoxy741/dormer/dormer"
 SOURCE = "https://github.com/Zerdoxy741/dormer/tree/main/source"
+_PRO = json.loads((ROOT.parent / "data" / "prices.json").read_text())["apps"]["Dormer"]
+PRICE = {"en": f"€{_PRO['lifetime']:.2f}".replace(".00", ""), "fr": f"{_PRO['lifetime']:.2f}".replace(".00", "").replace(".", ",") + "\u00a0€"}
 
 PATHS = {
     "privacy": {"en": "/privacy/", "fr": "/fr/confidentialite/"},
     "legal": {"en": "/legal/", "fr": "/fr/mentions-legales/"},
+    "terms": {"en": "/terms/", "fr": "/fr/conditions/"},
     "changelog": {"en": "/changelog/", "fr": "/fr/versions/"},
 }
 
 LABELS = {
     "privacy": {"en": "Privacy", "fr": "Confidentialité"},
     "legal": {"en": "Legal notice", "fr": "Mentions légales"},
+    "terms": {"en": "Terms of use", "fr": "Conditions d'utilisation"},
     "changelog": {"en": "Versions", "fr": "Versions"},
 }
 
@@ -116,7 +120,7 @@ PRIVACY = {
 <li><strong>Micro (facultatif) :</strong> seulement pour Shazam, quelques secondes, quand tu le demandes.</li>
 <li><strong>Position (facultatif) :</strong> pour la météo, arrondie à environ 1 km.</li>
 <li><strong>Bluetooth et réseau local :</strong> pour l'animation de tes AirPods et pour trouver les Mac proches qui ont Dormer (Écouter ensemble).</li>
-<li><strong>Enregistrement de l'écran (facultatif) :</strong> seulement si tu actives « voir l'écran » quand tu poses une question à Claude ou ChatGPT. Cette option est désactivée par défaut.</li>
+<li><strong>Enregistrement de l'écran (facultatif) :</strong> seulement si tu actives « voir l'écran » quand tu poses une question à Claude ou ChatGPT, ou « Il regarde ton écran » pour le compagnon. Dans ce second cas, l'image est décrite par l'IA d'Apple directement sur ton Mac, puis oubliée : rien n'est envoyé. Les deux options sont désactivées par défaut.</li>
 </ul>
 
 <h2>Le presse-papiers</h2>
@@ -170,7 +174,7 @@ PRIVACY = {
 <li><strong>Microphone (optional):</strong> only for Shazam, for a few seconds, when you ask.</li>
 <li><strong>Location (optional):</strong> for the weather, rounded to about 1 km.</li>
 <li><strong>Bluetooth and local network:</strong> for the AirPods animation and to find nearby Macs running Dormer (Listen together).</li>
-<li><strong>Screen recording (optional):</strong> only if you turn on "see the screen" when asking Claude or ChatGPT. It's off by default.</li>
+<li><strong>Screen recording (optional):</strong> only if you turn on "see the screen" when asking Claude or ChatGPT, or "It looks at your screen" for the companion. In that second case, Apple's on-device AI describes the image on your Mac, then forgets it: nothing is sent. Both options are off by default.</li>
 </ul>
 
 <h2>Clipboard</h2>
@@ -223,7 +227,7 @@ LEGAL = {
 <p><strong>Téléchargements et code public :</strong> GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
 
 <h2>Ventes de Dormer Pro</h2>
-<p>Les achats de Dormer Pro sont encaissés par Polar (polar.sh), qui agit comme revendeur : c'est Polar qui facture, perçoit la TVA et gère les remboursements, selon ses propres conditions affichées au moment de l'achat.</p>
+<p>Les achats de Dormer Pro sont encaissés par Polar (polar.sh), qui agit comme revendeur : c'est Polar qui facture, perçoit la TVA et gère les remboursements, selon ses propres conditions affichées au moment de l'achat. Voir aussi les <a href="{PATHS['terms']['fr']}">conditions d'utilisation</a>.</p>
 
 <h2>Données personnelles</h2>
 <p>Voir la page <a href="{PATHS['privacy']['fr']}">Confidentialité</a>.</p>
@@ -240,13 +244,97 @@ LEGAL = {
 <p><strong>Downloads and public code:</strong> GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States.</p>
 
 <h2>Dormer Pro sales</h2>
-<p>Dormer Pro purchases are processed by Polar (polar.sh), acting as reseller: Polar invoices, collects VAT and handles refunds, under its own terms shown at checkout.</p>
+<p>Dormer Pro purchases are processed by Polar (polar.sh), acting as reseller: Polar invoices, collects VAT and handles refunds, under its own terms shown at checkout. See also the <a href="{PATHS['terms']['en']}">terms of use</a>.</p>
 
 <h2>Personal data</h2>
 <p>See the <a href="{PATHS['privacy']['en']}">Privacy</a> page.</p>
 
 <h2>Intellectual property</h2>
 <p>The Dormer name, its icon, the app and this site's content belong to Yanis Ziani unless stated otherwise. The code published in the <a href="{SOURCE}">source folder</a> is MIT-licensed.</p>""",
+}
+
+# ---------------------------------------------------------------- Conditions d'utilisation
+
+TERMS = {
+"fr": f"""<h2>L'essentiel</h2>
+<p>En installant ou en utilisant Dormer, tu acceptes ces conditions. Elles sont courtes : Dormer est gratuit, Dormer Pro s'achète une seule fois, et tu peux arrêter de l'utiliser quand tu veux. Une question : {CONTACT}.</p>
+
+<h2>Qui fournit Dormer</h2>
+<p>Dormer est créé et publié par Yanis Ziani, particulier en France (voir les <a href="{PATHS['legal']['fr']}">mentions légales</a>).</p>
+
+<h2>Dormer gratuit et Dormer Pro</h2>
+<ul>
+<li><strong>Gratuit :</strong> la notch, la musique, le calendrier, la météo et les autres fonctions de base restent gratuites, sans limite de durée.</li>
+<li><strong>Essai :</strong> à la première installation, toutes les fonctions Pro sont ouvertes pendant 14 jours, sans carte bancaire. À la fin de l'essai, les fonctions Pro se mettent en pause ; tes réglages sont gardés.</li>
+<li><strong>Dormer Pro :</strong> {PRICE['fr']}, payé une seule fois, sans abonnement. Le prix affiché au moment de l'achat fait foi.</li>
+<li><strong>Mises à jour :</strong> les versions publiées après ton achat restent incluses, sans nouveau paiement.</li>
+</ul>
+
+<h2>L'achat</h2>
+<p>Les achats sont encaissés par <strong>Polar</strong> (polar.sh), qui agit comme revendeur officiel : Polar établit la facture, perçoit la TVA et traite les remboursements, selon ses propres conditions affichées au moment du paiement. Si tu as un problème avec un achat, écris aussi à {CONTACT} : je t'aiderai à le régler.</p>
+
+<h2>Ta clé de licence</h2>
+<ul>
+<li>Après l'achat, tu reçois une clé de licence par e-mail. Elle est personnelle : tu peux l'utiliser sur tes propres Mac, dans la limite indiquée au moment de l'achat.</li>
+<li>Tu ne peux pas la revendre, la partager publiquement ni la distribuer.</li>
+<li>Pour changer de Mac, clique sur « Retirer de ce Mac » dans les réglages de Dormer, puis active la clé sur le nouveau.</li>
+<li>Une clé obtenue par fraude, ou remboursée, peut être désactivée.</li>
+</ul>
+
+<h2>Ce que tu peux faire avec Dormer</h2>
+<p>Tu peux utiliser Dormer sur tes Mac, pour un usage personnel ou professionnel. Tu ne peux pas contourner le système de licence, ni revendre ou redistribuer l'app modifiée en la présentant comme Dormer. Le code publié dans le <a href="{SOURCE}">dossier source</a> reste sous licence MIT, qui a ses propres règles.</p>
+
+<h2>Les services d'autres sociétés</h2>
+<p>Certaines fonctions s'appuient sur des services tiers que tu choisis d'utiliser : Spotify et Musique d'Apple, Shazam, la météo, ChatGPT et Claude (avec ton propre compte), Polar pour les achats. Ces services ont leurs propres conditions, et Dormer n'est affilié à aucun d'eux. Les fonctions d'IA du compagnon utilisent l'IA d'Apple directement sur ton Mac : rien n'est envoyé. Le détail des données est sur la page <a href="{PATHS['privacy']['fr']}">Confidentialité</a>.</p>
+
+<h2>Garantie et responsabilité</h2>
+<p>Dormer est fourni tel quel, par une seule personne. Je fais de mon mieux pour qu'il marche bien et sans danger, mais je ne peux pas garantir qu'il sera toujours sans erreur, ni qu'il marchera avec toutes les futures versions de macOS. Dans la limite permise par la loi, ma responsabilité est limitée au montant que tu as payé pour Dormer Pro. Rien dans ces conditions ne retire les droits que la loi te donne en tant que consommateur.</p>
+
+<h2>Changements</h2>
+<p>Ces conditions peuvent évoluer, par exemple si une fonction change. La date en haut de la page indique la dernière version. Un changement ne retire jamais ce que tu as déjà acheté.</p>
+
+<h2>Droit applicable</h2>
+<p>Ces conditions sont soumises au droit français. En cas de désaccord, écris d'abord à {CONTACT} pour trouver une solution à l'amiable. Si tu habites dans l'Union européenne, tu gardes les protections de la loi de ton pays.</p>""",
+
+"en": f"""<h2>The short version</h2>
+<p>By installing or using Dormer, you agree to these terms. They're short: Dormer is free, Dormer Pro is a one-time purchase, and you can stop using it whenever you like. Questions: {CONTACT}.</p>
+
+<h2>Who provides Dormer</h2>
+<p>Dormer is made and published by Yanis Ziani, an individual in France (see the <a href="{PATHS['legal']['en']}">legal notice</a>).</p>
+
+<h2>Free Dormer and Dormer Pro</h2>
+<ul>
+<li><strong>Free:</strong> the notch, music, calendar, weather and the other core features stay free, with no time limit.</li>
+<li><strong>Trial:</strong> on first install, every Pro feature is open for 14 days, no card needed. When the trial ends, Pro features pause; your settings are kept.</li>
+<li><strong>Dormer Pro:</strong> {PRICE['en']}, paid once, no subscription. The price shown at checkout is the one that applies.</li>
+<li><strong>Updates:</strong> versions released after your purchase stay included, at no extra cost.</li>
+</ul>
+
+<h2>Buying</h2>
+<p>Purchases are processed by <strong>Polar</strong> (polar.sh), acting as Merchant of Record: Polar issues the invoice, collects VAT and handles refunds, under its own terms shown at checkout. If you have a problem with a purchase, also write to {CONTACT} and I'll help sort it out.</p>
+
+<h2>Your license key</h2>
+<ul>
+<li>After buying, you get a license key by email. It's personal: you can use it on your own Macs, up to the limit shown at checkout.</li>
+<li>You can't resell it, share it publicly or distribute it.</li>
+<li>To move to a new Mac, click “Remove from this Mac” in Dormer's settings, then activate the key on the new one.</li>
+<li>A key obtained by fraud, or refunded, may be deactivated.</li>
+</ul>
+
+<h2>What you can do with Dormer</h2>
+<p>You can use Dormer on your Macs, for personal or work use. You can't bypass the license system, or resell or redistribute a modified app presented as Dormer. The code published in the <a href="{SOURCE}">source folder</a> stays under the MIT license, which has its own rules.</p>
+
+<h2>Other companies' services</h2>
+<p>Some features rely on third-party services you choose to use: Spotify and Apple Music, Shazam, weather, ChatGPT and Claude (with your own account), and Polar for purchases. These services have their own terms, and Dormer isn't affiliated with any of them. The companion's AI features use Apple's on-device AI on your Mac: nothing is sent. Data details are on the <a href="{PATHS['privacy']['en']}">Privacy</a> page.</p>
+
+<h2>Warranty and liability</h2>
+<p>Dormer is provided as is, by one person. I do my best to make it work well and safely, but I can't promise it will always be free of bugs, or that it will work with every future macOS version. To the extent the law allows, my liability is limited to what you paid for Dormer Pro. Nothing in these terms takes away the rights the law gives you as a consumer.</p>
+
+<h2>Changes</h2>
+<p>These terms may change, for example when a feature changes. The date at the top of the page shows the latest version. A change never takes away something you've already bought.</p>
+
+<h2>Governing law</h2>
+<p>These terms are governed by French law. If there's a disagreement, write to {CONTACT} first so we can settle it amicably. If you live in the European Union, you keep the protections of your own country's law.</p>""",
 }
 
 # ---------------------------------------------------------------- Versions et empreintes
@@ -339,6 +427,14 @@ def build(write):
             "Qui publie Dormer, où il est hébergé et qui gère les ventes." if fr else
             "Who publishes Dormer, where it's hosted and who handles sales.",
             LEGAL[lang]))
+        write(PATHS["terms"][lang].strip("/") + "/index.html", _page(
+            "terms", lang, LABELS["terms"][lang],
+            "Les règles d'utilisation de Dormer et de Dormer Pro : essai, achat, licence, garantie." if fr else
+            "The rules for using Dormer and Dormer Pro: trial, purchase, license, warranty.",
+            LABELS["terms"][lang],
+            "Dormer est gratuit ; Dormer Pro s'achète une fois. Voici les règles, en clair." if fr else
+            "Dormer is free; Dormer Pro is bought once. Here are the rules, in plain words.",
+            TERMS[lang]))
         write(PATHS["changelog"][lang].strip("/") + "/index.html", _page(
             "changelog", lang, "Versions et empreintes" if fr else "Versions and checksums",
             "Ce qui change dans chaque version de Dormer, avec l'empreinte SHA-256 pour vérifier ton téléchargement." if fr else
