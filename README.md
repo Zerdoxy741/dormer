@@ -72,7 +72,7 @@ Requires a MacBook with a notch and **macOS 14.2 or later**. To quit: right-clic
 
 ## 🇫🇷 En français
 
-**Ta notch, enfin réveillée.** Dormer transforme l'encoche de ton MacBook en île dynamique : musique, Shazam, AirDrop, presse-papiers, IA, alertes… et un petit chat en pixels qui vit dedans. *(Anciennement Notchy.)*
+**Ta notch, enfin réveillée.** Dormer transforme l'encoche de ton MacBook en île dynamique : musique, Shazam, AirDrop, presse-papiers, IA, alertes… et un petit chat en pixels qui vit dedans.
 
 ▶︎ **[Regarde le film de 2 minutes](https://dormernotch.com/#film)**
 
@@ -91,7 +91,5 @@ Requires a MacBook with a notch and **macOS 14.2 or later**. To quit: right-clic
    xattr -dr com.apple.quarantine /Applications/Dormer.app
    ```
 3. Accepte les autorisations au fur et à mesure. Survole la notch, puis l'icône ⚙︎ pour les réglages.
-
-Tu as déjà Notchy ? Réglages › Mises à jour › « Rechercher les mises à jour » : l'app se met à jour et se renomme toute seule en Dormer, tes réglages sont gardés.
 
 Il faut un MacBook avec une encoche et **macOS 14.2 ou plus récent**. Pour quitter : clic droit sur la notch › Quitter Dormer.
