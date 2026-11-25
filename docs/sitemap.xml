@@ -20,4 +20,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://dormernotch.com/fr/compare/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dormernotch.com/compare/"/>
   </url>
+  <url><loc>https://dormernotch.com/privacy/</loc><lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dormernotch.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dormernotch.com/fr/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dormernotch.com/privacy/"/>
+  </url>
+  <url><loc>https://dormernotch.com/fr/confidentialite/</loc><lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dormernotch.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dormernotch.com/fr/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dormernotch.com/privacy/"/>
+  </url>
 </urlset>

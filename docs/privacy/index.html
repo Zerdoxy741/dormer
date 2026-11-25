@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · Dormer</title>
+<meta name="description" content="What Dormer sends, what stays on your Mac, and diagnostics: what is sent, what is removed, where it goes and how long it is kept.">
+<meta name="theme-color" content="#1b2147">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon-96.png?v=2" type="image/png" sizes="96x96">
+<link rel="icon" href="/logo.svg?v=2" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="canonical" href="https://dormernotch.com/privacy/">
+<link rel="alternate" hreflang="en" href="https://dormernotch.com/privacy/">
+<link rel="alternate" hreflang="fr" href="https://dormernotch.com/fr/confidentialite/">
+<link rel="alternate" hreflang="x-default" href="https://dormernotch.com/privacy/">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=young-serif:400|figtree:400,500,600,700&display=swap">
+<style>
+:root{--sky:#1b2147;--sky2:#141936;--deep:#0f1330;--lamp:#ffcf70;--lamp-ink:#241c33;--ink:#f3ead8;--mist:#b3b8da;--faint:#8a91bb;--line:rgba(243,234,216,.13);--line2:rgba(243,234,216,.24);--serif:"Young Serif",Georgia,serif;--sans:"Figtree",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip;background:var(--deep);scrollbar-color:#6b4a5a var(--deep)}
+body{background:linear-gradient(180deg,var(--sky) 0,var(--sky) 900px,var(--sky2) 2200px,var(--deep) 100%);color:var(--ink);font:17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+::selection{background:var(--lamp);color:var(--lamp-ink)}
+:focus-visible{outline:2px solid var(--lamp);outline-offset:3px;border-radius:6px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.narrow{max-width:820px}
+nav{position:sticky;top:0;z-index:5;background:rgba(27,33,71,.94);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:21px}
+.brand img{width:30px;height:30px;border-radius:8px}
+.sp{margin-left:auto}
+.lang{display:inline-block;border:1px solid var(--line2);border-radius:8px;padding:4px 9px;font-size:13px;font-weight:600;color:var(--mist)}
+.lang:hover{color:var(--ink);border-color:var(--ink)}
+.navlink{font-size:15px;font-weight:600;color:var(--mist)}
+.navlink:hover,.navlink[aria-current]{color:var(--lamp)}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:12px;padding:14px 22px;font-weight:600;font-size:16px;background:var(--lamp);color:var(--lamp-ink);transition:background .2s,box-shadow .2s}
+.btn:hover{background:#ffdb8f;box-shadow:0 10px 28px -8px rgba(255,207,112,.55)}
+.btn.sm{padding:9px 15px;font-size:14.5px;border-radius:10px}
+header{padding:84px 0 20px}
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.012em;text-wrap:balance}
+h1{font-size:clamp(38px,5.8vw,68px);line-height:1.02;max-width:16ch}
+.lead{color:var(--mist);font-size:19px;margin-top:20px;max-width:62ch}
+section{padding:56px 0}
+h2{font-size:clamp(28px,3.4vw,38px);line-height:1.12;margin-bottom:22px}
+footer{border-top:1px solid var(--line);padding:30px 0 44px;font-size:14.5px;color:var(--faint)}
+footer .wrap{display:flex;gap:20px;flex-wrap:wrap}
+footer a:hover{color:var(--ink)}
+.doc h2{margin-top:44px}.doc h2:first-child{margin-top:0}.doc p,.doc li{color:var(--mist);max-width:68ch}.doc p+p{margin-top:12px}.doc ul{margin:10px 0 0 22px}.doc li{margin-top:6px}.doc strong{color:var(--ink);font-weight:600}.doc a{text-decoration:underline;text-underline-offset:3px}.doc a:hover{color:var(--ink)}.updated{color:var(--faint);font-size:14px;margin-top:14px}
+@media (max-width:640px){header{padding-top:56px}.wrap{padding:0 18px}.brand span{display:none}nav .wrap{gap:12px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/"><img src="/icon.png?v=2" alt=""><span>Dormer</span></a>
+  <span class="sp"></span>
+  <a class="lang" href="/fr/confidentialite/" hreflang="fr" onclick="try{localStorage.setItem('lang','fr')}catch(e){}">FR</a>
+  <a class="navlink" href="/">Home</a>
+</div></nav>
+<header><div class="wrap narrow">
+  <h1>Privacy</h1>
+  <p class="lead">Dormer keeps almost everything on your Mac. Here is exactly what leaves it, and when.</p>
+  <p class="updated">Updated November 25, 2026</p>
+</div></header>
+<main class="wrap narrow doc">
+<section>
+<h2>The short version</h2>
+<p>Dormer has no account, no ads and no analytics. It collects nothing in the background. Almost everything stays on your Mac. When a feature needs the internet, it sends only what it needs, and only if you turned it on.</p>
+
+<h2>Diagnostics</h2>
+<p>When you click <strong>Settings › General › Report a problem…</strong> and then <strong>Send</strong>, Dormer sends a diagnostic to its creator. Nothing leaves without that click, and you can read everything before it's sent.</p>
+<p><strong>What's sent:</strong></p>
+<ul>
+<li>what you write, and your first name if you give it (optional);</li>
+<li>Dormer and macOS versions, Mac model, language;</li>
+<li>permissions granted to Dormer (Accessibility, Calendar);</li>
+<li>Dormer's settings: numbers, switches and short keywords only;</li>
+<li>Dormer's recent logs and a summary of its last crash, if any.</li>
+</ul>
+<p><strong>Removed before sending:</strong> file names, paths, your user name and full name, email addresses, links, Bluetooth and IP addresses, first names in device names ("Anna's AirPods"), the content of your images and of on-screen text, clipboard content, and free text in settings (city, song, companion name…).</p>
+<p><strong>The signature:</strong> each diagnostic carries a signature like <code>D-7F3A-91C2</code>. It's drawn at random on your Mac and only groups your diagnostics together. It has no link to your Mac or to you.</p>
+<p><strong>Where it goes:</strong> the diagnostic passes through <code>diag.dormernotch.com</code>, a small service hosted by Cloudflare that keeps nothing and doesn't log the content. It's then stored in a private GitHub repository (GitHub, Inc., United States) that only Dormer's creator can read. Your IP address is only used to limit sends per minute against spam. It isn't stored with the diagnostic.</p>
+<p><strong>How long:</strong> each diagnostic is deleted automatically one year after it was sent, or sooner if you ask.</p>
+<p><strong>Why:</strong> to understand and fix the problem you report. That's its only use, with the consent you give by clicking Send.</p>
+
+<h2>Features that use the internet</h2>
+<ul>
+<li><strong>Updates:</strong> Dormer asks GitHub whether a new version exists.</li>
+<li><strong>Pro license:</strong> your license key is checked with Polar, which handles purchases.</li>
+<li><strong>Weather:</strong> the Mac's approximate location (to about 1 km) or the city name is sent to Open-Meteo.</li>
+<li><strong>Lyrics and artwork:</strong> the song title and artist are sent to lrclib.net and Apple's iTunes search.</li>
+<li><strong>Shazam:</strong> a sound fingerprint, not the recording, is sent to Shazam (Apple) to recognize the song.</li>
+<li><strong>Asking Claude or ChatGPT:</strong> the question goes through the Claude Code or ChatGPT tool installed on your Mac, with your own account. Dormer has no server in between.</li>
+<li><strong>Listen together:</strong> Macs talk directly, encrypted, over the local network or Bluetooth. No server is used.</li>
+</ul>
+
+<h2>Your rights</h2>
+<p>You can ask to see, correct or delete your diagnostics at any time. Just give your signature (shown in the diagnostic window) on <a href="https://github.com/Zerdoxy741/dormer/issues">Dormer's GitHub page</a>. To get a new signature, reset Dormer's settings. You can also complain to your data protection authority.</p>
+</section>
+</main>
+<footer><div class="wrap">
+  <span>© 2026 Dormer</span>
+  <a href="/">Back to Dormer</a>
+  <a href="https://github.com/Zerdoxy741/dormer">GitHub</a>
+</div></footer>
+</body>
+</html>
