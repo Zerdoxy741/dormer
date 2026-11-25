@@ -45,14 +45,21 @@ def polar(app):
 
 
 def notchnook(app):
+    # The page shows euros or dollars depending on where it's read from (GitHub's servers are in the US).
     page = get("https://lo.cafe/notchnook/")
-    amounts = [(float(m.group(1)), m.group(2) or "") for m in re.finditer(r"€(\d+\.\d{2})(/month)?", page)]
-    monthly = [a for a, per in amounts if per]
-    once = [a for a, per in amounts if not per]
-    if not monthly or not once:
+    pat = re.compile(r"(?:(?P<c1>[€$])\s?(?P<a1>\d+(?:[.,]\d{2})?)|(?P<a2>\d+(?:[.,]\d{2})?)\s?(?P<c2>[€$]))"
+                     r"(?P<per>\s?/\s?(?:month|mois|mo)\b)?")
+    found = {}
+    for m in pat.finditer(page):
+        cur = "EUR" if (m.group("c1") or m.group("c2")) == "€" else "USD"
+        amount = float((m.group("a1") or m.group("a2")).replace(",", "."))
+        found.setdefault(cur, {"once": [], "monthly": []})["monthly" if m.group("per") else "once"].append(amount)
+    cur = "EUR" if found.get("EUR", {}).get("monthly") else "USD"
+    f = found.get(cur)
+    if not f or not f["monthly"] or not f["once"]:
         return None, "no prices found on the NotchNook page"
     # Pro is the dearer plan; the regular price is the highest one shown (a sale price sits below it)
-    return {"lifetime": max(once), "monthly": max(monthly), "currency": "EUR"}, None
+    return {"lifetime": max(f["once"]), "monthly": max(f["monthly"]), "currency": cur}, None
 
 
 def gumroad(app):
