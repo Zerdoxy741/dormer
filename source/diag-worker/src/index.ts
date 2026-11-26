@@ -26,7 +26,8 @@ const json = (data: unknown, status = 200) =>
 
 async function receive(request: Request): Promise<Response> {
 	if (request.method !== "POST") return json({ error: "method" }, 405);
-	if (!request.headers.get("User-Agent")?.startsWith("Dormer-Diagnostics")) return json({ error: "client" }, 403);
+	if (!request.headers.get("User-Agent")?.startsWith("Dormer-Diagnostics"))
+		return json({ error: "client" }, 403);
 
 	// Une adresse ne peut envoyer que quelques diagnostics par minute (contre le spam)
 	const ip = request.headers.get("CF-Connecting-IP") ?? "?";
@@ -76,15 +77,114 @@ async function purge(): Promise<void> {
 		// La clé n'a pas le droit de supprimer : on efface au moins le contenu et on ferme le ticket
 		await gh(`/repos/${env.REPO}/issues/${issue.number}`, {
 			method: "PATCH",
-			body: JSON.stringify({ title: "[effacé]", body: "Diagnostic effacé après un an.", state: "closed" }),
+			body: JSON.stringify({
+				title: "[effacé]",
+				body: "Diagnostic effacé après un an.",
+				state: "closed",
+			}),
 		});
 	}
+}
+
+// ── Statistiques anonymes ──────────────────────────────────────────────────────────────────
+// L'app envoie au plus : un « install » au tout premier lancement, un « active » par jour
+// d'utilisation, et la réponse à « Tout marche bien ? ». Aucun identifiant, aucune adresse IP
+// gardée : on n'incrémente que des compteurs par jour (ex. 2026-11-26 / install = 4).
+
+const EVENTS = new Set(["install", "active"]);
+const VERSION = /^\d{1,3}(\.\d{1,3}){0,3}$/;
+const MACOS = /^\d{2}(\.\d{1,2}){0,2}$/;
+
+let schemaReady = false;
+async function count(metrics: string[]): Promise<void> {
+	if (!schemaReady) {
+		await env.STATS.exec(
+			"CREATE TABLE IF NOT EXISTS counts (day TEXT NOT NULL, metric TEXT NOT NULL, n INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (day, metric))",
+		);
+		schemaReady = true;
+	}
+	const day = new Date().toISOString().slice(0, 10);
+	const up = env.STATS.prepare(
+		"INSERT INTO counts (day, metric, n) VALUES (?1, ?2, 1) ON CONFLICT (day, metric) DO UPDATE SET n = n + 1",
+	);
+	await env.STATS.batch(metrics.map((m) => up.bind(day, m)));
+}
+
+async function readSmall(request: Request): Promise<Record<string, unknown> | Response> {
+	if (request.method !== "POST") return json({ error: "method" }, 405);
+	if (!request.headers.get("User-Agent")?.startsWith("Dormer"))
+		return json({ error: "client" }, 403);
+	const ip = request.headers.get("CF-Connecting-IP") ?? "?";
+	const { success } = await env.LIMIT.limit({ key: `stats:${ip}` });
+	if (!success) return json({ error: "rate" }, 429);
+	const raw = await request.text();
+	if (raw.length > 500) return json({ error: "size" }, 413);
+	try {
+		const data = JSON.parse(raw);
+		if (data && typeof data === "object" && !Array.isArray(data)) return data;
+	} catch {}
+	return json({ error: "json" }, 400);
+}
+
+/// POST /hello {"event":"install"|"active","version":"0.8.1","macos":"15.2"}
+async function hello(request: Request): Promise<Response> {
+	const data = await readSmall(request);
+	if (data instanceof Response) return data;
+	const { event, version, macos } = data;
+	if (typeof event !== "string" || !EVENTS.has(event)) return json({ error: "event" }, 400);
+	if (typeof version !== "string" || !VERSION.test(version)) return json({ error: "version" }, 400);
+	if (typeof macos !== "string" || !MACOS.test(macos)) return json({ error: "macos" }, 400);
+	const metrics = [event, `${event}:v${version}`];
+	if (event === "active") metrics.push(`macos:${macos.split(".")[0]}`);
+	await count(metrics);
+	return new Response(null, { status: 204 });
+}
+
+/// POST /feedback {"ok":true|false,"version":"0.8.1"}
+async function feedback(request: Request): Promise<Response> {
+	const data = await readSmall(request);
+	if (data instanceof Response) return data;
+	const { ok, version } = data;
+	if (typeof ok !== "boolean") return json({ error: "ok" }, 400);
+	if (typeof version !== "string" || !VERSION.test(version)) return json({ error: "version" }, 400);
+	const m = ok ? "feedback:ok" : "feedback:ko";
+	await count([m, `${m}:v${version}`]);
+	return new Response(null, { status: 204 });
+}
+
+/// GET /stats (Authorization: Bearer <STATS_KEY>) : totaux et détail par jour, pour toi seul.
+async function stats(request: Request): Promise<Response> {
+	const key = env.STATS_KEY;
+	if (!key || request.headers.get("Authorization") !== `Bearer ${key}`)
+		return json({ error: "auth" }, 401);
+	const exists = await env.STATS.prepare(
+		"SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'counts'",
+	).first();
+	if (!exists) return json({ totals: {}, days: {} });
+	const { results } = await env.STATS.prepare(
+		"SELECT day, metric, n FROM counts ORDER BY day DESC, metric",
+	).all<{
+		day: string;
+		metric: string;
+		n: number;
+	}>();
+	const totals: Record<string, number> = {};
+	const days: Record<string, Record<string, number>> = {};
+	for (const { day, metric, n } of results) {
+		(days[day] ??= {})[metric] = n;
+		if (!metric.startsWith("active") && !metric.startsWith("macos"))
+			totals[metric] = (totals[metric] ?? 0) + n;
+	}
+	return json({ totals, days });
 }
 
 export default {
 	fetch(request) {
 		const url = new URL(request.url);
 		if (url.pathname === "/diagnostic") return receive(request);
+		if (url.pathname === "/hello") return hello(request);
+		if (url.pathname === "/feedback") return feedback(request);
+		if (url.pathname === "/stats") return stats(request);
 		return new Response("Dormer diagnostics", { status: 404 });
 	},
 	async scheduled(_event, _env, ctx) {

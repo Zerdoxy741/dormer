@@ -77,7 +77,7 @@ footer a:hover{color:var(--ink)}
 <section>
 <h2>L'essentiel</h2>
 <p>Pour toute question sur tes données : <a href="mailto:info@dormernotch.com">info@dormernotch.com</a>.</p>
-<p>Dormer n'a pas de compte, pas de publicité et aucune mesure d'audience dans l'app. Il ne collecte rien en arrière-plan. Presque tout reste sur ton Mac. Quand une fonction a besoin d'Internet, elle n'envoie que le strict nécessaire, et seulement si tu l'as activée.</p>
+<p>Dormer n'a pas de compte et pas de publicité. Il ne te suit pas : la seule chose qu'il envoie de lui-même, ce sont des <a href="#statistiques">compteurs anonymes</a> (« une installation de plus », « un Mac de plus a utilisé Dormer aujourd'hui »), sans aucun identifiant, et tu peux les couper. Presque tout reste sur ton Mac. Quand une fonction a besoin d'Internet, elle n'envoie que le strict nécessaire, et seulement si tu l'as activée.</p>
 
 <h2>Les autorisations demandées</h2>
 <p>macOS te demande chaque autorisation au moment où une fonction en a besoin. Tu peux en refuser : seules les fonctions concernées ne marcheront pas.</p>
@@ -110,6 +110,16 @@ footer a:hover{color:var(--ink)}
 <p><strong>Où il va :</strong> le diagnostic passe par <code>diag.dormernotch.com</code>, un petit service hébergé chez Cloudflare qui ne garde rien et ne journalise pas le contenu. Il est ensuite rangé dans un dépôt privé sur GitHub (GitHub, Inc., États-Unis), que seul le créateur de Dormer peut lire. Ton adresse IP sert seulement à limiter le nombre d'envois par minute, contre le spam. Elle n'est pas enregistrée avec le diagnostic.</p>
 <p><strong>Combien de temps :</strong> chaque diagnostic est effacé automatiquement un an après son envoi, ou plus tôt si tu le demandes.</p>
 <p><strong>Pourquoi :</strong> pour comprendre et corriger le problème que tu signales. C'est la seule utilisation, avec ton accord, que tu donnes en cliquant sur Envoyer.</p>
+
+<h2 id="statistiques">Statistiques anonymes</h2>
+<p>Pour savoir combien de personnes utilisent Dormer, l'app envoie à <code>diag.dormernotch.com</code> :</p>
+<ul>
+<li>au tout premier lancement : « installé », avec la version de Dormer et de macOS ;</li>
+<li>au plus une fois par jour où tu utilises Dormer : « actif aujourd'hui », avec les mêmes versions ;</li>
+<li>si tu réponds à la question « Tout marche bien ? » posée une seule fois après ton premier jour : 👍 ou 👎, avec la version de Dormer.</li>
+</ul>
+<p><strong>Rien d'autre :</strong> pas d'identifiant, pas de numéro de série, pas de nom, pas de réglages. Le service ne fait qu'ajouter 1 à un compteur du jour (par exemple « 26 novembre : 12 Mac actifs »). Ton adresse IP sert seulement à limiter les envois contre le spam et n'est pas enregistrée. Il est donc impossible de savoir qui a envoyé quoi, ni de relier deux jours entre eux. <a href="https://github.com/Zerdoxy741/dormer/tree/main/source">Le code est public.</a></p>
+<p><strong>Pour couper :</strong> <strong>Réglages › Général › Envoyer des statistiques anonymes</strong>.</p>
 
 <h2>Le site dormernotch.com</h2>
 <p>Le site utilise Cloudflare Web Analytics pour compter ses visites : nombre de pages vues, pays, navigateur, site d'où vient le visiteur. Il n'y a ni cookie ni suivi d'une page à l'autre ou d'un site à l'autre, et aucune donnée n'est utilisée pour te reconnaître ni pour de la publicité. On ne voit que des totaux.</p>
