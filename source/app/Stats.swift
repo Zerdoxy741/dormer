@@ -6,6 +6,7 @@ import Foundation
 ///
 /// Ce qui part, et rien d'autre :
 /// - au tout premier lancement : `{"event":"install","version":"0.8.1","macos":"15.2"}`
+/// - au premier lancement d'une nouvelle version : `{"event":"update", …}` (mêmes champs)
 /// - au plus une fois par jour d'utilisation : `{"event":"active", …}` (mêmes champs)
 /// - une seule fois, après 24 h : `{"ok":true|false,"version":"0.8.1"}` si la personne répond
 ///
@@ -14,7 +15,8 @@ import Foundation
 ///
 /// Branchement dans l'app :
 /// ```swift
-/// // applicationDidFinishLaunching
+/// // applicationDidFinishLaunching, en tout premier (avant que l'app n'écrive ses réglages :
+/// // c'est ce qui permet de reconnaître une mise à jour depuis une version sans statistiques)
 /// Stats.start(reportProblem: { /* ouvrir Réglages › Général › Signaler un problème… */ })
 ///
 /// // Réglages › Général
@@ -23,6 +25,7 @@ import Foundation
 enum Stats {
 	static let enabledKey = "stats.enabled"
 	private static let installSentKey = "stats.installSent"
+	private static let lastVersionKey = "stats.lastVersion"
 	private static let lastActiveDayKey = "stats.lastActiveDay"
 	private static let firstLaunchKey = "stats.firstLaunch"
 	private static let feedbackDoneKey = "stats.feedbackDone"
@@ -31,6 +34,8 @@ enum Stats {
 	private static let defaults = UserDefaults.standard
 	private static var timer: Timer?
 	private static var reportProblem: (() -> Void)?
+	/// Dormer avait déjà des réglages sur ce Mac avant la première version avec statistiques.
+	private static var hadDormerBefore = false
 
 	/// Activé par défaut, coupé par le réglage « Envoyer des statistiques anonymes ».
 	static var isEnabled: Bool {
@@ -41,6 +46,7 @@ enum Stats {
 	/// toutes les heures et à chaque réveil du Mac pour compter chaque jour d'utilisation.
 	static func start(reportProblem: @escaping () -> Void) {
 		self.reportProblem = reportProblem
+		hadDormerBefore = hasOtherDormerSettings()
 		if defaults.object(forKey: firstLaunchKey) == nil {
 			defaults.set(Date(), forKey: firstLaunchKey)
 		}
@@ -53,8 +59,24 @@ enum Stats {
 
 	private static func tick() {
 		guard isEnabled else { return }
+		let version = appVersion
+		let last = defaults.string(forKey: lastVersionKey)
 		if !defaults.bool(forKey: installSentKey) {
-			hello("install") { ok in if ok { defaults.set(true, forKey: installSentKey) } }
+			// Première fois avec les statistiques : vraie installation, ou mise à jour depuis
+			// une ancienne version de Dormer (ses réglages sont déjà là) ?
+			let event = hadDormerBefore ? "update" : "install"
+			hello(event) { ok in
+				guard ok else { return }
+				defaults.set(true, forKey: installSentKey)
+				defaults.set(version, forKey: lastVersionKey)
+			}
+		} else if last != version {
+			// Nouvelle version lancée pour la première fois (ou version pas encore notée)
+			if last == nil {
+				defaults.set(version, forKey: lastVersionKey)
+			} else {
+				hello("update") { ok in if ok { defaults.set(version, forKey: lastVersionKey) } }
+			}
 		}
 		let today = utcDay()
 		if defaults.string(forKey: lastActiveDayKey) != today {
@@ -127,6 +149,17 @@ enum Stats {
 		let v = ProcessInfo.processInfo.operatingSystemVersion
 		return v.patchVersion > 0
 			? "\(v.majorVersion).\(v.minorVersion).\(v.patchVersion)" : "\(v.majorVersion).\(v.minorVersion)"
+	}
+
+	/// Des réglages de Dormer existaient-ils avant les statistiques ? On ne regarde que les noms
+	/// des clés, jamais leur contenu, et rien de tout ça n'est envoyé.
+	private static func hasOtherDormerSettings() -> Bool {
+		guard defaults.object(forKey: installSentKey) == nil,
+			let id = Bundle.main.bundleIdentifier,
+			let domain = defaults.persistentDomain(forName: id)
+		else { return false }
+		let system = ["stats.", "NS", "Apple", "com.apple.", "WebKit"]
+		return domain.keys.contains { key in !system.contains { key.hasPrefix($0) } }
 	}
 
 	private static func utcDay() -> String {

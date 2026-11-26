@@ -112,7 +112,7 @@ def _page(key: str, lang: str, title: str, desc: str, h1: str, lead: str, body: 
 PRIVACY = {
 "fr": f"""<h2>L'essentiel</h2>
 <p>Pour toute question sur tes données : {CONTACT}.</p>
-<p>Dormer n'a pas de compte et pas de publicité. Il ne te suit pas : la seule chose qu'il envoie de lui-même, ce sont des <a href="#statistiques">compteurs anonymes</a> (« une installation de plus », « un Mac de plus a utilisé Dormer aujourd'hui »), sans aucun identifiant, et tu peux les couper. Presque tout reste sur ton Mac. Quand une fonction a besoin d'Internet, elle n'envoie que le strict nécessaire, et seulement si tu l'as activée.</p>
+<p>Dormer n'a pas de compte et pas de publicité. Il ne te suit pas : la seule chose qu'il envoie de lui-même, ce sont des <a href="#statistiques">compteurs anonymes</a> (« une installation de plus », « une mise à jour de plus », « un Mac de plus a utilisé Dormer aujourd'hui »), sans aucun identifiant, et tu peux les couper. Presque tout reste sur ton Mac. Quand une fonction a besoin d'Internet, elle n'envoie que le strict nécessaire, et seulement si tu l'as activée.</p>
 
 <h2>Les autorisations demandées</h2>
 <p>macOS te demande chaque autorisation au moment où une fonction en a besoin. Tu peux en refuser : seules les fonctions concernées ne marcheront pas.</p>
@@ -150,6 +150,7 @@ PRIVACY = {
 <p>Pour savoir combien de personnes utilisent Dormer, l'app envoie à <code>diag.dormernotch.com</code> :</p>
 <ul>
 <li>au tout premier lancement : « installé », avec la version de Dormer et de macOS ;</li>
+<li>au premier lancement après une mise à jour : « mis à jour », avec la nouvelle version ;</li>
 <li>au plus une fois par jour où tu utilises Dormer : « actif aujourd'hui », avec les mêmes versions ;</li>
 <li>si tu réponds à la question « Tout marche bien ? » posée une seule fois après ton premier jour : 👍 ou 👎, avec la version de Dormer.</li>
 </ul>
@@ -176,7 +177,7 @@ PRIVACY = {
 
 "en": f"""<h2>The short version</h2>
 <p>Questions about your data: {CONTACT}.</p>
-<p>Dormer has no account and no ads. It doesn't track you: the only thing it sends on its own is <a href="#statistics">anonymous counts</a> ("one more install", "one more Mac used Dormer today"), with no identifier, and you can turn them off. Almost everything stays on your Mac. When a feature needs the internet, it sends only what it needs, and only if you turned it on.</p>
+<p>Dormer has no account and no ads. It doesn't track you: the only thing it sends on its own is <a href="#statistics">anonymous counts</a> ("one more install", "one more update", "one more Mac used Dormer today"), with no identifier, and you can turn them off. Almost everything stays on your Mac. When a feature needs the internet, it sends only what it needs, and only if you turned it on.</p>
 
 <h2>Permissions</h2>
 <p>macOS asks for each permission when a feature needs it. You can say no: only the features that need it won't work.</p>
@@ -214,6 +215,7 @@ PRIVACY = {
 <p>To know how many people use Dormer, the app sends to <code>diag.dormernotch.com</code>:</p>
 <ul>
 <li>on the very first launch: "installed", with the Dormer and macOS versions;</li>
+<li>on the first launch after an update: "updated", with the new version;</li>
 <li>at most once per day you use Dormer: "active today", with the same versions;</li>
 <li>if you answer the "Is everything working?" question, asked once after your first day: 👍 or 👎, with the Dormer version.</li>
 </ul>
