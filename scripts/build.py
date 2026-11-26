@@ -186,7 +186,7 @@ def french(page: str) -> str:
                   '<a class="lang" id="lang" href="/" hreflang="en" aria-label="English version">EN</a>', 1)
     # the French page sits one folder down: make asset paths absolute
     for a, b in [('href="favicon.png?v=2"', 'href="/favicon.png?v=2"'), ('src="icon-64.png?v=2"', 'src="/icon-64.png?v=2"'),
-                 ('poster="film/poster-1280.jpg"', 'poster="/film/poster-1280.jpg"'), ('src="film/dormer.mp4"', 'src="/film/dormer.mp4"')]:
+                 ('poster="film/poster-768.jpg"', 'poster="/film/poster-768.jpg"'), ('src="film/dormer.mp4"', 'src="/film/dormer.mp4"')]:
         s = s.replace(a, b)
     s = s.replace('href="/compare/"', 'href="/fr/compare/"')
     for key, p in pages.PATHS.items():

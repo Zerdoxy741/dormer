@@ -14,6 +14,7 @@ CONTACT = '<a href="mailto:info@dormernotch.com">info@dormernotch.com</a>'
 # Polices hébergées sur le site (docs/fonts/), déclarées en ligne : rien ne bloque l'affichage.
 FONT_HEAD = ('<link rel="preload" href="/fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
              '<link rel="preload" href="/fonts/figtree-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+             '<link rel="preload" href="/fonts/figtree-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
              '<style>' + (Path(__file__).resolve().parent / "fonts.css").read_text().strip() + '</style>')
 CERT_SHA256 = "01:19:CA:20:48:E5:6E:A9:2A:A3:A7:BF:A0:16:26:B9:9C:23:57:00:12:7B:69:78:B7:00:5A:7C:EC:6F:76:8C"
 CERT_NAME = "Notchy Local Signing"
