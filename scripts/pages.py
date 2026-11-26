@@ -108,7 +108,7 @@ def _page(key: str, lang: str, title: str, desc: str, h1: str, lead: str, body: 
 PRIVACY = {
 "fr": f"""<h2>L'essentiel</h2>
 <p>Pour toute question sur tes données : {CONTACT}.</p>
-<p>Dormer n'a pas de compte, pas de publicité et aucune mesure d'audience dans l'app. Il ne collecte rien en arrière-plan. Presque tout reste sur ton Mac. Quand une fonction a besoin d'Internet, elle n'envoie que le strict nécessaire, et seulement si tu l'as activée.</p>
+<p>Dormer n'a pas de compte et pas de publicité. Il ne te suit pas : la seule chose qu'il envoie de lui-même, ce sont des <a href="#statistiques">compteurs anonymes</a> (« une installation de plus », « un Mac de plus a utilisé Dormer aujourd'hui »), sans aucun identifiant, et tu peux les couper. Presque tout reste sur ton Mac. Quand une fonction a besoin d'Internet, elle n'envoie que le strict nécessaire, et seulement si tu l'as activée.</p>
 
 <h2>Les autorisations demandées</h2>
 <p>macOS te demande chaque autorisation au moment où une fonction en a besoin. Tu peux en refuser : seules les fonctions concernées ne marcheront pas.</p>
@@ -142,6 +142,16 @@ PRIVACY = {
 <p><strong>Combien de temps :</strong> chaque diagnostic est effacé automatiquement un an après son envoi, ou plus tôt si tu le demandes.</p>
 <p><strong>Pourquoi :</strong> pour comprendre et corriger le problème que tu signales. C'est la seule utilisation, avec ton accord, que tu donnes en cliquant sur Envoyer.</p>
 
+<h2 id="statistiques">Statistiques anonymes</h2>
+<p>Pour savoir combien de personnes utilisent Dormer, l'app envoie à <code>diag.dormernotch.com</code> :</p>
+<ul>
+<li>au tout premier lancement : « installé », avec la version de Dormer et de macOS ;</li>
+<li>au plus une fois par jour où tu utilises Dormer : « actif aujourd'hui », avec les mêmes versions ;</li>
+<li>si tu réponds à la question « Tout marche bien ? » posée une seule fois après ton premier jour : 👍 ou 👎, avec la version de Dormer.</li>
+</ul>
+<p><strong>Rien d'autre :</strong> pas d'identifiant, pas de numéro de série, pas de nom, pas de réglages. Le service ne fait qu'ajouter 1 à un compteur du jour (par exemple « 26 novembre : 12 Mac actifs »). Ton adresse IP sert seulement à limiter les envois contre le spam et n'est pas enregistrée. Il est donc impossible de savoir qui a envoyé quoi, ni de relier deux jours entre eux. <a href="https://github.com/Zerdoxy741/dormer/tree/main/source">Le code est public.</a></p>
+<p><strong>Pour couper :</strong> <strong>Réglages › Général › Envoyer des statistiques anonymes</strong>.</p>
+
 <h2>Le site dormernotch.com</h2>
 <p>Le site utilise Cloudflare Web Analytics pour compter ses visites : nombre de pages vues, pays, navigateur, site d'où vient le visiteur. Il n'y a ni cookie ni suivi d'une page à l'autre ou d'un site à l'autre, et aucune donnée n'est utilisée pour te reconnaître ni pour de la publicité. On ne voit que des totaux.</p>
 
@@ -162,7 +172,7 @@ PRIVACY = {
 
 "en": f"""<h2>The short version</h2>
 <p>Questions about your data: {CONTACT}.</p>
-<p>Dormer has no account, no ads and no analytics in the app. It collects nothing in the background. Almost everything stays on your Mac. When a feature needs the internet, it sends only what it needs, and only if you turned it on.</p>
+<p>Dormer has no account and no ads. It doesn't track you: the only thing it sends on its own is <a href="#statistics">anonymous counts</a> ("one more install", "one more Mac used Dormer today"), with no identifier, and you can turn them off. Almost everything stays on your Mac. When a feature needs the internet, it sends only what it needs, and only if you turned it on.</p>
 
 <h2>Permissions</h2>
 <p>macOS asks for each permission when a feature needs it. You can say no: only the features that need it won't work.</p>
@@ -195,6 +205,16 @@ PRIVACY = {
 <p><strong>Where it goes:</strong> the diagnostic passes through <code>diag.dormernotch.com</code>, a small service hosted by Cloudflare that keeps nothing and doesn't log the content. It's then stored in a private GitHub repository (GitHub, Inc., United States) that only Dormer's creator can read. Your IP address is only used to limit sends per minute against spam. It isn't stored with the diagnostic.</p>
 <p><strong>How long:</strong> each diagnostic is deleted automatically one year after it was sent, or sooner if you ask.</p>
 <p><strong>Why:</strong> to understand and fix the problem you report. That's its only use, with the consent you give by clicking Send.</p>
+
+<h2 id="statistics">Anonymous statistics</h2>
+<p>To know how many people use Dormer, the app sends to <code>diag.dormernotch.com</code>:</p>
+<ul>
+<li>on the very first launch: "installed", with the Dormer and macOS versions;</li>
+<li>at most once per day you use Dormer: "active today", with the same versions;</li>
+<li>if you answer the "Is everything working?" question, asked once after your first day: 👍 or 👎, with the Dormer version.</li>
+</ul>
+<p><strong>Nothing else:</strong> no identifier, no serial number, no name, no settings. The service only adds 1 to a counter for the day (for example "November 26: 12 active Macs"). Your IP address is only used to limit sends against spam and isn't stored. So there is no way to know who sent what, or to link two days together. <a href="https://github.com/Zerdoxy741/dormer/tree/main/source">The code is public.</a></p>
+<p><strong>To turn it off:</strong> <strong>Settings › General › Send anonymous statistics</strong>.</p>
 
 <h2>The dormernotch.com website</h2>
 <p>The website uses Cloudflare Web Analytics to count visits: page views, country, browser, referring site. There are no cookies and no tracking across pages or sites, and no data is used to recognize you or for ads. Only totals are visible.</p>
