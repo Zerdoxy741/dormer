@@ -87,11 +87,11 @@ async function purge(): Promise<void> {
 }
 
 // ── Statistiques anonymes ──────────────────────────────────────────────────────────────────
-// L'app envoie au plus : un « install » au tout premier lancement, un « active » par jour
-// d'utilisation, et la réponse à « Tout marche bien ? ». Aucun identifiant, aucune adresse IP
+// L'app envoie au plus : un « install » au tout premier lancement, un « update » quand la version
+// change, un « active » par jour d'utilisation, et la réponse à « Tout marche bien ? ». Aucun identifiant, aucune adresse IP
 // gardée : on n'incrémente que des compteurs par jour (ex. 2026-11-26 / install = 4).
 
-const EVENTS = new Set(["install", "active"]);
+const EVENTS = new Set(["install", "update", "active"]);
 const VERSION = /^\d{1,3}(\.\d{1,3}){0,3}$/;
 const MACOS = /^\d{2}(\.\d{1,2}){0,2}$/;
 
@@ -126,7 +126,7 @@ async function readSmall(request: Request): Promise<Record<string, unknown> | Re
 	return json({ error: "json" }, 400);
 }
 
-/// POST /hello {"event":"install"|"active","version":"0.8.1","macos":"15.2"}
+/// POST /hello {"event":"install"|"update"|"active","version":"0.8.1","macos":"15.2"}
 async function hello(request: Request): Promise<Response> {
 	const data = await readSmall(request);
 	if (data instanceof Response) return data;

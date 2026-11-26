@@ -70,6 +70,9 @@ it("compte les installations et les jours actifs sans rien envoyer ailleurs", as
 	expect((await post("/hello", { event: "active", version: "0.8.1", macos: "15.2" })).status).toBe(
 		204,
 	);
+	expect((await post("/hello", { event: "update", version: "0.9", macos: "15.2" })).status).toBe(
+		204,
+	);
 	expect((await post("/feedback", { ok: true, version: "0.8.1" })).status).toBe(204);
 	expect((await post("/feedback", { ok: false, version: "0.8.1" })).status).toBe(204);
 	expect(spy).not.toHaveBeenCalled();
@@ -85,6 +88,8 @@ it("compte les installations et les jours actifs sans rien envoyer ailleurs", as
 		{ metric: "install", n: 1 },
 		{ metric: "install:v0.8.1", n: 1 },
 		{ metric: "macos:15", n: 1 },
+		{ metric: "update", n: 1 },
+		{ metric: "update:v0.9", n: 1 },
 	]);
 });
 
