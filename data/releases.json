@@ -1,5 +1,14 @@
 [
  {
+  "version": "0.8.1",
+  "build": "v38",
+  "date": "2026-11-26",
+  "notes": "Nouveautés de Dormer 0.8.1 :\n\nNouveau\n• Réglages refaits : barre latérale comme Réglages Système, 17 pages bien rangées, recherche, précédent / suivant, plus aucun réglage en double\n• Page Compagnon à part, page Calendrier et météo, page Volume (touches + MixVol)\n• Le compagnon se souvient de toi : il pose des questions, retient tes réponses et ce que tu aimes (réglages › Ce qu'il sait de toi)\n• Cerveau local : avec Ollama ou LM Studio, il écrit ses phrases sur ton Mac, en meilleur français\n• Thème Dormer : dégradé noir → bleu nuit avec étoiles dans la notch ouverte et les bannières, réglage du bleu et de la forme du dégradé\n\nAmélioré\n• Ses phrases sont plus claires et collent à ce que tu fais\n• Il reste immobile quand il parle et pendant Jacques a dit\n• Le bleu des bannières arrive avec l'ouverture, plus de seconde vague\n• La petite bannière de changement de morceau reste noire\n\nCorrigé\n• Les émotions du compagnon s'affichent de nouveau\n• « Afficher les secondes » s'applique à l'aperçu de l'horloge dans les réglages",
+  "sha256": "91886072574f8a3570fb58df904d356b56f65c80975efb080a5868a9f25b1ab4",
+  "virustotal": "https://www.virustotal.com/gui/file/91886072574f8a3570fb58df904d356b56f65c80975efb080a5868a9f25b1ab4",
+  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v38"
+ },
+ {
   "version": "0.8",
   "build": "v37",
   "date": "2026-11-26",
