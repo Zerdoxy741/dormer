@@ -59,6 +59,10 @@ def pro_price_block() -> str:
             f'<span lang="fr">{money(p["lifetime"], p["currency"], "fr")}</span><!--/pro-price-->')
 
 
+def set_fonts(page: str) -> str:
+    return re.sub(r"<!--fonts-->.*?<!--/fonts-->", lambda _: "<!--fonts-->\n" + pages.FONT_HEAD + "\n<!--/fonts-->", page, flags=re.S)
+
+
 def set_pro_price(page: str) -> str:
     return re.sub(r"<!--pro-price-->.*?<!--/pro-price-->", lambda _: pro_price_block(), page, flags=re.S)
 
@@ -181,8 +185,8 @@ def french(page: str) -> str:
     s = s.replace('<a class="lang" id="lang" href="/fr/" hreflang="fr" aria-label="Version française">FR</a>',
                   '<a class="lang" id="lang" href="/" hreflang="en" aria-label="English version">EN</a>', 1)
     # the French page sits one folder down: make asset paths absolute
-    for a, b in [('href="favicon.png?v=2"', 'href="/favicon.png?v=2"'), ('src="icon.png?v=2"', 'src="/icon.png?v=2"'),
-                 ('poster="film/poster.jpg"', 'poster="/film/poster.jpg"'), ('src="film/dormer.mp4"', 'src="/film/dormer.mp4"')]:
+    for a, b in [('href="favicon.png?v=2"', 'href="/favicon.png?v=2"'), ('src="icon-64.png?v=2"', 'src="/icon-64.png?v=2"'),
+                 ('poster="film/poster-1280.jpg"', 'poster="/film/poster-1280.jpg"'), ('src="film/dormer.mp4"', 'src="/film/dormer.mp4"')]:
         s = s.replace(a, b)
     s = s.replace('href="/compare/"', 'href="/fr/compare/"')
     for key, p in pages.PATHS.items():
@@ -437,15 +441,14 @@ def alt_page(lang: str) -> str:
 <script type="application/ld+json">
 {ld}
 </script>
-<link rel="preconnect" href="https://fonts.bunny.net">
-<link rel="stylesheet" href="https://fonts.bunny.net/css?family=young-serif:400|figtree:400,500,600,700&display=swap">
+{pages.FONT_HEAD}
 <style>
 {ALT_CSS}
 </style>
 </head>
 <body>
 <nav><div class="wrap">
-  <a class="brand" href="{home}"><img src="/icon.png?v=2" alt=""><span>Dormer</span></a>
+  <a class="brand" href="{home}" aria-label="Dormer"><img src="/icon-64.png?v=2" alt="" width="32" height="32"><span>Dormer</span></a>
   <span class="sp"></span>
   <a class="lang" href="{PAGES['alt'][other]}" hreflang="{other}" aria-label="{t['lang_aria']}" onclick="try{{localStorage.setItem('lang','{other}')}}catch(e){{}}">{t['lang_label']}</a>
   <a class="navlink" href="{home}">{e(t['nav_home'])}</a>
@@ -506,7 +509,7 @@ def main():
     if '<meta property="og:locale"' not in src:
         src = src.replace('<meta property="og:site_name" content="Dormer">',
                           '<meta property="og:site_name" content="Dormer">\n<meta property="og:locale" content="en_US">', 1)
-    src = set_pro_price(src)
+    src = set_fonts(set_pro_price(src))
     write("index.html", src)  # keep the source in sync with the price
     en = set_seo(src, "en")
     write("index.html", en)

@@ -1,0 +1,27 @@
+# Dormer
+
+> Dormer is a macOS app that turns the MacBook notch into a live island: music player with Shazam, listening together with nearby Macs, AirDrop shelf, clipboard history, per-app volume, ChatGPT and Claude, alerts, and a pixel companion that lives in the notch. Free for the core features; Dormer Pro is a one-time purchase (€10.99, 14-day free trial, no subscription). Made by an independent developer in France.
+
+Dormer needs a Mac with a notch and macOS 14.2 or later. It is downloaded from GitHub or with Homebrew (`brew install --cask zerdoxy741/dormer/dormer`). It is signed but not notarized by Apple, so macOS shows a warning on first launch; the versions page explains how to check the download.
+
+## Main pages
+
+- [Dormer home page](https://dormernotch.com/): features, film, pricing and FAQ
+- [Page d'accueil en français](https://dormernotch.com/fr/): the same page in French
+- [Compare notch apps](https://dormernotch.com/compare/): Dormer next to NotchNook, Alcove, DynamicLake, DynamicHorizon, Boring Notch and Atoll
+- [Versions and checksums](https://dormernotch.com/changelog/): release notes and SHA-256 for every version
+
+## Download
+
+- [Latest release on GitHub](https://github.com/Zerdoxy741/dormer/releases/latest): Dormer.zip
+- [Source code](https://github.com/Zerdoxy741/dormer/tree/main/source): MIT-licensed parts of the code
+
+## Legal
+
+- [Privacy](https://dormernotch.com/privacy/): what Dormer sends and what stays on your Mac
+- [Terms of use](https://dormernotch.com/terms/): trial, purchase, license and warranty
+- [Legal notice](https://dormernotch.com/legal/): publisher, hosting and sales
+
+## Contact
+
+- [info@dormernotch.com](mailto:info@dormernotch.com)

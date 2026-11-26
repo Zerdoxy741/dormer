@@ -11,6 +11,10 @@ ROOT = Path(__file__).resolve().parent.parent / "docs"
 SITE = "https://dormernotch.com"
 UPDATED = {"en": "Updated November 26, 2026", "fr": "Mis à jour le 26 novembre 2026"}
 CONTACT = '<a href="mailto:info@dormernotch.com">info@dormernotch.com</a>'
+# Polices hébergées sur le site (docs/fonts/), déclarées en ligne : rien ne bloque l'affichage.
+FONT_HEAD = ('<link rel="preload" href="/fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+             '<link rel="preload" href="/fonts/figtree-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+             '<style>' + (Path(__file__).resolve().parent / "fonts.css").read_text().strip() + '</style>')
 CERT_SHA256 = "01:19:CA:20:48:E5:6E:A9:2A:A3:A7:BF:A0:16:26:B9:9C:23:57:00:12:7B:69:78:B7:00:5A:7C:EC:6F:76:8C"
 CERT_NAME = "Notchy Local Signing"
 BREW = "brew install --cask zerdoxy741/dormer/dormer"
@@ -71,14 +75,13 @@ def _page(key: str, lang: str, title: str, desc: str, h1: str, lead: str, body: 
 <link rel="alternate" hreflang="en" href="{SITE}{p['en']}">
 <link rel="alternate" hreflang="fr" href="{SITE}{p['fr']}">
 <link rel="alternate" hreflang="x-default" href="{SITE}{p['en']}">
-<link rel="preconnect" href="https://fonts.bunny.net">
-<link rel="stylesheet" href="https://fonts.bunny.net/css?family=young-serif:400|figtree:400,500,600,700&display=swap">
+{FONT_HEAD}
 <style>
 {_css()}</style>
 </head>
 <body>
 <nav><div class="wrap">
-  <a class="brand" href="{home}"><img src="/icon.png?v=2" alt=""><span>Dormer</span></a>
+  <a class="brand" href="{home}" aria-label="Dormer"><img src="/icon-64.png?v=2" alt="" width="32" height="32"><span>Dormer</span></a>
   <span class="sp"></span>
   <a class="lang" href="{p[other]}" hreflang="{other}" onclick="try{{localStorage.setItem('lang','{other}')}}catch(e){{}}">{other.upper()}</a>
   <a class="navlink" href="{home}">{"Home" if lang == "en" else "Accueil"}</a>
