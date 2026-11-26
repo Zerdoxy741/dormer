@@ -1,5 +1,14 @@
 [
  {
+  "version": "0.8",
+  "build": "v37",
+  "date": "2026-11-26",
+  "notes": "Nouveautés de Dormer 0.8 :\n• Nouveau look Dormer : thème couleur lampe, lueur chaude sous la notch, réglages aux couleurs du site et titres en Young Serif\n• Étoiles dans la notch ouverte qui s'allument et s'éteignent au hasard (réglage), et mode nuit\n• Nouvel assistant de bienvenue guidé par le compagnon\n• Le compagnon a des émotions : choqué, impressionné, triste, inquiet, boudeur… avec un visage pour chacune, et il est triste quand tu ne joues plus avec lui\n• Il parle plus souvent, avec des pensées inventées par Apple Intelligence, et réagit à la musique, aux appels, au minuteur et à Claude\n• Quand rien ne joue, il traverse la notch d'une aile à l'autre\n• Trois nouveaux jeux : Attrape les étoiles, Jacques a dit et Chat perché ; plus tu le fais courir, plus il va vite\n• On peut jouer avec lui même quand il est sur les côtés ou en haut de l'écran\n• Flèches pour changer d'onglet et raccourcis clavier personnalisables\n• Un clic sur la notch fermée l'ouvre tout de suite",
+  "sha256": "cc79ea4bf22d8bce2f13914659f3b1f87af036315ff7433e68326169d40d44b7",
+  "virustotal": "https://www.virustotal.com/gui/file/cc79ea4bf22d8bce2f13914659f3b1f87af036315ff7433e68326169d40d44b7",
+  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v37"
+ },
+ {
   "version": "0.7",
   "build": "v36",
   "date": "2026-11-25",
