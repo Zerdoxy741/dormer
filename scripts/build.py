@@ -27,7 +27,7 @@ SITE = "https://dormernotch.com"
 DOWNLOAD = "https://github.com/Zerdoxy741/dormer/releases/latest/download/Dormer.zip"
 BUY = "https://buy.polar.sh/polar_cl_i0J4wAjf6ZKOnhGaEk4EFbYijV0jW689W7zpv001BK6"
 LASTMOD = "2026-11-25"
-FILM_DATE = "2026-11-25"
+FILM_DATE = "2026-11-25T12:00:00+01:00"
 
 PRICES = json.loads((ROOT.parent / "data" / "prices.json").read_text())["apps"]
 
