@@ -1,0 +1,27 @@
+[
+  {
+    "slug": "mac-volume-mixer",
+    "title": "Mac Volume Mixer: Control Each App's Volume From the Notch",
+    "desc": "macOS has no per-app volume mixer. Here is what Apple's Sound settings do, how to balance audio app by app, and how Dormer puts sliders in your MacBook's notch.",
+    "date": "2026-11-27",
+    "cover": "cover.jpg",
+    "cover_alt": "Abstract volume sliders arranged around a MacBook notch",
+    "cover_size": [
+      1260,
+      720
+    ]
+  },
+  {
+    "slug": "copy-paste-history-mac",
+    "title": "Copy and Paste History on Mac: How to See What You Copied",
+    "desc": "Your Mac keeps only the last thing you copied unless you turn history on. Here is how to see past clips, protect passwords and keep history in the notch.",
+    "date": "2026-11-27",
+    "cover": "cover.jpg",
+    "cover_alt": "Isometric cards suggest a retrievable clipboard history",
+    "cover_size": [
+      1260,
+      720
+    ],
+    "source": "babylovegrowth"
+  }
+]

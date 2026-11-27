@@ -1,0 +1,135 @@
+<p>A Mac remembers one copied item by default: the next Command-C replaces the last one. To get a real copy and paste history, you turn on the Spotlight clipboard history that newer macOS versions include, or you use a clipboard manager that lives where you already look. We built Dormer, a Mac app for notched MacBooks, to put clipboard history in the notch, next to the music, calendar and file shelf you already use there. This guide covers both routes, step by step, plus the privacy side that most guides skip.</p>
+
+<h2 id="tldr">TL;DR</h2>
+<ul>
+<li>By default, macOS holds only the most recent thing you copied. A scrollable history needs either Spotlight's clipboard search or a clipboard manager.</li>
+<li>Spotlight's history (<a href="https://support.apple.com/guide/mac-help/search-your-clipboard-history-mchl40d5b86b/mac">per Apple's instructions</a>) opens with Command-Space, then Command-4. It needs a recent macOS and is reached through search.</li>
+<li>Anything you copy can include passwords and one-time codes. Set a short retention time, and clear history after sensitive work.</li>
+<li>Dormer, a free app with a €10.99 one-time Pro license, brings clipboard history into the MacBook notch alongside verification-code copying, file shelf and more.</li>
+</ul>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#does-a-mac-keep-a-history-of-everything-you-copy">Does a Mac keep a history of everything you copy?</a></li>
+<li><a href="#a-clipboard-history-that-lives-in-the-notch">A clipboard history that lives in the notch</a></li>
+<li><a href="#how-to-see-your-clipboard-history-with-spotlight">How to see your clipboard history with Spotlight</a></li>
+<li><a href="#what-a-clipboard-manager-adds">What a clipboard manager adds</a></li>
+<li><a href="#why-clipboard-history-helps-students-and-professionals">Why clipboard history helps students and professionals</a></li>
+<li><a href="#protect-passwords-and-codes-in-your-history">Protect passwords and codes in your history</a></li>
+<li><a href="#getting-started-with-dormer">Getting started with Dormer</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#sources">Sources</a></li>
+</ul>
+<h2 id="does-a-mac-keep-a-history-of-everything-you-copy">Does a Mac keep a history of everything you copy?</h2>
+<p>No. The clipboard is a single shared slot that every app on your Mac can read and write. According to <a href="https://dev.to/alokt/macos-clipboard-history-what-gets-logged-what-leaks-and-how-to-audit-it-4knj">one developer's 2026 breakdown of how macOS handles it</a>, out of the box macOS retains only the most recent item and has no built-in scrollable history. Copy a link, then copy a sentence, and the link is gone.</p>
+<p>That explains the familiar frustration. You copy a shipping address, switch to a spreadsheet, copy a number, and now you have to go back for the address. People who do research, write reports, fill in forms or answer lots of messages repeat this loop dozens of times a day.</p>
+<p>There are two ways out:</p>
+<ol>
+<li><strong>A clipboard manager.</strong> A small app that records each copy and lets you pick from a list.</li>
+<li><strong>Spotlight's clipboard history.</strong> Apple added this in macOS 26 Tahoe. It is a search-based list of recent copies.</li>
+</ol>
+<p>The next sections cover both, starting with the one that stays in view while you work.</p>
+<h2 id="a-clipboard-history-that-lives-in-the-notch">A clipboard history that lives in the notch</h2>
+<p>The notch on a MacBook is dead space most of the time. Dormer turns it into a working area: music with synced lyrics, a file shelf with AirDrop, calendar, weather and timer widgets, per-app volume, Shazam, message replies, Claude and ChatGPT access, alerts and calls. Clipboard history is one of its features, so your recent copies sit in the same place as everything else you reach for during the day.</p>
+<p>The practical difference is how many steps sit between you and an old copy. Search-based history asks you to open a search field, type, select an item and then paste. A clipboard history in the notch is one glance and one click away from the app you are working in, with no window to switch to and no keyboard layout to memorize.</p>
+<p>Dormer also handles verification codes. When a code arrives by message, Dormer can copy it for you straight from the notch, so you do not have to find the message, select six digits and copy them by hand. For people who log in to several services a day, that removes a small, repeated interruption.</p>
+<p>Dormer is free to download and works without creating an account. Downloads include a limited Pro trial, and Dormer Pro is a one-time license per Mac, listed at €10.99 on <a href="https://dormernotch.com">the Dormer site</a>.</p>
+<figure><img src="/blog/copy-paste-history-mac/a-clipboard-history-that-lives-in-the-notch.jpg" alt="A clipboard history that lives in the notch" width="1280" height="720" loading="lazy" decoding="async"></figure>
+<h2 id="how-to-see-your-clipboard-history-with-spotlight">How to see your clipboard history with Spotlight</h2>
+<p>If your Mac runs macOS 26 Tahoe, you can search recent copies without installing anything. Apple documents the steps in its <a href="https://support.apple.com/guide/mac-help/search-your-clipboard-history-mchl40d5b86b/mac">Spotlight clipboard history guide</a>:</p>
+<ol>
+<li>Press Command-Space to open Spotlight.</li>
+<li>Press Command-4, or click to the right of the search field, to switch to clipboard results.</li>
+<li>Allow Clipboard results if your Mac asks.</li>
+<li>Search for the item you want and select it.</li>
+<li>Press Command-C to copy it again, then paste with Command-V where you need it.</li>
+</ol>
+<p>The same screen has an option to clear the history, also to the right of the search field.</p>
+<h3 id="how-long-spotlight-keeps-your-copies">How long Spotlight keeps your copies</h3>
+<p>Cult of Mac <a href="https://www.cultofmac.com/how-to/mac-clipboard-history">reports</a> that the Spotlight history keeps items for eight hours by default. As of macOS 26.1 you can change that in System Settings, under Spotlight: stretch it to seven days, shorten it to 30 minutes, clear the history, or turn off Results from Clipboard completely. <a href="https://www.macworld.com/article/2962021/this-macos-tahoe-26-1-setting-will-eliminate-embarrassing-clipboard-mishaps.html">Macworld describes the same 26.1 toggle</a> and the same three expiration choices.</p>
+<figure><img src="/blog/copy-paste-history-mac/spotlight-clipboard-history-retention-choices-an.jpg" alt="Spotlight clipboard history retention choices and settings" width="1280" height="720" loading="lazy" decoding="async"></figure>
+<p>If you want history at all, pick the shortest window that still covers your workday. Eight hours matches a normal working day; seven days means a code or password you copied on Monday is still searchable on Friday.</p>
+<h3 id="which-macs-can-use-it">Which Macs can use it</h3>
+<p>Spotlight clipboard history belongs to macOS 26 Tahoe, and Tahoe needs a MacBook Air from 2020 or newer, or a MacBook Pro from 2019 or newer, among other models, <a href="https://www.cultofmac.com/how-to/mac-clipboard-history">according to Cult of Mac</a>. Any Mac with a notch is recent enough to qualify, since notches arrived on the 2021 MacBook Pro. Models that cannot run Tahoe rely on a third-party clipboard manager instead.</p>
+<h3 id="the-hidden-second-clipboard">The hidden second clipboard</h3>
+<p>macOS has a little-known secondary clipboard for text. <a href="https://www.makeuseof.com/view-clipboard-history-mac/">MakeUseOf explains</a> that Control-K cuts text into it and Control-Y pastes it back, which gives you a second slot independent of Command-C. It holds a single item, so it is a trick for moving one passage while keeping another on the main clipboard, not a history.</p>
+<h2 id="what-a-clipboard-manager-adds">What a clipboard manager adds</h2>
+<p>A clipboard manager records every copy and shows it as a list you can reach any time. The features worth looking for are the ones that match how you work:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>What you need</th>
+<th>Why it matters</th>
+<th>What to look for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fast access</td>
+<td>A history you have to hunt for is a history you stop using</td>
+<td>Visible in the menu bar, notch or a single shortcut</td>
+</tr>
+<tr>
+<td>Images and files, not only text</td>
+<td>Screenshots and documents get copied too</td>
+<td>Previews of each item</td>
+</tr>
+<tr>
+<td>Sensitive-item handling</td>
+<td>Passwords and codes should not linger</td>
+<td>Short retention, easy clearing, ways to exclude sensitive items</td>
+</tr>
+<tr>
+<td>Pasting several items</td>
+<td>Research and forms need many snippets at once</td>
+<td>Support for pasting more than one item</td>
+</tr>
+<tr>
+<td>Account-free use</td>
+<td>Fewer places your data can end up</td>
+<td>No sign-up needed</td>
+</tr>
+</tbody>
+</table></div>
+<p>Pasting several items is a good example of what the built-in history lacks. <a href="https://appleinsider.com/articles/25/06/13/five-ways-macos-tahoe-makes-you-radically-more-productive">AppleInsider noted</a> that Spotlight's history cannot paste a group of copied items at once, while some third-party managers can. AppleInsider's example is a researcher copying a paper's URL, title, abstract and authors and pasting all five together.</p>
+<p>Dormer is built around keeping several functions in one compact spot. If you already use the notch for music or the file shelf, adding clipboard history there means one tool instead of a separate menu bar app for each job.</p>
+<h2 id="why-clipboard-history-helps-students-and-professionals">Why clipboard history helps students and professionals</h2>
+<p>The gain is not speed on any single paste. It is that you stop breaking your train of thought.</p>
+<p><strong>Students</strong> collect quotes, links and figures from many sources. With history, you can copy five passages from five tabs in a row and paste them into your notes afterward, rather than flipping back and forth after every copy.</p>
+<p><strong>Professionals</strong> copy order numbers, email snippets, meeting links and addresses between a browser, a spreadsheet and chat. History turns “what was that reference number?” into a quick look instead of a trip back to the source.</p>
+<p><strong>Anyone who logs in a lot</strong> copies codes from text messages. A verification code is useful for about a minute, which is exactly why it should not stay around, and why copying it directly from the notch and then moving on is handy.</p>
+<p>A simple routine that works: copy as you gather material, then paste in one pass. Use history as a short-term buffer for the current task, not an archive of your day.</p>
+<h2 id="protect-passwords-and-codes-in-your-history">Protect passwords and codes in your history</h2>
+<p>Any history stores whatever you copied, including things you wish it had not. Apple itself <a href="https://support.apple.com/guide/mac-help/search-your-clipboard-history-mchl40d5b86b/mac">warns</a> that sensitive information may show up in the clipboard when you enable Spotlight clipboard search. The same holds for any clipboard manager. A short checklist:</p>
+<ul>
+<li><strong>Shorten retention.</strong> In System Settings, under Spotlight, choose 30 minutes or eight hours rather than seven days if you handle sensitive material.</li>
+<li><strong>Clear after sensitive work.</strong> After copying a password, banking detail or recovery code, clear the history from the Spotlight clipboard view.</li>
+<li><strong>Use a password manager's own autofill</strong> where you can, so the secret never passes through the clipboard at all.</li>
+<li><strong>Be careful on shared or screen-shared Macs.</strong> A history list can display things on screen in a call or presentation. Clear it first.</li>
+<li><strong>Know what syncs.</strong> Apple's <a href="https://support.apple.com/en-us/102430">Universal Clipboard</a> copies content between nearby Apple devices signed in to the same Apple Account, with Bluetooth, Wi-Fi and Handoff turned on. It holds content only briefly, but whatever you copy on one device can show up on the other.</li>
+</ul>
+<p>If a clipboard manager offers its own cross-Mac sync, check what it syncs and where before you enable it, and whether it needs an account. Dormer's nearby music sharing works directly between Macs without a server or account, and the app itself can be used without creating one.</p>
+<h2 id="getting-started-with-dormer">Getting started with Dormer</h2>
+<p>Dormer is a free Mac app for notched MacBooks. Dormer Pro is a one-time license for €10.99 per Mac, and downloads include a limited Pro trial so you can use the features in your own workflow first. Beyond clipboard history, the notch gives you music with synced lyrics, nearby synchronized listening with other Macs, a file shelf with AirDrop, calendar, weather and timer widgets, Shazam, message replies, per-app volume, Claude and ChatGPT with optional screen context, and a customizable pixel companion.</p>
+<figure><img src="/blog/copy-paste-history-mac/dormernotch.jpg" alt="Dormernotch" width="1600" height="900" loading="lazy" decoding="async"></figure>
+<p>If you want clipboard history without opening a search window every time, <a href="https://dormernotch.com">download Dormer</a> and start with the trial. Version details and checksums are on the <a href="https://dormernotch.com/changelog">Dormer changelog</a>.</p>
+<h2 id="faq">FAQ</h2>
+<h3 id="how-do-i-see-what-i-copied-earlier-on-my-mac">How do I see what I copied earlier on my Mac?</h3>
+<p>On macOS 26 Tahoe, press Command-Space, then Command-4, and search the clipboard results. On any notched MacBook you can also use Dormer, which keeps clipboard history in the notch. Without one of these, the Mac holds only the last item.</p>
+<h3 id="how-long-does-mac-clipboard-history-last">How long does Mac clipboard history last?</h3>
+<p>Cult of Mac reports that Spotlight keeps items for eight hours by default. From macOS 26.1 you can change it to 30 minutes or seven days in System Settings under Spotlight, or clear it at any time.</p>
+<h3 id="can-i-turn-clipboard-history-off">Can I turn clipboard history off?</h3>
+<p>Yes. On macOS 26.1 and later, switch off Results from Clipboard in the Spotlight settings, as Macworld describes. You can also clear stored items at any time from the Spotlight clipboard view.</p>
+<h3 id="does-copy-and-paste-sync-between-my-mac-and-iphone">Does copy and paste sync between my Mac and iPhone?</h3>
+<p>Apple's Universal Clipboard does this for nearby devices signed in to the same Apple Account with Bluetooth, Wi-Fi and Handoff on. It passes along the most recent copy briefly. It is not a full history.</p>
+<h3 id="is-it-safe-to-copy-passwords-on-a-mac">Is it safe to copy passwords on a Mac?</h3>
+<p>It works, but whatever you copy can appear in a clipboard history. Use a short retention time, clear the history after copying anything sensitive, and prefer autofill from your password manager when possible.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://support.apple.com/guide/mac-help/search-your-clipboard-history-mchl40d5b86b/mac">Search your Clipboard history in Spotlight on Mac, Apple Support</a></li>
+<li><a href="https://www.cultofmac.com/how-to/mac-clipboard-history">Mac clipboard history: How to find and use it in macOS 26, Cult of Mac</a></li>
+<li><a href="https://www.macworld.com/article/2962021/this-macos-tahoe-26-1-setting-will-eliminate-embarrassing-clipboard-mishaps.html">This macOS Tahoe 26.1 setting will eliminate embarrassing clipboard mishaps, Macworld</a></li>
+<li><a href="https://www.makeuseof.com/view-clipboard-history-mac/">How to View the Clipboard History on a Mac, MakeUseOf</a></li>
+<li><a href="https://appleinsider.com/articles/25/06/13/five-ways-macos-tahoe-makes-you-radically-more-productive">Five ways macOS Tahoe makes you radically more productive, AppleInsider</a></li>
+<li><a href="https://support.apple.com/en-us/102430">Use Universal Clipboard to copy and paste between your Apple devices, Apple Support</a></li>
+<li><a href="https://dev.to/alokt/macos-clipboard-history-what-gets-logged-what-leaks-and-how-to-audit-it-4knj">macOS Clipboard History: What Gets Logged, What Leaks, and How to Audit It, DEV Community</a></li>
+</ul>
