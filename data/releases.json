@@ -13,89 +13,69 @@
   "build": "v40",
   "date": "2026-11-27",
   "notes": "- IA : nouveau réglage pour recadrer la capture d'écran dans la notch avant de l'envoyer (Réglages › IA).\n- IA : le bouton image ne bloque plus les clics sur le Mac, et le champ reste visible après avoir joint une image.\n- Compagnon : il ne bute plus contre les bords de l'écran, ne sort plus à moitié de l'écran, ne reste plus coincé tout en bas et ne grimpe plus à travers une fenêtre.\n- Compagnon : il ne gêne plus dans le minuteur ni le miroir.\n- Minuteur : plus rien n'est rogné, le texte prend la couleur du mode, et les statistiques sont séparées pour le focus, la pause et le compte à rebours.",
-  "sha256": "228cd257577ac3d0682415ffff4330fb033b2bb55385ed28f48827ed8b54efbf",
-  "virustotal": "https://www.virustotal.com/gui/file/228cd257577ac3d0682415ffff4330fb033b2bb55385ed28f48827ed8b54efbf",
-  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v40"
+  "sha256": "228cd257577ac3d0682415ffff4330fb033b2bb55385ed28f48827ed8b54efbf"
  },
  {
   "version": "0.9",
   "build": "v39",
   "date": "2026-11-27",
   "notes": "Minuteur entièrement refait : heures et minutes sur rouleaux, le compagnon qui lit, travaille ou boit son café dans un chalet ou sur une planète, stats de la semaine, tâche en cours, sons d'ambiance et programme de la séance. Nouveau : miroir caméra, notes vers Rappels, calculatrice scientifique, pipette à couleurs, pauses santé, scores en direct, gestes de pincement. Le compagnon se promène dans toute la notch, se pose sur les boutons et trouve son chemin vers la balle ou le laser, par les murs et le plafond. Statistiques anonymes, sans identifiant, à couper dans les réglages.",
-  "sha256": "624f680cf10bcc342dafd004ae7b7b272ae775961b08e2607c39bd28c585da2b",
-  "virustotal": "https://www.virustotal.com/gui/file/624f680cf10bcc342dafd004ae7b7b272ae775961b08e2607c39bd28c585da2b",
-  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v39"
+  "sha256": "624f680cf10bcc342dafd004ae7b7b272ae775961b08e2607c39bd28c585da2b"
  },
  {
   "version": "0.8.1",
   "build": "v38",
   "date": "2026-11-26",
   "notes": "Nouveautés de Dormer 0.8.1 :\n\nNouveau\n• Réglages refaits : barre latérale comme Réglages Système, 17 pages bien rangées, recherche, précédent / suivant, plus aucun réglage en double\n• Page Compagnon à part, page Calendrier et météo, page Volume (touches + MixVol)\n• Le compagnon se souvient de toi : il pose des questions, retient tes réponses et ce que tu aimes (réglages › Ce qu'il sait de toi)\n• Cerveau local : avec Ollama ou LM Studio, il écrit ses phrases sur ton Mac, en meilleur français\n• Thème Dormer : dégradé noir → bleu nuit avec étoiles dans la notch ouverte et les bannières, réglage du bleu et de la forme du dégradé\n\nAmélioré\n• Ses phrases sont plus claires et collent à ce que tu fais\n• Il reste immobile quand il parle et pendant Jacques a dit\n• Le bleu des bannières arrive avec l'ouverture, plus de seconde vague\n• La petite bannière de changement de morceau reste noire\n\nCorrigé\n• Les émotions du compagnon s'affichent de nouveau\n• « Afficher les secondes » s'applique à l'aperçu de l'horloge dans les réglages",
-  "sha256": "91886072574f8a3570fb58df904d356b56f65c80975efb080a5868a9f25b1ab4",
-  "virustotal": "https://www.virustotal.com/gui/file/91886072574f8a3570fb58df904d356b56f65c80975efb080a5868a9f25b1ab4",
-  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v38"
+  "sha256": "91886072574f8a3570fb58df904d356b56f65c80975efb080a5868a9f25b1ab4"
  },
  {
   "version": "0.8",
   "build": "v37",
   "date": "2026-11-26",
   "notes": "Nouveautés de Dormer 0.8 :\n• Nouveau look Dormer : thème couleur lampe, lueur chaude sous la notch, réglages aux couleurs du site et titres en Young Serif\n• Étoiles dans la notch ouverte qui s'allument et s'éteignent au hasard (réglage), et mode nuit\n• Nouvel assistant de bienvenue guidé par le compagnon\n• Le compagnon a des émotions : choqué, impressionné, triste, inquiet, boudeur… avec un visage pour chacune, et il est triste quand tu ne joues plus avec lui\n• Il parle plus souvent, avec des pensées inventées par Apple Intelligence, et réagit à la musique, aux appels, au minuteur et à Claude\n• Quand rien ne joue, il traverse la notch d'une aile à l'autre\n• Trois nouveaux jeux : Attrape les étoiles, Jacques a dit et Chat perché ; plus tu le fais courir, plus il va vite\n• On peut jouer avec lui même quand il est sur les côtés ou en haut de l'écran\n• Flèches pour changer d'onglet et raccourcis clavier personnalisables\n• Un clic sur la notch fermée l'ouvre tout de suite",
-  "sha256": "cc79ea4bf22d8bce2f13914659f3b1f87af036315ff7433e68326169d40d44b7",
-  "virustotal": "https://www.virustotal.com/gui/file/cc79ea4bf22d8bce2f13914659f3b1f87af036315ff7433e68326169d40d44b7",
-  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v37"
+  "sha256": "cc79ea4bf22d8bce2f13914659f3b1f87af036315ff7433e68326169d40d44b7"
  },
  {
   "version": "0.7",
   "build": "v36",
   "date": "2026-11-25",
   "notes": "Nouveautés de Dormer 0.7 :\n• Plusieurs activités en même temps dans la notch fermée : la musique en grand avec les autres activités (minuteur, IA…) en pastilles aux coins de la pochette, et un anneau de progression autour de l'égaliseur\n• Pendant un appel, l'appel prend la grande place et sa durée s'affiche à droite\n• Appels FaceTime entrants mieux détectés\n• Diagnostic : plus rien de personnel n'est envoyé (ni noms de fichiers, ni chemins, ni e-mails, ni adresses Bluetooth, ni contenu des images), et il passe par un serveur qui ne garde rien\n• Presse-papiers : les copies faites depuis un gestionnaire de mots de passe (Trousseau, 1Password, Bitwarden…) sont toujours ignorées\n• « Voir l'écran » est désactivé par défaut pour les nouveaux utilisateurs",
-  "sha256": "4ba6aa4aba4f0b1655258c47c40bc3ff5542a7aa5c7c41d18698b4f13126bf2d",
-  "virustotal": "https://www.virustotal.com/gui/file/4ba6aa4aba4f0b1655258c47c40bc3ff5542a7aa5c7c41d18698b4f13126bf2d",
-  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v36"
+  "sha256": "4ba6aa4aba4f0b1655258c47c40bc3ff5542a7aa5c7c41d18698b4f13126bf2d"
  },
  {
   "version": "0.6.1",
   "build": "v35",
   "date": "2026-11-25",
   "notes": "Nouveautés de Dormer 0.6.1 :\n• Nouvelle icône : une lucarne allumée sur un toit de tuiles, avec le chat en pixels assis dans la notch.\n• Même contenu que la version précédente, avec un numéro qui suit enfin la 0.6.",
-  "sha256": "938cf99d8b895428e0213bcb1bb1ad4b7109599c96c856d6aa5c16f1ed5e9fac",
-  "virustotal": null,
-  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v35"
+  "sha256": "938cf99d8b895428e0213bcb1bb1ad4b7109599c96c856d6aa5c16f1ed5e9fac"
  },
  {
   "version": "0.5.9",
   "build": "v34",
   "date": "2026-11-25",
   "notes": "• Cache-cache revu : des rideaux de théâtre en pixel art se ferment sur l'écran, le compagnon se cache n'importe où (sans gravité), 3 vibrations sur le trackpad au top départ, puis chaud / froid en vibrations quand ta souris approche\n• Nouvelle pastille Performances (à gauche d'Anki) : compteur dont l'aiguille suit le CPU ; au survol, fenêtre avec CPU, GPU, mémoire, disque, réseau, apps les plus gourmandes et température\n• Batterie : au survol, la batterie de tes appareils Bluetooth (AirPods, souris, clavier…)\n• Effet verre liquide sur les pastilles et sur tous les boutons du lecteur (petit et grand), qui suit la souris\n• Survol des pastilles plus fiable\n• Animation heure ↔ lecteur dans la grande bannière plus propre\n• La grande pochette n'apparaît plus hors de l'onglet Accueil ni après une notification\n• Le compagnon s'intègre mieux quand on ouvre la notch pendant qu'il est dans sa bulle",
-  "sha256": null,
-  "virustotal": null,
-  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v34"
+  "sha256": null
  },
  {
   "version": "0.6",
   "build": "v33",
   "date": "2026-11-25",
   "notes": "Nouveautés de Dormer 0.6 :\n• Batterie de tes appareils : laisse le curseur sur la batterie, une petite fenêtre s'ouvre en douceur avec le Mac et tes accessoires Bluetooth.\n• Performances du Mac : un compteur à aiguille (à gauche d'Anki) suit le processeur. Au survol, une fenêtre détaille CPU, GPU, mémoire, disque, réseau et les apps les plus gourmandes. À activer ou couper dans Réglages › Personnalisation.\n• Effet verre liquide : les pastilles de la barre (batterie, performances, Anki) se remplissent de verre au survol avant d'ouvrir leur fenêtre, et le survol est plus fiable.\n• Effet loupe sur tous les boutons du lecteur, dans la grande bannière comme dans l'aperçu musique : une goutte de verre grossit l'icône et suit un peu la souris.\n• Passage plus fluide entre l'heure et le lecteur quand tu fais défiler la grande bannière.\n• Moins gourmande en énergie : l'horloge ne tourne que quand elle est affichée, les reflets animés sont limités à 30 images/s, la détection du plein écran est plus économe et les réveils de l'app sont regroupés.\n• Correction : la grande pochette n'apparaît plus quand tu n'es pas dans l'onglet Accueil.",
-  "sha256": null,
-  "virustotal": null,
-  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v33"
+  "sha256": null
  },
  {
   "version": "0.5.8",
   "build": "v32",
   "date": "2026-11-25",
   "notes": "Nouveautés de Dormer 0.5.8 :\n• La pochette voyage : elle glisse de l'aile à l'aperçu musique, et de la notch jusqu'au grand lecteur quand tu l'ouvres (et revient à la fermeture).\n• Animations plus douces : les panneaux et onglets apparaissent en fondu au lieu de glisser depuis la droite, et le contenu de la notch ouverte arrive par le haut.\n• La pastille d'activité en direct (Claude, minuteur…) reste devant la pochette.\n• Le compagnon rentre proprement dans la notch quand tu l'ouvres ou la survoles pendant qu'il est dans sa bulle.\n• Corrections : plus de grande pochette qui apparaît à la fermeture ou après une notification, plus de saut de taille de la pochette en pause.",
-  "sha256": null,
-  "virustotal": null,
-  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v32"
+  "sha256": null
  },
  {
   "version": "0.5.7",
   "build": "v31",
   "date": "2026-11-25",
   "notes": "Dormer consomme beaucoup moins de batterie et de processeur : le compagnon se dessine moins souvent quand il est calme, l'encoche fermée s'allège et se met en pause quand l'écran dort, le mélangeur réagit directement aux changements de sortie et de volume, et la fenêtre Réglages ne se redessine plus pour rien. / Dormer now uses much less battery and CPU: the companion redraws less often when calm, the closed notch is lighter and pauses while the display sleeps, the mixer reacts instantly to output and volume changes, and the Settings window no longer redraws for nothing.",
-  "sha256": null,
-  "virustotal": null,
-  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v31"
+  "sha256": null
  }
 ]

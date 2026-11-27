@@ -1,18 +1,12 @@
 #!/usr/bin/env python3
-"""Turn the GitHub releases API response (stdin) into data/releases.json (stdout).
-
-Used by release.sh in the app repo:
-    gh api "repos/Zerdoxy741/dormer/releases?per_page=100" | python3 scripts/releases.py > data/releases.json
-
-Keeps only published releases, with the notes shown to users (before the <!-- verify --> marker)
-and the SHA-256 / VirusTotal lines that release.sh writes after it.
-"""
+"""Merge a GitHub release object from stdin with the archived notes."""
 import json
 import re
 import sys
+from pathlib import Path
 
 out = []
-for r in json.load(sys.stdin):
+for r in [json.load(sys.stdin)]:
     if r.get("draft") or r.get("prerelease"):
         continue
     body = r.get("body") or ""
@@ -28,4 +22,12 @@ for r in json.load(sys.stdin):
         "virustotal": vt.group(0) if vt else None,
         "url": r.get("html_url"),
     })
+if not out:
+    sys.exit("Release stable attendue")
+archive = Path(__file__).resolve().parents[1] / "data/releases.json"
+for previous in json.loads(archive.read_text()):
+    if previous["build"] != out[0]["build"]:
+        previous.pop("url", None)
+        previous.pop("virustotal", None)
+        out.append(previous)
 print(json.dumps(out, ensure_ascii=False, indent=1))

@@ -417,7 +417,7 @@ def _releases(lang: str) -> str:
     path = ROOT.parent / "data" / "releases.json"
     rels = json.loads(path.read_text()) if path.exists() else []
     out = []
-    for r in rels:
+    for index, r in enumerate(rels):
         lines = [l.strip() for l in r["notes"].splitlines() if l.strip()]
         bullets = [l.lstrip("•-* ").replace("**", "") for l in lines if l[:1] in "•-*"]
         intro = [l for l in lines if l[:1] not in "•-*" and not l.lower().startswith(("nouveautés", "what's new"))]
@@ -426,9 +426,10 @@ def _releases(lang: str) -> str:
         sha = (f'<p class="sum">SHA-256 : <code>{r["sha256"]}</code></p>' if lang == "fr"
                else f'<p class="sum">SHA-256: <code>{r["sha256"]}</code></p>') if r.get("sha256") else ""
         vt = (f'<p class="sum"><a href="{r["virustotal"]}">{"Analyse antivirus (VirusTotal)" if lang == "fr" else "Antivirus scan (VirusTotal)"}</a></p>'
-              if r.get("virustotal") else "")
+              if index == 0 and r.get("virustotal") else "")
+        github = f' · <a href="{r["url"]}">GitHub</a>' if index == 0 else ""
         out.append(f'<div class="rel"><h3>Dormer {html.escape(r["version"])}</h3>'
-                   f'<p class="when">{_day(r["date"], lang)} · <a href="{r["url"]}">GitHub</a></p>{body}{sha}{vt}</div>')
+                   f'<p class="when">{_day(r["date"], lang)}{github}</p>{body}{sha}{vt}</div>')
     if not out:
         out.append("<p>—</p>")
     note = ("<p>Les notes des versions sont écrites en français.</p>" if lang == "en" else "")
