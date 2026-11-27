@@ -1,5 +1,14 @@
 [
  {
+  "version": "0.9",
+  "build": "v39",
+  "date": "2026-11-27",
+  "notes": "Minuteur entièrement refait : heures et minutes sur rouleaux, le compagnon qui lit, travaille ou boit son café dans un chalet ou sur une planète, stats de la semaine, tâche en cours, sons d'ambiance et programme de la séance. Nouveau : miroir caméra, notes vers Rappels, calculatrice scientifique, pipette à couleurs, pauses santé, scores en direct, gestes de pincement. Le compagnon se promène dans toute la notch, se pose sur les boutons et trouve son chemin vers la balle ou le laser, par les murs et le plafond. Statistiques anonymes, sans identifiant, à couper dans les réglages.",
+  "sha256": "624f680cf10bcc342dafd004ae7b7b272ae775961b08e2607c39bd28c585da2b",
+  "virustotal": "https://www.virustotal.com/gui/file/624f680cf10bcc342dafd004ae7b7b272ae775961b08e2607c39bd28c585da2b",
+  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v39"
+ },
+ {
   "version": "0.8.1",
   "build": "v38",
   "date": "2026-11-26",

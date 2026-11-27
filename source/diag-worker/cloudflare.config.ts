@@ -15,7 +15,7 @@ export default defineConfig({
 			// 3 envois par minute et par adresse
 			LIMIT: bindings.rateLimit({ namespace: "1001", simple: { limit: 3, period: 60 } }),
 			// Compteurs anonymes par jour (installations, jours actifs, avis) : aucune donnée personnelle
-			STATS: bindings.d1(),
+			STATS: bindings.d1({ id: "a9b1bd43-fc6b-40fe-ad55-41a647503c59" }),
 			// Clé pour lire /stats : `cf workers secrets put STATS_KEY`
 			STATS_KEY: bindings.secret(),
 		},

@@ -22,6 +22,7 @@ import Foundation
 /// // Réglages › Général
 /// Toggle("Envoyer des statistiques anonymes", isOn: $statsEnabled)   // @AppStorage(Stats.enabledKey)
 /// ```
+@MainActor
 enum Stats {
 	static let enabledKey = "stats.enabled"
 	private static let installSentKey = "stats.installSent"
@@ -44,17 +45,21 @@ enum Stats {
 
 	/// À appeler une fois, au lancement. Dormer reste ouvert des jours entiers : on revérifie
 	/// toutes les heures et à chaque réveil du Mac pour compter chaque jour d'utilisation.
+	/// À appeler en tout premier (avant que l'app n'écrive ses réglages) : note si Dormer était déjà là.
+	static func prepare() {
+		hadDormerBefore = hasOtherDormerSettings()
+	}
+
 	static func start(reportProblem: @escaping () -> Void) {
 		self.reportProblem = reportProblem
-		hadDormerBefore = hasOtherDormerSettings()
 		if defaults.object(forKey: firstLaunchKey) == nil {
 			defaults.set(Date(), forKey: firstLaunchKey)
 		}
 		tick()
-		timer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: true) { _ in tick() }
+		timer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: true) { _ in MainActor.assumeIsolated { tick() } }
 		NSWorkspace.shared.notificationCenter.addObserver(
 			forName: NSWorkspace.didWakeNotification, object: nil, queue: .main
-		) { _ in tick() }
+		) { _ in MainActor.assumeIsolated { tick() } }
 	}
 
 	private static func tick() {
@@ -123,11 +128,11 @@ enum Stats {
 
 	// MARK: - Envoi
 
-	private static func hello(_ event: String, done: @escaping (Bool) -> Void) {
+	private static func hello(_ event: String, done: @escaping @MainActor (Bool) -> Void) {
 		post("/hello", ["event": event, "version": appVersion, "macos": macOSVersion], done: done)
 	}
 
-	private static func post(_ path: String, _ body: [String: Any], done: @escaping (Bool) -> Void) {
+	private static func post(_ path: String, _ body: [String: Any], done: @escaping @MainActor (Bool) -> Void) {
 		var req = URLRequest(url: base.appendingPathComponent(path))
 		req.httpMethod = "POST"
 		req.timeoutInterval = 15
@@ -137,7 +142,7 @@ enum Stats {
 		// Session éphémère : ni cookie ni cache, rien qui pourrait servir à reconnaître le Mac
 		URLSession(configuration: .ephemeral).dataTask(with: req) { _, res, _ in
 			let ok = (res as? HTTPURLResponse)?.statusCode == 204
-			DispatchQueue.main.async { done(ok) }
+			DispatchQueue.main.async { MainActor.assumeIsolated { done(ok) } }
 		}.resume()
 	}
 
