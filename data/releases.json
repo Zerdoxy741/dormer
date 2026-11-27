@@ -1,5 +1,14 @@
 [
  {
+  "version": "0.9.1",
+  "build": "v40",
+  "date": "2026-11-27",
+  "notes": "- IA : nouveau réglage pour recadrer la capture d'écran dans la notch avant de l'envoyer (Réglages › IA).\n- IA : le bouton image ne bloque plus les clics sur le Mac, et le champ reste visible après avoir joint une image.\n- Compagnon : il ne bute plus contre les bords de l'écran, ne sort plus à moitié de l'écran, ne reste plus coincé tout en bas et ne grimpe plus à travers une fenêtre.\n- Compagnon : il ne gêne plus dans le minuteur ni le miroir.\n- Minuteur : plus rien n'est rogné, le texte prend la couleur du mode, et les statistiques sont séparées pour le focus, la pause et le compte à rebours.",
+  "sha256": "228cd257577ac3d0682415ffff4330fb033b2bb55385ed28f48827ed8b54efbf",
+  "virustotal": "https://www.virustotal.com/gui/file/228cd257577ac3d0682415ffff4330fb033b2bb55385ed28f48827ed8b54efbf",
+  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v40"
+ },
+ {
   "version": "0.9",
   "build": "v39",
   "date": "2026-11-27",
