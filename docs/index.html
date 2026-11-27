@@ -297,13 +297,33 @@ section{padding:110px 0}
 .mvol b{font-weight:500;color:#8f8c9b;text-align:right;font-variant-numeric:tabular-nums}
 .mans{margin-top:10px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.07);color:#ece9f4}
 .mans b{color:var(--lamp);font-weight:600}
+.msports{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.mchip{border:1px solid rgba(255,255,255,.14);background:none;color:#b9b5c6;border-radius:99px;padding:4px 10px;font:600 11.5px/1.2 inherit;font-family:inherit;cursor:pointer}
+.mchip:hover{color:#fff;border-color:rgba(255,255,255,.3)}
+.mchip.on{background:rgba(255,207,112,.18);border-color:rgba(255,207,112,.45);color:var(--lamp)}
+.mscore{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mscore .tm{display:flex;align-items:center;gap:7px;font-weight:700;font-size:14px}
+.mscore .sc{font-size:18px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.02em;color:var(--lamp)}
+.mscore .lv{font-size:11px;font-weight:600;color:#34d399;white-space:nowrap}
+.macts{display:flex;gap:8px;margin-top:11px}
+.mn code{margin-top:4px;padding:5px 8px;font-size:12px}
+.mbtn.pri{background:#34d399;color:#062b1d}
+.mbtn.pri:hover{background:#4ade80}
+.mbtn.no{background:rgba(255,95,87,.22);color:#ff9b95}
+.anki-counts{display:flex;gap:10px;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.anki-counts b:nth-child(1){color:#60a5fa}
+.anki-counts b:nth-child(2){color:#f87171}
+.anki-counts b:nth-child(3){color:#34d399}
 
 /* everything else */
 .rest{display:grid;grid-template-columns:1fr 1fr;column-gap:56px;margin-top:48px}
-.rest div{display:flex;gap:16px;align-items:baseline;padding:18px 0;border-top:1px solid var(--line)}
-.rest dt{font-weight:600;flex:none;width:11.5em}
-.rest dd{color:var(--mist);font-size:16px}
-.rest .pro{display:inline-block;margin-left:8px;font-size:12.5px;font-weight:600;color:var(--lamp);border:1px solid rgba(255,207,112,.45);border-radius:6px;padding:0 6px;vertical-align:2px}
+.rest > div{display:flex;gap:15px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)}
+.rest .ric{width:36px;height:36px;border-radius:10px;background:rgba(255,207,112,.1);border:1px solid rgba(255,207,112,.22);color:var(--lamp);display:grid;place-items:center;flex:none;margin-top:2px}
+.rest .ric svg{width:18px;height:18px}
+.rest .rtxt{flex:1;min-width:0}
+.rest dt{font-weight:600;font-size:17.5px;margin-bottom:4px}
+.rest dd{color:var(--mist);font-size:15.5px;line-height:1.55}
+.rest .pro{display:inline-block;margin-left:8px;font-size:12px;font-weight:600;color:var(--lamp);border:1px solid rgba(255,207,112,.45);border-radius:6px;padding:0 6px;vertical-align:1px}
 
 /* pricing */
 .plans{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:52px;max-width:900px}
@@ -363,8 +383,6 @@ footer a:hover{color:var(--ink)}
   .exlist{gap:64px}
   .steps{grid-template-columns:minmax(0,1fr);gap:28px}
   .room{padding:26px}
-  .rest dt{width:auto}
-  .rest div{flex-direction:column;gap:2px}
   section{padding:84px 0}
 }
 @media (max-width:560px){
@@ -564,13 +582,13 @@ footer a:hover{color:var(--ink)}
   <div class="wrap">
     <div class="head">
       <h2><span lang="en">Things you won't find in other notch apps.</span><span lang="fr">Ce que tu ne trouveras pas dans les autres apps de notch.</span></h2>
-      <p class="lead"><span lang="en">The usual music and files are here too. But these six, only Dormer does.</span><span lang="fr">La musique et les fichiers, tout le monde les a. Ces six-là, il n'y a que Dormer.</span></p>
+      <p class="lead"><span lang="en">The usual music and files are here too. These, only Dormer does.</span><span lang="fr">La musique et les fichiers, tout le monde les a. Tout ça, il n'y a que Dormer.</span></p>
     </div>
     <div class="duo">
       <div class="room">
         <h3><span lang="en">A pixel cat lives in your notch.</span><span lang="fr">Un chat en pixels vit dans ta notch.</span></h3>
-        <p><span lang="en">It blinks, follows your cursor, dances to your music and dozes off when you leave. Feed it, level it up, play hide-and-seek. Throw it a ball and it leaps across your windows to catch it.</span><span lang="fr">Il cligne des yeux, suit ta souris, danse sur ta musique et s'endort quand tu t'en vas. Nourris-le, fais-le monter de niveau, jouez à cache-cache. Lance-lui une balle : il saute de fenêtre en fenêtre pour l'attraper.</span></p>
-        <p class="small"><span lang="en">Cat, dog, bunny, robot or ghost. Not your thing? Turn it off in Settings › Customize › Companion.</span><span lang="fr">Chat, chien, lapin, robot ou fantôme. Pas ton truc ? Désactive-le dans Réglages › Personnalisation › Compagnon.</span></p>
+        <p><span lang="en">It blinks, follows your cursor, dances to your music and dozes off when you leave. Feed it, level it up, play 5 games including haptic hide-and-seek. Throw it a ball and it leaps across your windows. It remembers what you like and speaks with Apple Intelligence or a local model (Ollama, LM Studio).</span><span lang="fr">Il cligne des yeux, suit ta souris, danse sur ta musique et s'endort quand tu t'en vas. Nourris-le, fais-le monter de niveau, joue à 5 jeux dont cache-cache haptique. Lance-lui une balle : il saute de fenêtre en fenêtre. Il retient ce que tu aimes et parle avec Apple Intelligence ou un modèle local (Ollama, LM Studio).</span></p>
+        <p class="small"><span lang="en">Cat, dog, bunny, robot or ghost. Not your thing? Turn it off in Settings › Companion.</span><span lang="fr">Chat, chien, lapin, robot ou fantôme. Pas ton truc ? Désactive-le dans Réglages › Compagnon.</span></p>
         <div class="stage" id="catStage">
           <div class="mini"></div>
           <div class="win" style="left:7%;top:38%;width:38%;height:50%"></div>
@@ -627,7 +645,61 @@ footer a:hover{color:var(--ink)}
           <div class="mans"><b>Claude</b> <span lang="en">Column C is your margin: sale price minus cost, row by row.</span><span lang="fr">La colonne C, c'est ta marge : prix de vente moins coût, ligne par ligne.</span></div>
         </div></div>
         <h3><span lang="en">An AI that sees your screen.</span><span lang="fr">Une IA qui voit ton écran.</span></h3>
-        <p><span lang="en">Ask Claude or ChatGPT from the notch. A screenshot goes with your question, so it knows what you're talking about. One click turns that off. It uses your own ChatGPT or Claude subscription: no API key, nothing extra to pay Dormer.</span><span lang="fr">Pose ta question à Claude ou ChatGPT depuis la notch. Une capture de l'écran part avec, pour qu'il sache de quoi tu parles. Un clic suffit pour couper ça. Il utilise ton propre abonnement ChatGPT ou Claude : pas de clé API, rien de plus à payer à Dormer.</span></p>
+        <p><span lang="en">Ask Claude or ChatGPT from the notch. A screenshot goes with your question—and you can crop the exact area right in the notch, or turn it off in one click. Uses your own ChatGPT or Claude plan, with no API key.</span><span lang="fr">Pose ta question à Claude ou ChatGPT depuis la notch. Une capture de l'écran part avec — et tu peux la recadrer directement dans la notch, ou la couper en un clic. Utilise ton propre abonnement ChatGPT ou Claude, sans clé API.</span></p>
+      </div>
+      <div class="ex">
+        <div class="eave"><div class="mn">
+          <div class="mscore" id="scoreBox">
+            <span class="tm" id="scL">PSG</span>
+            <span class="sc" id="scM">2 – 1</span>
+            <span class="tm" id="scR">RMA</span>
+            <span class="lv" id="scS">● 67'</span>
+          </div>
+          <div class="msports" id="scoreTabs">
+            <button class="mchip on" type="button" data-sp="foot"><span lang="en">Football</span><span lang="fr">Foot</span></button>
+            <button class="mchip" type="button" data-sp="f1">F1</button>
+            <button class="mchip" type="button" data-sp="nba">NBA</button>
+            <button class="mchip" type="button" data-sp="tennis">Tennis</button>
+          </div>
+        </div></div>
+        <h3><span lang="en">Live scores for matches and races.</span><span lang="fr">Les scores en direct des matchs et des courses.</span></h3>
+        <p><span lang="en">Follow your football clubs (Champions League, Premier League, LaLiga, Ligue 1…), NBA teams, Formula 1 drivers (position and lap) and ATP/WTA players. Scores sit in the closed notch wings, with kick-off and goal banners. No account needed.</span><span lang="fr">Suis tes clubs de foot (Ligue des champions, Ligue 1, Premier League…), équipes NBA, pilotes de Formule 1 (position et tour) et joueurs ATP/WTA. Le score reste dans les ailes autour de la caméra, avec bannières au coup d'envoi et à chaque but. Sans compte.</span></p>
+      </div>
+      <div class="ex">
+        <div class="eave"><div class="mn">
+          <div class="mrow">
+            <span class="mic" style="background:rgba(255,207,112,.16);color:var(--lamp)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
+            <div><span class="mut">Claude Code · <span lang="en">Permission</span><span lang="fr">Permission</span></span><code>npm test -- --watch=false</code></div>
+          </div>
+          <div class="macts" id="ccActs">
+            <button class="mbtn pri" type="button" data-cc="allow"><span lang="en">Allow</span><span lang="fr">Autoriser</span></button>
+            <button class="mbtn no" type="button" data-cc="deny"><span lang="en">Deny</span><span lang="fr">Refuser</span></button>
+          </div>
+        </div></div>
+        <h3><span lang="en">Approve Claude Code right from the notch.</span><span lang="fr">Autorise Claude Code depuis la notch.</span></h3>
+        <p><span lang="en">See running Claude Code sessions, active tools and elapsed time—and allow or deny commands directly from the notch without switching windows. Also tracks when ChatGPT or Claude finishes writing.</span><span lang="fr">Suis tes sessions Claude Code, l'outil en cours et le temps écoulé — et autorise ou refuse une commande directement depuis la notch sans changer de fenêtre. Prévient aussi quand ChatGPT ou Claude a fini d'écrire.</span></p>
+      </div>
+      <div class="ex">
+        <div class="eave"><div class="mn">
+          <div class="mrow">
+            <span class="mic" style="background:rgba(96,165,250,.18);color:#60a5fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><line x1="8" y1="8" x2="16" y2="8"/><path d="M8 13h2M14 13h2M8 17h2M14 17h2"/></svg></span>
+            <div id="pinchDemo"><span class="mut" id="pinchMut"><span lang="en">Spread fingers on notch</span><span lang="fr">Écarte deux doigts sur la notch</span></span><b id="pinchExpr">35 € → $37.80</b></div>
+            <button class="mbtn" id="pinchBtn" type="button"><span lang="en">Note</span><span lang="fr">Note</span></button>
+          </div>
+        </div></div>
+        <h3><span lang="en">Pinch the notch for notes, math &amp; conversions.</span><span lang="fr">Pince la notch pour noter ou calculer.</span></h3>
+        <p><span lang="en">Pinch two fingers on the notch to jot a quick note straight into Apple Reminders. Spread them to open the scientific calculator, convert units and currencies, or check time zones—press Return to copy.</span><span lang="fr">Rapproche deux doigts sur la notch pour envoyer une note dans Rappels. Écarte-les pour ouvrir la calculatrice scientifique, convertir unités et devises ou vérifier un fuseau horaire — Entrée copie le résultat.</span></p>
+      </div>
+      <div class="ex">
+        <div class="eave"><div class="mn" aria-hidden="true">
+          <div class="mrow">
+            <span class="mic" style="background:rgba(248,113,113,.16);color:#f87171"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.6-9.3-8.6C1 9.4 2.4 5.5 6 4.6c2-.5 4 .4 5.2 2 1.2-1.6 3.2-2.5 5.2-2 3.6.9 5 4.8 3.3 7.8C19 16.4 12 21 12 21z"/></svg></span>
+            <div><span class="mut"><span lang="en">Health &amp; Anki</span><span lang="fr">Santé et Anki</span></span><span lang="en">Drink a glass of water · Anki due:</span><span lang="fr">Boire un verre d'eau · Anki :</span></div>
+            <span class="anki-counts" title="New / Learn / Review"><b>6</b><b>3</b><b>21</b></span>
+          </div>
+        </div></div>
+        <h3><span lang="en">Anki cards &amp; smart health breaks.</span><span lang="fr">Cartes Anki et pauses santé intelligentes.</span></h3>
+        <p><span lang="en">Keep an eye on your Anki decks due today with a daily nudge. Plus gentle reminders to drink, stretch or rest your eyes (20-20-20)—automatically paused in calls, fullscreen, Focus mode or when locked.</span><span lang="fr">Vois tes cartes Anki du jour dans la notch avec un rappel quotidien. Et des pauses pour boire, t'étirer ou reposer tes yeux (20-20-20) — coupées en appel, en plein écran, en Concentration ou écran verrouillé.</span></p>
       </div>
     </div>
   </div>
@@ -637,16 +709,73 @@ footer a:hover{color:var(--ink)}
   <div class="wrap">
     <div class="head">
       <h2><span lang="en">And the everyday things, done well.</span><span lang="fr">Et le quotidien, bien fait.</span></h2>
+      <p class="lead"><span lang="en">Everything else you expect from a notch app is built right in—no extra utilities needed.</span><span lang="fr">Tout ce qu'on attend d'une app de notch est déjà là, sans empiler d'autres utilitaires.</span></p>
     </div>
     <dl class="rest">
-      <div><dt><span lang="en">Music &amp; lyrics</span><span lang="fr">Musique et paroles</span></dt><dd><span lang="en">Artwork, controls, output device and synced lyrics, with Spotify and Apple Music.</span><span lang="fr">Pochette, lecture, sortie audio et paroles synchronisées, avec Spotify et Musique.</span></dd></div>
-      <div><dt><span lang="en">Shelf &amp; AirDrop</span><span lang="fr">Étagère et AirDrop</span></dt><dd><span lang="en">Drop a file on the notch to keep it handy, or AirDrop it in one move.</span><span lang="fr">Pose un fichier sur la notch pour le garder sous la main, ou envoie-le par AirDrop.</span></dd></div>
-      <div><dt><span lang="en">Clipboard history</span><span lang="fr">Presse-papiers</span><span class="pro">Pro</span></dt><dd><span lang="en">Your latest copies. Images get a title written on your Mac. Nothing leaves it.</span><span lang="fr">Tes derniers éléments copiés. Les images reçoivent un titre écrit sur ton Mac. Rien n'en sort.</span></dd></div>
-      <div><dt><span lang="en">ChatGPT &amp; Claude</span><span lang="fr">ChatGPT et Claude</span><span class="pro">Pro</span></dt><dd><span lang="en">See when an answer is being written, and get a nudge when it's ready.</span><span lang="fr">Vois quand une réponse s'écrit, et sois prévenu quand elle est prête.</span></dd></div>
-      <div><dt><span lang="en">Alerts &amp; calls</span><span lang="fr">Alertes et appels</span><span class="pro">Pro</span></dt><dd><span lang="en">AirPods and case battery, low battery, calls, upcoming events.</span><span lang="fr">Batterie des AirPods et du boîtier, batterie faible, appels, événements à venir.</span></dd></div>
-      <div><dt><span lang="en">Calendar, weather, timer</span><span lang="fr">Agenda, météo, minuteur</span></dt><dd><span lang="en">Today's events and the weather at a glance, plus a timer that counts down in the notch.</span><span lang="fr">Les événements du jour et la météo d'un coup d'œil, et un minuteur qui défile dans la notch.</span></dd></div>
-      <div><dt><span lang="en">Make it yours</span><span lang="fr">À ton image</span><span class="pro">Pro</span></dt><dd><span lang="en">Notch style, size, colors, widgets, tab order, clock and HUDs.</span><span lang="fr">Style, taille, couleurs, widgets, ordre des onglets, horloge et HUD.</span></dd></div>
-      <div><dt><span lang="en">Built-in updates</span><span lang="fr">Mises à jour intégrées</span></dt><dd><span lang="en">New versions install from Dormer's settings. Your setup stays as it is.</span><span lang="fr">Les nouvelles versions s'installent depuis les réglages. Tes réglages restent en place.</span></dd></div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Music, lyrics &amp; web players</span><span lang="fr">Musique, paroles et lecteurs web</span></dt><dd><span lang="en">Artwork, controls, audio output switcher and synced lyrics with Spotify, Apple Music, plus YouTube, SoundCloud and Deezer in Safari, Chrome, Brave and Edge.</span><span lang="fr">Pochette, lecture, sortie audio et paroles synchronisées avec Spotify, Musique, ainsi que YouTube, SoundCloud et Deezer dans Safari, Chrome, Brave et Edge.</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Shelf, AirDrop &amp; downloads</span><span lang="fr">Étagère, AirDrop et téléchargements</span></dt><dd><span lang="en">Drop files on the notch to keep them handy, AirDrop or share them (<span class="pro">Pro</span>), and track active browser and AirDrop downloads with a live ring in the closed notch.</span><span lang="fr">Dépose des fichiers sur la notch, envoie-les par AirDrop ou partage-les (<span class="pro">Pro</span>), et suis tes téléchargements (Safari, Chrome, Firefox, AirDrop) avec un anneau dans la notch fermée.</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Clipboard history &amp; color picker</span><span lang="fr">Presse-papiers et pipette</span></dt><dd><span lang="en">Your latest copies stay in memory (password managers skipped), with on-device image titles (<span class="pro">Pro</span>). Plus a screen eyedropper copying HEX, RGB, HSL or SwiftUI codes.</span><span lang="fr">Tes derniers éléments copiés restent en mémoire (gestionnaires de mots de passe ignorés), avec titre des images sur ton Mac (<span class="pro">Pro</span>). Plus une pipette d'écran (HEX, RGB, HSL, SwiftUI).</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Volume &amp; brightness HUD</span><span lang="fr">HUD volume et luminosité</span><span class="pro">Pro</span></dt><dd><span lang="en">Replaces macOS's default volume and brightness overlays right inside the notch, with selectable HUD styles.</span><span lang="fr">Remplace les fenêtres de volume et de luminosité de macOS directement dans la notch, avec plusieurs styles au choix.</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14l4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Mac performance</span><span lang="fr">Performances du Mac</span></dt><dd><span lang="en">A live CPU gauge in the bar; hover to inspect CPU, GPU, memory, disk, network, temperature and the heaviest apps.</span><span lang="fr">Un compteur à aiguille suit le CPU dans la barre ; au survol, détail du CPU, GPU, mémoire, disque, réseau, température et apps gourmandes.</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><line x1="6" y1="11" x2="6" y2="13"/><line x1="10" y1="11" x2="10" y2="13"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Mac &amp; Bluetooth batteries</span><span lang="fr">Batterie Mac et Bluetooth</span></dt><dd><span lang="en">Hover the battery to see your Mac, charge time and Bluetooth accessories (AirPods, mouse, keyboard), plus low-battery alerts (<span class="pro">Pro</span>).</span><span lang="fr">Survole la batterie pour voir le Mac, le temps de charge et tes appareils Bluetooth (AirPods, souris, clavier), plus les alertes batterie faible (<span class="pro">Pro</span>).</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Calendar &amp; weather</span><span lang="fr">Agenda et météo</span></dt><dd><span lang="en">Today's events, upcoming meeting alerts (<span class="pro">Pro</span>), and local weather from your approximate location or a chosen city.</span><span lang="fr">Les événements du jour, rappels avant un rendez-vous (<span class="pro">Pro</span>), et la météo locale (position approximative ou ville choisie).</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M9 2h6"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Pomodoro &amp; ambient sounds</span><span lang="fr">Pomodoro et sons d'ambiance</span></dt><dd><span lang="en">Focus, break and countdown timer with a live notch ring, weekly stats, current task, animated companion scenes and live-generated rain, fire, wind or stream sounds.</span><span lang="fr">Focus, pause et minuteur avec anneau dans la notch, stats de la semaine, tâche en cours, scènes animées et sons d'ambiance générés en direct (pluie, feu, vent, ruisseau).</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M19 15l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">ChatGPT &amp; Claude</span><span lang="fr">ChatGPT et Claude</span><span class="pro">Pro</span></dt><dd><span lang="en">Live indicator when ChatGPT or Claude is writing, alerts when ready, screen-aware questions with crop, and Claude Code approvals.</span><span lang="fr">Indicateur en direct quand ChatGPT ou Claude écrit, alerte quand c'est prêt, questions avec capture recadrable et permissions Claude Code.</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Alerts &amp; live calls</span><span lang="fr">Alertes et appels</span><span class="pro">Pro</span></dt><dd><span lang="en">Incoming calls with live call duration in the closed notch, AirPods &amp; case popups, heavy app and thermal alerts.</span><span lang="fr">Appels entrants avec durée en direct dans la notch fermée, AirPods et boîtier, alertes d'apps gourmandes et de chaleur.</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Camera mirror</span><span lang="fr">Miroir caméra</span><span class="pro">Pro</span></dt><dd><span lang="en">Check how you look before a meeting right in the notch. Your camera only turns on while the mirror is open.</span><span lang="fr">Vérifie ta tête avant un appel directement dans la notch. La caméra ne s'allume que pendant que le miroir est affiché.</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Quick notes &amp; Reminders</span><span lang="fr">Notes rapides et Rappels</span><span class="pro">Pro</span></dt><dd><span lang="en">Jot notes into Apple Reminders, view today's reminders in the notch and snooze any reminder by 1 hour or until tomorrow.</span><span lang="fr">Note directement dans l'app Rappels, consulte tes rappels du jour et reporte-les d'1 heure ou à demain depuis la notch.</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="14" y1="15" x2="16" y2="15"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Calculator &amp; converters</span><span lang="fr">Calculatrice et conversions</span><span class="pro">Pro</span></dt><dd><span lang="en">Scientific math, unit and currency conversions, and world time zones right in the notch—press Return to copy.</span><span lang="fr">Calculs scientifiques, conversions d'unités et de devises, et fuseaux horaires dans la notch — Entrée copie le résultat.</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Quick actions &amp; shortcuts</span><span lang="fr">Boutons rapides et raccourcis</span></dt><dd><span lang="en">One-click screenshot, dark mode, screen lock, Focus, sleep display, apps or Apple Shortcuts (<span class="pro">Pro</span>), plus customizable global hotkeys.</span><span lang="fr">Capture, mode sombre, verrouillage, Concentration, veille écran, apps favorites ou Raccourcis Apple (<span class="pro">Pro</span>), plus raccourcis clavier personnalisables.</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.7-.7 1.7-1.6 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.7 1.6-1.7H16c3.3 0 6-2.7 6-6 0-4.9-4.5-8.5-10-8.5z"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Make it yours &amp; Liquid Glass</span><span lang="fr">À ton image et Liquid Glass</span><span class="pro">Pro</span></dt><dd><span lang="en">Notch shape, custom size, starry Dormer theme, accent colors, home widgets, tab order, clock fonts and liquid glass hover effects.</span><span lang="fr">Forme, taille sur mesure, thème nuit étoilée, couleurs, widgets d'accueil, ordre des onglets, polices d'horloge et reflets verre liquide.</span></dd></span>
+      </div>
+      <div>
+        <span class="ric" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+        <span class="rtxt"><dt><span lang="en">Built-in updates &amp; privacy</span><span lang="fr">Mises à jour et confidentialité</span></dt><dd><span lang="en">Signed updates install from settings while keeping your setup. No account, no tracking, public privacy diagnostics.</span><span lang="fr">Les mises à jour signées s'installent depuis les réglages sans perdre ta config. Sans compte, sans suivi, code de diagnostic public.</span></dd></span>
+      </div>
     </dl>
   </div>
 </section>
@@ -663,9 +792,10 @@ footer a:hover{color:var(--ink)}
         <div class="amount"><span lang="en">€0</span><span lang="fr">0&nbsp;€</span></div>
         <div class="pr"><span lang="en">Free, forever</span><span lang="fr">Gratuit, pour toujours</span></div>
         <ul>
-          <li><span lang="en">Music player &amp; lyrics</span><span lang="fr">Lecteur de musique et paroles</span></li>
-          <li><span lang="en">Shelf &amp; AirDrop</span><span lang="fr">Étagère et AirDrop</span></li>
-          <li><span lang="en">Calendar, weather &amp; timer</span><span lang="fr">Calendrier, météo et minuteur</span></li>
+          <li><span lang="en">Music player, lyrics &amp; web players</span><span lang="fr">Lecteur de musique, paroles et lecteurs web</span></li>
+          <li><span lang="en">File shelf, downloads, clipboard &amp; color picker</span><span lang="fr">Étagère, téléchargements, presse-papiers et pipette</span></li>
+          <li><span lang="en">Calendar, weather, Pomodoro &amp; ambient sounds</span><span lang="fr">Calendrier, météo, Pomodoro et sons d'ambiance</span></li>
+          <li><span lang="en">Mac performance, battery hover &amp; health breaks</span><span lang="fr">Performances du Mac, batteries et pauses santé</span></li>
           <li><span lang="en">Built-in updates</span><span lang="fr">Mises à jour intégrées</span></li>
         </ul>
         <a class="btn" href="https://github.com/Zerdoxy741/dormer/releases/latest/download/Dormer.zip"><span lang="en">Download</span><span lang="fr">Télécharger</span></a>
@@ -676,10 +806,11 @@ footer a:hover{color:var(--ink)}
         <div class="pr"><span lang="en">Paid once, yours for good. One license per Mac, with a 14-day free trial.</span><span lang="fr">Payé une fois, à toi pour de bon. Une licence par Mac, avec 14 jours d'essai gratuit.</span></div>
         <ul>
           <li><span lang="en">Everything in Dormer</span><span lang="fr">Tout Dormer</span></li>
-          <li><span lang="en">The pixel companion</span><span lang="fr">Le compagnon en pixels</span></li>
-          <li><span lang="en">Listen together &amp; Shazam</span><span lang="fr">Écouter ensemble et Shazam</span></li>
-          <li><span lang="en">ChatGPT &amp; Claude, MixVol, clipboard</span><span lang="fr">ChatGPT et Claude, MixVol, presse-papiers</span></li>
-          <li><span lang="en">Alerts, calls &amp; full customization</span><span lang="fr">Alertes, appels et personnalisation</span></li>
+          <li><span lang="en">The pixel companion, memory, local AI &amp; 5 games</span><span lang="fr">Le compagnon en pixels, mémoire, IA locale et 5 jeux</span></li>
+          <li><span lang="en">Listen together, Shazam &amp; MixVol</span><span lang="fr">Écouter ensemble, Shazam et MixVol</span></li>
+          <li><span lang="en">ChatGPT &amp; Claude, Claude Code approvals, Anki</span><span lang="fr">ChatGPT et Claude, permissions Claude Code, Anki</span></li>
+          <li><span lang="en">Live scores, AirDrop, notes, calculator &amp; mirror</span><span lang="fr">Scores en direct, AirDrop, notes, calculatrice et miroir</span></li>
+          <li><span lang="en">Alerts, calls, HUDs &amp; full customization</span><span lang="fr">Alertes, appels, HUD et personnalisation</span></li>
         </ul>
         <a class="btn pri" href="https://buy.polar.sh/polar_cl_i0J4wAjf6ZKOnhGaEk4EFbYijV0jW689W7zpv001BK6"><span lang="en">Get Dormer Pro</span><span lang="fr">Obtenir Dormer Pro</span></a>
       </div>
@@ -1108,17 +1239,51 @@ function drawCat(cv, eyes){ // eyes: 'open' | 'left' | 'right' | 'closed' | 'hap
 
 // small working bits in the "only on Dormer" notches
 (function(){
+  const fr = () => document.documentElement.lang === 'fr';
   const c = document.getElementById('codeBtn');
   c.addEventListener('click', () => {
     try { navigator.clipboard.writeText('482913'); } catch(e) {}
-    const fr = document.documentElement.lang === 'fr', keep = c.innerHTML;
-    c.classList.add('ok'); c.textContent = fr ? 'Copié' : 'Copied';
+    const keep = c.innerHTML;
+    c.classList.add('ok'); c.textContent = fr() ? 'Copié' : 'Copied';
     setTimeout(() => { c.classList.remove('ok'); c.innerHTML = keep; }, 1400);
   });
   document.querySelectorAll('#mvol input').forEach(r => r.addEventListener('input', () => {
     let b = r.nextElementSibling; while (b && b.tagName !== 'B') b = b.nextElementSibling;
     if (b) b.textContent = r.value + '%';
   }));
+  const SD = {
+    foot:   { l:'PSG', m:'2 – 1', r:'RMA', s:()=>"● 67'" },
+    f1:     { l:'VER · P1', m:'Monaco', r:'', s:()=>fr()?'● T34/78':'● L34/78' },
+    nba:    { l:'LAL', m:'104 – 99', r:'BOS', s:()=>'● Q4 2:14' },
+    tennis: { l:'SIN', m:'6 4 · 40–15', r:'ALC', s:()=>'● Set 2' }
+  };
+  document.querySelectorAll('#scoreTabs .mchip').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#scoreTabs .mchip').forEach(x => x.classList.toggle('on', x === b));
+    const d = SD[b.dataset.sp]; if (!d) return;
+    document.getElementById('scL').textContent = d.l;
+    document.getElementById('scM').textContent = d.m;
+    document.getElementById('scR').textContent = d.r;
+    document.getElementById('scS').textContent = d.s();
+  }));
+  document.querySelectorAll('#ccActs .mbtn').forEach(b => b.addEventListener('click', () => {
+    const ok = b.dataset.cc === 'allow', keep = b.innerHTML;
+    b.textContent = ok ? (fr() ? 'Autorisé ✓' : 'Allowed ✓') : (fr() ? 'Refusé ×' : 'Denied ×');
+    setTimeout(() => { b.innerHTML = keep; }, 1400);
+  }));
+  let noteMode = false;
+  const pb = document.getElementById('pinchBtn');
+  if (pb) pb.addEventListener('click', () => {
+    noteMode = !noteMode;
+    document.getElementById('pinchMut').innerHTML = noteMode
+      ? '<span lang="en">Pinch fingers on notch</span><span lang="fr">Pince deux doigts sur la notch</span>'
+      : '<span lang="en">Spread fingers on notch</span><span lang="fr">Écarte deux doigts sur la notch</span>';
+    document.getElementById('pinchExpr').innerHTML = noteMode
+      ? '<span lang="en">Call Sam at 4pm → Reminders</span><span lang="fr">Appeler Sam à 16h → Rappels</span>'
+      : '35 € → $37.80';
+    pb.innerHTML = noteMode
+      ? '<span lang="en">Calc</span><span lang="fr">Calcul</span>'
+      : '<span lang="en">Note</span><span lang="fr">Note</span>';
+  });
 })();
 </script>
 </body>

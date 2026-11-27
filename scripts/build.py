@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent / "docs"
 SITE = "https://dormernotch.com"
 DOWNLOAD = "https://github.com/Zerdoxy741/dormer/releases/latest/download/Dormer.zip"
 BUY = "https://buy.polar.sh/polar_cl_i0J4wAjf6ZKOnhGaEk4EFbYijV0jW689W7zpv001BK6"
-LASTMOD = "2026-11-25"
+LASTMOD = "2026-11-27"
 FILM_DATE = "2026-11-26T20:00:00+01:00"
 
 PRICES = json.loads((ROOT.parent / "data" / "prices.json").read_text())["apps"]
@@ -196,7 +196,7 @@ def french(page: str) -> str:
 # ───────────────────────── comparison page ("Comparatif") ─────────────────────────
 # Facts about other apps come from their official websites, checked on CHECKED.
 # "—" means "not mentioned on their site", never "proven missing": say so on the page.
-CHECKED = {"en": "November 25, 2026", "fr": "25 novembre 2026"}
+CHECKED = {"en": "November 27, 2026", "fr": "27 novembre 2026"}
 APPS = ["Dormer", "NotchNook", "Alcove", "DynamicLake", "DynamicHorizon", "Boring Notch", "Atoll"]
 SOURCES = {"NotchNook": "https://lo.cafe/notchnook", "Alcove": "https://tryalcove.com",
            "DynamicLake": "https://www.dynamiclake.com", "DynamicHorizon": "https://www.dynamichorizon.app",
@@ -210,18 +210,32 @@ MATRIX = [
         ("reply",   [Y, N, N, N, N, N, N]),
         ("codes",   [Y, N, N, N, N, N, N]),
         ("aiscreen",[Y, N, N, N, N, N, N]),
+        ("claude",  [Y, N, N, N, N, N, N]),
         ("shazam",  [Y, N, N, N, N, N, N]),
         ("mixvol",  [Y, N, N, N, N, N, N]),
+        ("scores",  [Y, N, N, N, N, N, N]),
+        ("anki",    [Y, N, N, N, N, N, N]),
+        ("health",  [Y, N, N, N, N, N, N]),
+        ("pinch",   [Y, N, N, N, N, N, N]),
     ]),
     ("common", [
-        ("music",   [Y, Y, Y, Y, Y, Y, Y]),
-        ("lyrics",  [Y, Y, N, N, Y, N, N]),
-        ("shelf",   [Y, Y, N, Y, N, Y, N]),
-        ("clip",    [Y, Y, N, N, N, N, Y]),
-        ("notifs",  [Y, N, Y, Y, Y, N, N]),
-        ("calls",   [Y, N, N, Y, N, N, N]),
-        ("cal",     [Y, Y, N, Y, N, Y, Y]),
-        ("timer",   [Y, Y, N, Y, Y, N, Y]),
+        ("music",    [Y, Y, Y, Y, Y, Y, Y]),
+        ("lyrics",   [Y, Y, N, N, Y, N, N]),
+        ("hud",      [Y, Y, Y, Y, Y, Y, Y]),
+        ("shelf",    [Y, Y, N, Y, N, Y, N]),
+        ("clip",     [Y, Y, N, N, N, N, Y]),
+        ("notifs",   [Y, N, Y, Y, Y, N, N]),
+        ("calls",    [Y, N, N, Y, N, N, N]),
+        ("cal",      [Y, Y, N, Y, N, Y, Y]),
+        ("weather",  [Y, Y, Y, Y, Y, N, Y]),
+        ("battery",  [Y, Y, Y, Y, Y, Y, Y]),
+        ("timer",    [Y, Y, N, Y, Y, N, Y]),
+        ("mirror",   [Y, Y, N, N, N, Y, Y]),
+        ("downloads",[Y, N, N, N, Y, N, Y]),
+        ("shortcuts",[Y, Y, N, N, N, N, N]),
+        ("perf",     [Y, N, N, N, N, N, Y]),
+        ("calc",     [Y, N, N, N, N, N, Y]),
+        ("picker",   [Y, N, N, N, N, N, Y]),
     ]),
     ("price", [
         ("free",    [Y, N, N, N, N, Y, Y]),
@@ -239,15 +253,20 @@ ALT = {
                  "features, free versions, trials and what only Dormer does."),
         "h1": "Dormer next to the other notch apps.",
         "lead": ("Every notch app plays your music. Here's how the best-known ones compare, feature by feature, "
-                 "and the seven things you'll only find in Dormer."),
+                 "including live sports scores and what you'll only find in Dormer."),
         "groups": {"only": "Only in Dormer", "common": "What most of them do", "price": "Price and setup"},
-        "rows": {"pet": "Pixel companion with a pet game", "party": "Listen together with nearby Macs",
+        "rows": {"pet": "Pixel companion with games & local AI", "party": "Listen together with nearby Macs",
                  "reply": "Reply to messages from the notch", "codes": "Verification codes, copied in one click",
-                 "aiscreen": "AI that sees your screen (Claude, ChatGPT)", "shazam": "Shazam in the notch",
-                 "mixvol": "A volume for every app",
-                 "music": "Music controls", "lyrics": "Synced lyrics", "shelf": "File shelf & AirDrop",
-                 "clip": "Clipboard history", "notifs": "Notifications in the notch", "calls": "Calls",
-                 "cal": "Calendar", "timer": "Timer",
+                 "aiscreen": "AI that sees & crops your screen (Claude, ChatGPT)", "claude": "Approve Claude Code commands in the notch",
+                 "shazam": "Shazam in the notch", "mixvol": "A volume for every app",
+                 "scores": "Live scores (football, F1, NBA, tennis)", "anki": "Anki flashcards due in the notch",
+                 "health": "Smart health breaks (water, stretch, 20-20-20)", "pinch": "Pinch the notch for notes & calculator",
+                 "music": "Music controls", "lyrics": "Synced lyrics", "hud": "Volume & brightness HUD",
+                 "shelf": "File shelf & AirDrop", "clip": "Clipboard history", "notifs": "Notifications in the notch",
+                 "calls": "Calls", "cal": "Calendar", "weather": "Weather", "battery": "Mac & Bluetooth battery",
+                 "timer": "Timer", "mirror": "Camera mirror", "downloads": "Download progress",
+                 "shortcuts": "Apple Shortcuts & quick actions", "perf": "Mac performance (CPU, GPU, RAM)",
+                 "calc": "Calculator & conversions", "picker": "Color picker",
                  "free": "Free version", "price": "Price of the full version", "trial": "Free trial of the paid version", "macos": "Works from macOS"},
         "trial_words": {"14 d": "14 days", "yes": "Yes"},
         "yes": "Yes", "no": "Not mentioned",
@@ -256,17 +275,22 @@ ALT = {
         "price_note": ("Regular prices, without sales. Dormer, NotchNook and DynamicLake prices are checked automatically every day "
                        "(confirmed on {auto}); the others were checked by hand on {manual}."),
         "sources": "Sources",
-        "only_h": "The seven things only Dormer does",
-        "only": [("A pixel companion", "A cat (or dog, bunny, robot, ghost) lives in your notch. Feed it, level it up, play hide-and-seek, throw it a ball. You can turn it off."),
+        "only_h": "What only Dormer does",
+        "only": [("A pixel companion", "A cat (or dog, bunny, robot, ghost) lives in your notch. Feed it, level it up, play 5 games including haptic hide-and-seek, and let it speak via Apple Intelligence or a local model (Ollama, LM Studio)."),
+                 ("Live scores for matches & races", "Follow football (Champions League, Premier League, LaLiga, Ligue 1…), NBA, Formula 1 (position and lap) and ATP/WTA tennis right in the closed notch wings, with goal and kick-off banners."),
                  ("Listen together", "Friends nearby see your song in their notch and listen in sync, with Spotify or Apple Music. No server, no account."),
                  ("Reply from the notch", "A message lands in the notch: type your answer right there and send it, without opening Messages."),
                  ("Verification codes", "A code from a text or an email shows up in the notch. One click copies it."),
-                 ("An AI that sees your screen", "Ask Claude or ChatGPT from the notch, with a screenshot attached so it knows what you mean. One click turns that off."),
+                 ("An AI that sees & crops your screen", "Ask Claude or ChatGPT from the notch, with an optional screenshot you can crop right inside the notch. One click turns that off."),
+                 ("Claude Code approvals & AI progress", "Allow or deny Claude Code tool commands right from the notch, track active sessions, and see when ChatGPT or Claude finishes writing."),
                  ("Shazam", "What's this song? The notch listens and names it."),
-                 ("A volume for every app", "Turn the browser down and keep the music up, right from the notch.")],
+                 ("A volume for every app", "Turn the browser down and keep the music up, right from the notch."),
+                 ("Pinch for notes & calculator", "Pinch two fingers on the notch to send a quick note to Apple Reminders, or spread them for the scientific calculator, unit/currency conversions and world time zones."),
+                 ("Anki cards in the notch", "See due flashcards (new, learning, review) at a glance with a daily review reminder."),
+                 ("Smart health breaks", "Gentle reminders to drink water, stretch or rest your eyes (20-20-20)—automatically paused in calls, fullscreen, Focus mode or when locked.")],
         "pick_h": "Which one should you pick?",
         "pick": ("If you want something free and open source with the basics, Boring Notch and Atoll are good picks. "
-                 "If you want the most in your notch, plus a companion and the longest free trial of the paid apps, "
+                 "If you want the most in your notch, plus live sports, a companion and the longest free trial of the paid apps, "
                  "try Dormer: the free version stays free, and every download includes 14 days of Pro."),
         "cta": "Download Dormer for Mac", "home": "Back to Dormer", "meta": "For MacBooks with a notch, on macOS 14.2 or later.",
         "lang_label": "FR", "lang_aria": "Version française", "download": "Download",
@@ -275,18 +299,23 @@ ALT = {
         "nav": "Comparatif", "nav_home": "Accueil",
         "title": "Comparatif des apps de notch pour Mac : Dormer, NotchNook, Alcove, DynamicLake, Boring Notch, Atoll",
         "desc": ("Dormer, NotchNook, Alcove, DynamicLake, DynamicHorizon, Boring Notch et Atoll côte à côte : "
-                 "fonctions, versions gratuites, essais, et ce que seul Dormer fait."),
+                 "fonctions, versions gratuites, essais, scores en direct et ce que seul Dormer fait."),
         "h1": "Dormer face aux autres apps de notch.",
         "lead": ("Toutes les apps de notch jouent ta musique. Voici comment les plus connues se comparent, fonction par fonction, "
-                 "et les sept choses que tu ne trouveras que dans Dormer."),
+                 "y compris les scores en direct et ce que tu ne trouveras que dans Dormer."),
         "groups": {"only": "Seulement dans Dormer", "common": "Ce que la plupart font", "price": "Prix et installation"},
-        "rows": {"pet": "Compagnon en pixels avec un jeu", "party": "Écouter ensemble avec les Mac proches",
+        "rows": {"pet": "Compagnon en pixels avec jeux et IA locale", "party": "Écouter ensemble avec les Mac proches",
                  "reply": "Répondre aux messages depuis la notch", "codes": "Codes de vérification copiés en un clic",
-                 "aiscreen": "IA qui voit ton écran (Claude, ChatGPT)", "shazam": "Shazam dans la notch",
-                 "mixvol": "Un volume par app",
-                 "music": "Commandes de musique", "lyrics": "Paroles synchronisées", "shelf": "Étagère de fichiers et AirDrop",
-                 "clip": "Historique du presse-papiers", "notifs": "Notifications dans la notch", "calls": "Appels",
-                 "cal": "Calendrier", "timer": "Minuteur",
+                 "aiscreen": "IA qui voit et recadre ton écran (Claude, ChatGPT)", "claude": "Autoriser Claude Code depuis la notch",
+                 "shazam": "Shazam dans la notch", "mixvol": "Un volume par app",
+                 "scores": "Scores en direct (foot, F1, NBA, tennis)", "anki": "Cartes Anki à réviser dans la notch",
+                 "health": "Pauses santé intelligentes (eau, étirements, 20-20-20)", "pinch": "Pincement sur la notch : notes et calculatrice",
+                 "music": "Commandes de musique", "lyrics": "Paroles synchronisées", "hud": "HUD volume et luminosité",
+                 "shelf": "Étagère de fichiers et AirDrop", "clip": "Historique du presse-papiers", "notifs": "Notifications dans la notch",
+                 "calls": "Appels", "cal": "Calendrier", "weather": "Météo", "battery": "Batterie Mac et Bluetooth",
+                 "timer": "Minuteur", "mirror": "Miroir caméra", "downloads": "Suivi des téléchargements",
+                 "shortcuts": "Raccourcis Apple et boutons rapides", "perf": "Performances du Mac (CPU, GPU, RAM)",
+                 "calc": "Calculatrice et conversions", "picker": "Pipette à couleurs",
                  "free": "Version gratuite", "price": "Prix de la version complète", "trial": "Essai gratuit de la version payante", "macos": "Marche à partir de macOS"},
         "trial_words": {"14 d": "14 jours", "yes": "Oui"},
         "yes": "Oui", "no": "Non mentionné",
@@ -295,17 +324,22 @@ ALT = {
         "price_note": ("Prix normaux, hors promotions. Les prix de Dormer, NotchNook et DynamicLake sont vérifiés automatiquement chaque jour "
                        "(confirmés le {auto}) ; les autres ont été relevés à la main le {manual}."),
         "sources": "Sources",
-        "only_h": "Les sept choses que seul Dormer fait",
-        "only": [("Un compagnon en pixels", "Un chat (ou chien, lapin, robot, fantôme) vit dans ta notch. Nourris-le, fais-le monter de niveau, jouez à cache-cache, lance-lui une balle. Tu peux le désactiver."),
+        "only_h": "Ce que seul Dormer fait",
+        "only": [("Un compagnon en pixels", "Un chat (ou chien, lapin, robot, fantôme) vit dans ta notch. Nourris-le, fais-le monter de niveau, joue à 5 jeux dont cache-cache haptique, et laisse-le parler avec Apple Intelligence ou un modèle local (Ollama, LM Studio)."),
+                 ("Scores en direct des matchs et des courses", "Suis le football (Ligue des champions, Ligue 1, Premier League…), la NBA, la Formule 1 (position et tour) et le tennis ATP/WTA dans les ailes de la notch fermée, avec bannières au coup d'envoi et à chaque but."),
                  ("Écouter ensemble", "Tes amis proches voient ton morceau dans leur notch et l'écoutent en même temps, avec Spotify ou Musique. Sans serveur, sans compte."),
                  ("Répondre depuis la notch", "Un message arrive dans la notch : tape ta réponse directement dedans et envoie, sans ouvrir Messages."),
                  ("Codes de vérification", "Un code reçu par SMS ou par mail s'affiche dans la notch. Un clic le copie."),
-                 ("Une IA qui voit ton écran", "Pose ta question à Claude ou ChatGPT depuis la notch, avec une capture de l'écran pour qu'il comprenne. Un clic coupe ça."),
+                 ("Une IA qui voit et recadre ton écran", "Pose ta question à Claude ou ChatGPT depuis la notch, avec une capture d'écran que tu peux recadrer directement dedans. Un clic coupe ça."),
+                 ("Permissions Claude Code et suivi IA", "Autorise ou refuse les commandes de Claude Code depuis la notch, suis tes sessions actives et sois prévenu quand ChatGPT ou Claude a fini d'écrire."),
                  ("Shazam", "C'est quoi ce morceau ? La notch écoute et te le dit."),
-                 ("Un volume par app", "Baisse le navigateur et garde la musique, directement depuis la notch.")],
+                 ("Un volume par app", "Baisse le navigateur et garde la musique, directement depuis la notch."),
+                 ("Pincement : notes et calculatrice", "Pince deux doigts sur la notch pour envoyer une note dans Rappels, ou écarte-les pour ouvrir la calculatrice scientifique, convertir unités et devises ou vérifier les fuseaux horaires."),
+                 ("Cartes Anki dans la notch", "Vois tes cartes à réviser (nouvelles, en cours, révisions) d'un coup d'œil avec un rappel quotidien."),
+                 ("Pauses santé intelligentes", "Rappels pour boire, t'étirer ou reposer tes yeux (20-20-20) — automatiquement coupés en appel, en plein écran, en Concentration ou écran verrouillé.")],
         "pick_h": "Lequel choisir ?",
         "pick": ("Si tu veux du gratuit et open source avec l'essentiel, Boring Notch et Atoll sont de bons choix. "
-                 "Si tu veux le plus de choses dans ta notch, un compagnon en prime et le plus long essai gratuit des apps payantes, "
+                 "Si tu veux le plus de choses dans ta notch, les scores en direct, un compagnon en prime et le plus long essai gratuit des apps payantes, "
                  "essaie Dormer : la version gratuite reste gratuite, et chaque téléchargement inclut 14 jours de Pro."),
         "cta": "Télécharger Dormer pour Mac", "home": "Retour à Dormer", "meta": "Pour MacBook avec encoche, sous macOS 14.2 ou plus récent.",
         "lang_label": "EN", "lang_aria": "English version", "download": "Télécharger",
@@ -405,12 +439,13 @@ def alt_page(lang: str) -> str:
             return f'<td{cls}><span class="no" aria-hidden="true">—</span><span class="sr">{t["no"]}</span></td>'
         return f'<td{cls}><span class="txt">{e(t["trial_words"].get(v, v))}</span></td>'
 
+    us = ' class="us"'
     head = '<th scope="col"><span class="sr">—</span></th>' + "".join(
-        f'<th scope="col"{" class=\"us\"" if i == 0 else ""}>{e(a)}</th>' for i, a in enumerate(APPS))
+        f'<th scope="col"{us if i == 0 else ""}>{e(a)}</th>' for i, a in enumerate(APPS))
     body = ""
     for g, rows in MATRIX:
         body += f'<tr class="grp"><th scope="rowgroup">{e(t["groups"][g])}</th>' + "".join(
-            f'<td{" class=\"us\"" if i == 0 else ""}></td>' for i in range(len(APPS))) + "</tr>"
+            f'<td{us if i == 0 else ""}></td>' for i in range(len(APPS))) + "</tr>"
         for key, vals in rows:
             body += f'<tr><th scope="row">{e(t["rows"][key])}</th>' + "".join(cell(v, i) for i, v in enumerate(vals)) + "</tr>"
     only = "".join(f'<div class="card"><h3>{e(a)}</h3><p>{e(b)}</p></div>' for a, b in t["only"])

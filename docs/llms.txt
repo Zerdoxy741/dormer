@@ -10,6 +10,8 @@ Dormer needs a Mac with a notch and macOS 14.2 or later. It is downloaded from G
 - [Page d'accueil en français](https://dormernotch.com/fr/): the same page in French
 - [Compare notch apps](https://dormernotch.com/compare/): Dormer next to NotchNook, Alcove, DynamicLake, DynamicHorizon, Boring Notch and Atoll
 - [Versions and checksums](https://dormernotch.com/changelog/): release notes and SHA-256 for every version
+- [Blog](https://dormernotch.com/blog/): guides for Mac and MacBook notch users
+- [Mac volume mixer guide](https://dormernotch.com/blog/mac-volume-mixer/): why macOS has no per-app volume mixer, what its Sound settings do, and how to control each app's volume from the notch with Dormer
 
 ## Download
 
