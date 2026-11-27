@@ -1,5 +1,14 @@
 [
  {
+  "version": "0.9.2",
+  "build": "v41",
+  "date": "2026-11-27",
+  "notes": "Essai gratuit de 14 jours fiabilisé : à son expiration, les fonctions Pro se verrouillent bien. Les réglages Pro sont conservés et restaurés après activation d’une licence.",
+  "sha256": "d476de09d9f8e9050cdf777273320d580e7bc0ec5251af4a22d505c7fb3793fa",
+  "virustotal": null,
+  "url": "https://github.com/Zerdoxy741/dormer/releases/tag/v41"
+ },
+ {
   "version": "0.9.1",
   "build": "v40",
   "date": "2026-11-27",
