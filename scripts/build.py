@@ -68,6 +68,7 @@ def set_pro_price(page: str) -> str:
 
 
 import pages  # Confidentialité, Mentions légales, Versions
+import blog  # docs/blog/ (English only)
 
 PAGES = {  # language -> URL path
     "home": {"en": "/", "fr": "/fr/"},
@@ -77,10 +78,9 @@ PAGES = {  # language -> URL path
 
 TEXT = {
     "en": {
-        "title": "Dormer — Dynamic Island for your Mac's notch",
-        "desc": ("Dormer turns your MacBook notch into a living Dynamic Island: music player, Shazam, "
-                 "listen together with nearby Macs, AirDrop shelf, clipboard history, per-app volume, "
-                 "ChatGPT & Claude, and a pixel cat that lives in your notch."),
+        "title": "Dormer — Dynamic Island for your MacBook notch | Free app",
+        "desc": ("Turn your MacBook notch into a Dynamic Island: music, Shazam, AirDrop shelf, "
+                 "clipboard history, ChatGPT & Claude, and a pixel cat. Free for macOS."),
         "keywords": ("MacBook notch app, Dynamic Island Mac, notch music player, macOS notch, AirDrop shelf, "
                      "clipboard history Mac, per-app volume, NotchNook alternative"),
         "og_title": "Dormer — your notch, wide awake",
@@ -92,10 +92,9 @@ TEXT = {
         "film_desc": "A 2-minute film showing Dormer on a MacBook: music, AI, widgets, messages and the pixel cat that lives in the notch.",
     },
     "fr": {
-        "title": "Dormer — Dynamic Island pour l'encoche de ton Mac",
-        "desc": ("Dormer transforme l'encoche de ton MacBook en Dynamic Island : lecteur de musique, Shazam, "
-                 "écoute à plusieurs entre Mac, étagère AirDrop, historique du presse-papiers, volume par app, "
-                 "ChatGPT et Claude, et un chat en pixels qui vit dans l'encoche."),
+        "title": "Dormer — Dynamic Island pour l'encoche de ton Mac | Gratuit",
+        "desc": ("Ton encoche de MacBook devient une Dynamic Island : musique, Shazam, étagère AirDrop, "
+                 "presse-papiers, ChatGPT et Claude, et un chat en pixels. Gratuit."),
         "keywords": ("app encoche MacBook, Dynamic Island Mac, notch Mac, encoche Mac musique, étagère AirDrop, "
                      "presse-papiers Mac, volume par application, alternative à NotchNook"),
         "og_title": "Dormer — ta notch, enfin réveillée",
@@ -492,6 +491,8 @@ def sitemap() -> str:
                 out.append(f'    <xhtml:link rel="alternate" hreflang="{l2}" href="{SITE}{p[l2]}"/>')
             out.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}{p["en"]}"/>')
             out.append("  </url>")
+    for path, lastmod in blog.urls():
+        out.append(f"  <url><loc>{SITE}{path}</loc><lastmod>{lastmod}</lastmod></url>")
     out.append("</urlset>")
     return "\n".join(out) + "\n"
 
@@ -517,6 +518,7 @@ def main():
     write("compare/index.html", alt_page("en"))
     write("fr/compare/index.html", alt_page("fr"))
     pages.build(write)
+    blog.build(write)
     write("sitemap.xml", sitemap())
 
 

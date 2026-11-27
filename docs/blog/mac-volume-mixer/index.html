@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac Volume Mixer: Control Each App's Volume From the Notch · Dormer</title>
+<meta name="description" content="macOS has no per-app volume mixer. Here is what Apple&#x27;s Sound settings do, how to balance audio app by app, and how Dormer puts sliders in your MacBook&#x27;s notch.">
+<meta name="theme-color" content="#1b2147">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon-96.png?v=2" type="image/png" sizes="96x96">
+<link rel="icon" href="/logo.svg?v=2" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="canonical" href="https://dormernotch.com/blog/mac-volume-mixer/">
+<link rel="alternate" type="application/rss+xml" title="Dormer blog" href="https://dormernotch.com/blog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac Volume Mixer: Control Each App&#x27;s Volume From the Notch">
+<meta property="og:description" content="macOS has no per-app volume mixer. Here is what Apple&#x27;s Sound settings do, how to balance audio app by app, and how Dormer puts sliders in your MacBook&#x27;s notch.">
+<meta property="og:image" content="https://dormernotch.com/blog/mac-volume-mixer/cover.jpg">
+<meta property="og:url" content="https://dormernotch.com/blog/mac-volume-mixer/">
+<meta property="og:site_name" content="Dormer">
+<meta property="article:published_time" content="2026-11-27">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Mac Volume Mixer: Control Each App's Volume From the Notch", "description": "macOS has no per-app volume mixer. Here is what Apple's Sound settings do, how to balance audio app by app, and how Dormer puts sliders in your MacBook's notch.", "image": "https://dormernotch.com/blog/mac-volume-mixer/cover.jpg", "datePublished": "2026-11-27", "dateModified": "2026-11-27", "inLanguage": "en", "mainEntityOfPage": "https://dormernotch.com/blog/mac-volume-mixer/", "author": {"@type": "Organization", "name": "Dormer", "url": "https://dormernotch.com/"}, "publisher": {"@type": "Organization", "name": "Dormer", "logo": {"@type": "ImageObject", "url": "https://dormernotch.com/icon.png"}}}]</script>
+<link rel="preload" href="/fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face {font-family: 'Young Serif';font-style: normal;font-weight: 400;font-display: swap;src: url(/fonts/young-serif-latin-400-normal.woff2) format('woff2');unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face {font-family: 'Young Serif';font-style: normal;font-weight: 400;font-display: swap;src: url(/fonts/young-serif-latin-ext-400-normal.woff2) format('woff2');unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face {font-family: 'Figtree';font-style: normal;font-weight: 400;font-stretch: 100%;font-display: swap;src: url(/fonts/figtree-latin-400-normal.woff2) format('woff2');unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face {font-family: 'Figtree';font-style: normal;font-weight: 400;font-stretch: 100%;font-display: swap;src: url(/fonts/figtree-latin-ext-400-normal.woff2) format('woff2');unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face {font-family: 'Figtree';font-style: normal;font-weight: 500;font-stretch: 100%;font-display: swap;src: url(/fonts/figtree-latin-500-normal.woff2) format('woff2');unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face {font-family: 'Figtree';font-style: normal;font-weight: 500;font-stretch: 100%;font-display: swap;src: url(/fonts/figtree-latin-ext-500-normal.woff2) format('woff2');unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face {font-family: 'Figtree';font-style: normal;font-weight: 600;font-stretch: 100%;font-display: swap;src: url(/fonts/figtree-latin-600-normal.woff2) format('woff2');unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face {font-family: 'Figtree';font-style: normal;font-weight: 600;font-stretch: 100%;font-display: swap;src: url(/fonts/figtree-latin-ext-600-normal.woff2) format('woff2');unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face {font-family: 'Figtree';font-style: normal;font-weight: 700;font-stretch: 100%;font-display: swap;src: url(/fonts/figtree-latin-700-normal.woff2) format('woff2');unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face {font-family: 'Figtree';font-style: normal;font-weight: 700;font-stretch: 100%;font-display: swap;src: url(/fonts/figtree-latin-ext-700-normal.woff2) format('woff2');unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}</style>
+<style>
+:root{--sky:#1b2147;--sky2:#141936;--deep:#0f1330;--lamp:#ffcf70;--lamp-ink:#241c33;--ink:#f3ead8;--mist:#b3b8da;--faint:#8a91bb;--line:rgba(243,234,216,.13);--line2:rgba(243,234,216,.24);--serif:"Young Serif",Georgia,serif;--sans:"Figtree",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip;background:var(--deep);scrollbar-color:#6b4a5a var(--deep)}
+body{background:linear-gradient(180deg,var(--sky) 0,var(--sky) 900px,var(--sky2) 2200px,var(--deep) 100%);color:var(--ink);font:17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+::selection{background:var(--lamp);color:var(--lamp-ink)}
+:focus-visible{outline:2px solid var(--lamp);outline-offset:3px;border-radius:6px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.narrow{max-width:820px}
+nav{position:sticky;top:0;z-index:5;background:rgba(27,33,71,.94);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:21px}
+.brand img{width:30px;height:30px;border-radius:8px}
+.sp{margin-left:auto}
+.lang{display:inline-block;border:1px solid var(--line2);border-radius:8px;padding:4px 9px;font-size:13px;font-weight:600;color:var(--mist)}
+.lang:hover{color:var(--ink);border-color:var(--ink)}
+.navlink{font-size:15px;font-weight:600;color:var(--mist)}
+.navlink:hover,.navlink[aria-current]{color:var(--lamp)}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:12px;padding:14px 22px;font-weight:600;font-size:16px;background:var(--lamp);color:var(--lamp-ink);transition:background .2s,box-shadow .2s}
+.btn:hover{background:#ffdb8f;box-shadow:0 10px 28px -8px rgba(255,207,112,.55)}
+.btn.sm{padding:9px 15px;font-size:14.5px;border-radius:10px}
+header{padding:84px 0 20px}
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.012em;text-wrap:balance}
+h1{font-size:clamp(38px,5.8vw,68px);line-height:1.02;max-width:16ch}
+.lead{color:var(--mist);font-size:19px;margin-top:20px;max-width:62ch}
+section{padding:56px 0}
+h2{font-size:clamp(28px,3.4vw,38px);line-height:1.12;margin-bottom:22px}
+footer{border-top:1px solid var(--line);padding:30px 0 44px;font-size:14.5px;color:var(--faint)}
+footer .wrap{display:flex;gap:20px;flex-wrap:wrap}
+footer a:hover{color:var(--ink)}
+.doc h2{margin-top:44px}.doc h2:first-child{margin-top:0}.doc h3{font-size:18px;font-weight:600;margin-top:22px}
+.doc p,.doc li{color:var(--mist);max-width:68ch}.doc p+p{margin-top:12px}.doc ul{margin:10px 0 0 22px}.doc li{margin-top:6px}
+.doc strong{color:var(--ink);font-weight:600}.doc a{text-decoration:underline;text-underline-offset:3px}.doc a:hover{color:var(--ink)}
+.doc code{font-size:14px;background:rgba(243,234,216,.08);border-radius:6px;padding:2px 6px;word-break:break-all}
+.doc pre{background:rgba(243,234,216,.06);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-top:10px;overflow-x:auto;font-size:14px;color:var(--ink)}
+.updated{color:var(--faint);font-size:14px;margin-top:14px}
+.rel{border-top:1px solid var(--line);padding-top:22px;margin-top:26px}.rel:first-of-type{border-top:0;margin-top:0;padding-top:0}
+.rel h3{margin-top:0;font-family:var(--serif);font-weight:400;font-size:24px}.rel .when{color:var(--faint);font-size:14px;margin-top:2px}
+.rel .sum{color:var(--faint);font-size:13.5px;margin-top:10px}
+@media (max-width:640px){header{padding-top:56px}.wrap{padding:0 18px}.brand span{display:none}nav .wrap{gap:12px}}
+.doc h2{scroll-margin-top:80px}.doc ol{margin:10px 0 0 22px}.doc ol li{padding-left:4px}
+.doc figure{margin:28px 0 0}.doc figure img,.cover img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}
+.cover{margin:26px 0 8px}.byline{color:var(--faint);font-size:14px;margin-top:14px}
+.cta{margin-top:44px;padding:22px 24px;border:1px solid var(--line);border-radius:14px;background:rgba(243,234,216,.04)}
+.cta p{margin:0}.cta a.btn{display:inline-block;margin-top:14px;background:var(--lamp,#ffcf70);color:#1b2147;font-weight:600;
+text-decoration:none;padding:10px 18px;border-radius:10px}.cta a.btn:hover{color:#1b2147;filter:brightness(1.05)}
+.posts{list-style:none;margin:0!important;padding:0}.posts li{border-top:1px solid var(--line);padding:22px 0;margin:0!important;max-width:none}
+.posts li:first-child{border-top:0;padding-top:0}.posts a{text-decoration:none!important;color:var(--ink);font-family:var(--serif);font-size:24px;line-height:1.25}
+.posts a:hover{text-decoration:underline!important}.posts p{margin-top:6px}.posts .when{color:var(--faint);font-size:14px;margin-top:6px}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="/" aria-label="Dormer"><img src="/icon-64.png?v=2" alt="Dormer logo" width="32" height="32"><span>Dormer</span></a>
+  <span class="sp"></span>
+  <a class="navlink" href="/blog/">Blog</a>
+  <a class="navlink" href="/">Home</a>
+</div></nav>
+<header><div class="wrap narrow">
+  <h1>Mac Volume Mixer: Control Each App's Volume From the Notch</h1>
+  <p class="byline">By the Dormer team · <time datetime="2026-11-27">November 27, 2026</time></p>
+  <figure class="cover"><img src="/blog/mac-volume-mixer/cover.jpg" alt="Abstract volume sliders arranged around a MacBook notch" width="1260" height="720" fetchpriority="high"></figure>
+</div></header>
+<main class="wrap narrow doc">
+<section>
+<p>A Mac has no built-in volume mixer. Apple's controls set one level for the whole machine, so a loud video call can drown out your music and a quiet browser tab can vanish under a game. To get Windows-style sliders for each app, you need a small utility. If your MacBook has a notch, Dormer puts per-app volume control there, next to music, calendar, clipboard history and the rest of the tools you reach for while working.</p>
+<p>This guide covers what macOS gives you out of the box, where it stops, how to balance sound across apps, and what to check when an app will not behave.</p>
+
+<h2 id="tl-dr">TL;DR</h2>
+<ul>
+<li>macOS controls overall output volume, <a href="https://support.apple.com/guide/mac-help/change-the-sound-output-settings-mchlp2256/mac">and app-level controls can only be equal to or lower than that output level</a>. There is no list of apps with separate sliders.</li>
+<li>Apple's built-in tools are the volume keys, the Sound control in Control Center and the Sound settings pane. All of them move the master level.</li>
+<li>A per-app mixer fills the gap. Dormer's mixer, MixVol, lives in the notch: one slider per app, per-app mute, a boost up to 200% for quiet apps, and a different output device per app if you want one.</li>
+<li>Dormer is free to download and needs no account. MixVol is part of Dormer Pro, a one-time €10.99 license per Mac, and every download includes 14 days of Pro for free.</li>
+</ul>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#what-macos-gives-you-for-volume">What macOS gives you for volume</a></li>
+<li><a href="#why-there-is-no-real-mixer-on-a-mac">Why there is no real mixer on a Mac</a></li>
+<li><a href="#what-a-good-mac-volume-mixer-should-do">What a good Mac volume mixer should do</a></li>
+<li><a href="#per-app-volume-in-the-notch-with-dormer">Per-app volume in the notch with Dormer</a></li>
+<li><a href="#how-to-set-up-per-app-volume-control">How to set up per-app volume control</a></li>
+<li><a href="#how-to-get-louder-sound-and-a-better-balance">How to get louder sound and a better balance</a></li>
+<li><a href="#when-an-app-is-missing-or-will-not-change">When an app is missing or will not change</a></li>
+<li><a href="#dormer-pro-and-what-it-costs">Dormer Pro and what it costs</a></li>
+<li><a href="#making-the-notch-work-for-different-routines">Making the notch work for different routines</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#sources">Sources</a></li>
+</ul>
+
+<h2 id="what-macos-gives-you-for-volume">What macOS gives you for volume</h2>
+<p>Before adding anything, it helps to know exactly what the system already does, because several of its controls are easy to miss.</p>
+<p>Apple's Mac Help lists <a href="https://support.apple.com/guide/mac-help/adjust-the-volume-mchl1f98810b/mac">three built-in ways to change volume</a>: the volume keys or Control Strip, the Sound slider in the menu bar or Control Center, and the volume controls inside certain apps, such as the Apple TV app.</p>
+<p>A few details worth knowing:</p>
+<ul>
+<li><strong>Small steps.</strong> Each press of a volume key moves one step. Apple's <a href="https://support.apple.com/en-us/102650">keyboard shortcuts page</a> documents Option–Shift–Volume Up or Down for smaller increments, which is handy when one step is too loud and the next too quiet.</li>
+<li><strong>Quick jump to settings.</strong> Holding Option while you press a volume key <a href="https://support.apple.com/guide/mac-help/adjust-brightness-and-volume-mchlgtd_bright01/mac">opens Sound settings</a>.</li>
+<li><strong>Pin the slider.</strong> Apple's <a href="https://support.apple.com/guide/mac-help/quickly-change-settings-with-control-center-mchlc9d0e1f2/mac">Control Center guide</a> says the Sound control adjusts volume and switches which speaker or device your Mac uses for output. You can Control-click it and choose Add to Menu Bar to keep it visible.</li>
+<li><strong>Alert volume.</strong> In Sound settings, <a href="https://support.apple.com/guide/mac-help/change-sound-settings-on-mac-mchl9777ee30/mac">alert volume is relative to your Mac's output volume</a>, so lowering the master level also quiets alert sounds.</li>
+</ul>
+<p>In System Settings &gt; Sound &gt; Output you choose the device and then use Output volume, Mute or Balance. Input has its own volume and a level meter for your microphone.</p>
+
+<h2 id="why-there-is-no-real-mixer-on-a-mac">Why there is no real mixer on a Mac</h2>
+<p>Windows has long shown a list of running apps with one slider each. On a Mac, Apple's own documentation describes a single output volume with app controls that <a href="https://support.apple.com/guide/mac-help/change-the-sound-output-settings-mchlp2256/mac">cannot exceed it</a>. Press coverage in 2026 noted that <a href="https://www.forbes.com/sites/barrycollins/2026/05/06/apple-still-hasnt-built-a-mac-volume-mixer-these-apps-fill-the-gap/">Apple still has not built a Mac volume mixer</a>, which is why a category of third-party utilities exists.</p>
+<p>The practical effect is easy to recognize:</p>
+<ul>
+<li>You are listening to a playlist while a meeting app plays at full blast.</li>
+<li>A notification sound from a chat app is much louder than the video you are watching.</li>
+<li>You want a podcast louder than background music, but both share one slider.</li>
+</ul>
+<p>The workaround most people use is lowering the master volume and then fiddling with volume controls inside each app, when the app has one. That works for a few apps. It breaks down for browser tabs, chat apps and anything without its own slider.</p>
+
+<h2 id="what-a-good-mac-volume-mixer-should-do">What a good Mac volume mixer should do</h2>
+<p>Whether you are a student juggling lecture recordings and study music, or a professional on calls all day, the same few things matter:</p>
+<ol>
+<li><strong>One slider per app that is making sound.</strong> You should see only what is playing, not a long list of idle apps.</li>
+<li><strong>Fast access.</strong> If a mixer sits three clicks deep in a settings window, you will not use it mid-call. It should live somewhere you can reach instantly.</li>
+<li><strong>No account and no fuss.</strong> A volume tool should not ask you to sign up.</li>
+<li><strong>Fits the rest of your routine.</strong> Volume control is something you use for seconds at a time. It works best next to the other things you check constantly: what is playing, what is on the calendar, what you just copied.</li>
+</ol>
+<p>The notch fits the second and fourth points well. It is always on screen, at the top, and it is otherwise dead space.</p>
+
+<h2 id="per-app-volume-in-the-notch-with-dormer">Per-app volume in the notch with Dormer</h2>
+<p>Dormer is built for MacBooks with a notch. It turns that cutout into a small control surface, and its per-app mixer, MixVol, is one of its tools. Instead of opening System Settings or hunting through menus, you adjust each app's level from the notch.</p>
+<p>What MixVol does:</p>
+<ul>
+<li><strong>One slider per app playing sound.</strong> Only apps that are actually making sound show up, with a live level meter. You can choose to show all apps instead.</li>
+<li><strong>Boost quiet apps.</strong> Push an app past 100%, up to 200%, when its own audio is too quiet. The slider turns orange when you boost, and a soft limiter keeps loud peaks from distorting.</li>
+<li><strong>Mute one app.</strong> Silence a chat app without touching your music.</li>
+<li><strong>A different output per app.</strong> Keep a call in your AirPods while music plays on the speakers.</li>
+<li><strong>Profiles.</strong> Save a setup, such as "Meeting" or "Focus", and switch back to it in one click.</li>
+<li><strong>Menu bar access.</strong> If you prefer, the mixer can also sit in the menu bar.</li>
+</ul>
+<p>The point is less about the slider itself and more about what surrounds it. In the same place, Dormer gives you:</p>
+<ul>
+<li>Music playback with artwork, controls and synced lyrics for Spotify and Apple Music, plus Shazam to identify what is playing around you (Pro).</li>
+<li>Listening together with nearby Macs (Pro). Friends see your song in their notch and listen in sync, directly from Mac to Mac, without a server or account.</li>
+<li>A file shelf with AirDrop, plus calendar, weather and timer widgets.</li>
+<li>Message replies and one-click copying of verification codes from texts and emails.</li>
+<li>Clipboard history (Pro).</li>
+<li>Claude and ChatGPT from the notch (Pro), using your own subscription. A screenshot can go with your question so the assistant knows what you are looking at, and one click turns that off.</li>
+<li>Alerts for calls, AirPods battery and upcoming events (Pro), and a pixel companion (cat, dog, bunny, robot or ghost) that lives in the notch (Pro).</li>
+</ul>
+<p>For volume specifically, that combination means you can drop a video call's level, raise the music, copy the code from a text and reply to a message, all without leaving the app you are in.</p>
+
+<h3>A worked example</h3>
+<p>Say you are writing a paper with a study playlist at a comfortable level, and a lecture video open in a browser tab.</p>
+<ol>
+<li>Set your Mac's master volume to a comfortable overall level, using the volume keys or the Sound slider.</li>
+<li>Open the notch and lower the lecture video if it is overpowering.</li>
+<li>Raise or lower the playlist independently. If the lecture is recorded too quietly, boost it above 100% instead of raising everything.</li>
+<li>When a call comes in, adjust the call app on its own, or send it to your headphones, and leave the music where it is.</li>
+</ol>
+
+<h2 id="how-to-set-up-per-app-volume-control">How to set up per-app volume control</h2>
+<ol>
+<li><strong>Check your Mac.</strong> Dormer is made for MacBooks with a notch running macOS 14.2 (Sonoma) or later.</li>
+<li><strong>Download Dormer</strong> from <a href="https://dormernotch.com/">dormernotch.com</a>. You do not need to create an account, and the download includes 14 days of Dormer Pro, which covers MixVol.</li>
+<li><strong>Open it the first time.</strong> Dormer is made by an independent developer and is not notarized by Apple yet, so macOS asks first. Drag Dormer to Applications, open it once, then go to System Settings &gt; Privacy &amp; Security and click Open Anyway. Accept the permissions Dormer asks for as they come.</li>
+<li><strong>Find the mixer.</strong> Hover the notch to open it and switch to the mixer. Play something in two apps so that both appear.</li>
+<li><strong>Set your master volume first.</strong> Use the volume keys or the Control Center slider so the overall level is comfortable.</li>
+<li><strong>Balance each app.</strong> Lower the loud one first rather than raising the quiet one. Use the boost only for apps that stay too quiet.</li>
+</ol>
+<p>Version notes and checksums for each release are on the <a href="https://dormernotch.com/changelog">Dormer changelog</a>.</p>
+
+<h2 id="how-to-get-louder-sound-and-a-better-balance">How to get louder sound and a better balance</h2>
+<p>"How do I make the volume louder?" is a common follow-up. In macOS, app-level controls cannot exceed your Mac's output setting, so a quiet app is often limited by the master level, not by itself. Work through this order:</p>
+<ol>
+<li><strong>Raise the master volume.</strong> Use the volume keys, or Option–Shift–Volume Up for finer steps.</li>
+<li><strong>Check the output device.</strong> In System Settings &gt; Sound &gt; Output, confirm you are using the speaker or headphones you expect. Apple notes the Sound control in Control Center also lets you switch devices.</li>
+<li><strong>Check Balance.</strong> The Output pane has a Balance slider. If one side is quieter, it may simply be shifted.</li>
+<li><strong>Check the app's own volume.</strong> Some apps, such as Apple TV, have an in-app slider that sits on top of the system level.</li>
+<li><strong>Boost only the app you need.</strong> With MixVol, lift a quiet app above 100% and trim the loud one until they match, instead of pushing the whole Mac louder.</li>
+</ol>
+<p>If the quiet source is a video or call, level-matching between apps is usually all you need, and it keeps your ears safe from sudden jumps when you switch sources.</p>
+
+<h2 id="when-an-app-is-missing-or-will-not-change">When an app is missing or will not change</h2>
+<p>A mixer lists apps that are producing sound at that moment. If something is missing:</p>
+<ul>
+<li><strong>Start playback.</strong> An app that is paused or silent will not appear until it plays audio, unless you turn on the option to show all apps.</li>
+<li><strong>Check the master level and mute.</strong> If Mute is on in Sound settings, or the output volume is very low, every app will sound quiet no matter where its slider sits.</li>
+<li><strong>Confirm the output device.</strong> Audio might be going to a different speaker or headphones than the one you are listening to, including an output you picked for that app in the mixer.</li>
+<li><strong>Look for an in-app control.</strong> Some players have their own volume slider that stacks on the system level.</li>
+<li><strong>Restart the app that is playing.</strong> Reopening it makes it register its audio again.</li>
+<li><strong>Update to the latest release.</strong> The Dormer changelog lists each version, and updates install from Dormer's settings.</li>
+</ul>
+
+<h2 id="dormer-pro-and-what-it-costs">Dormer Pro and what it costs</h2>
+<p>Dormer is free to download, and the free version keeps working forever: music player and lyrics, file shelf and AirDrop, calendar, weather and timer, and built-in updates.</p>
+<p>Dormer Pro is a one-time license of €10.99 per Mac, with no subscription. It adds MixVol per-app volume, Shazam and listening together, ChatGPT and Claude, clipboard history, alerts and calls, the pixel companion and full customization. Every download includes 14 days of Pro, with no account and no card, so you can use the mixer in your normal day before deciding. After the trial, the free features keep working and you can unlock Pro with a license key.</p>
+<figure><img src="/blog/mac-volume-mixer/dormer-home.jpg" alt="Dormer's home page: the MacBook notch drawn as a dormer window, with a pixel cat inside" width="1600" height="900" loading="lazy" decoding="async"></figure>
+<p>You can get both the free app and Dormer Pro at <a href="https://dormernotch.com/">dormernotch.com</a>.</p>
+
+<h2 id="making-the-notch-work-for-different-routines">Making the notch work for different routines</h2>
+<p><strong>Students.</strong> Keep lecture audio and study music at different levels, copy verification codes for campus logins, and ask the AI assistant about what is on your screen without switching windows.</p>
+<p><strong>Professionals.</strong> Pull the call app's volume down when you need to listen to a recording, send the call to your headphones, reply to a message from the notch, and keep the timer and calendar visible for the next meeting.</p>
+<p><strong>Music lovers.</strong> Match a playlist's level to whatever else is playing, follow synced lyrics, and listen together with a nearby Mac using Dormer's direct sharing.</p>
+<p><strong>Everyone with a notch.</strong> Treat the notch as the part of the screen you glance at, not the part you work in. Small adjustments there save the repeated trips to System Settings.</p>
+
+<figure><img src="/blog/mac-volume-mixer/routines.jpg" alt="Dormer for different routines: students, professionals, music lovers and notch users" width="1280" height="720" loading="lazy" decoding="async"></figure>
+
+<h2 id="faq">FAQ</h2>
+<h3>Does macOS have a volume mixer?</h3>
+<p>No. macOS has one output volume, a mute switch and a balance slider in Sound settings. App-level controls cannot go above that output level. Per-app sliders come from a utility such as Dormer.</p>
+<h3>How do I access the volume controls on a Mac?</h3>
+<p>Use the volume keys, the Sound control in the menu bar or Control Center, or System Settings &gt; Sound. Holding Option while pressing a volume key jumps to Sound settings, and Option–Shift–Volume Up or Down adjusts in smaller steps.</p>
+<h3>How do I change the volume of one app on a Mac?</h3>
+<p>Use a per-app volume control. With Dormer's MixVol, you adjust, mute or boost each app from the notch of your MacBook. MixVol is part of Dormer Pro, and every download includes a 14-day free trial with no account needed.</p>
+<h3>Why is my Mac still quiet with an app slider at maximum?</h3>
+<p>In macOS, an app cannot go above your Mac's output volume. Raise the master level, make sure Mute is off, check Balance, and confirm the right output device is selected in System Settings &gt; Sound &gt; Output. With Dormer, you can also boost that one app up to 200%.</p>
+<h3>Is Dormer free?</h3>
+<p>Yes, Dormer is free to download and its free features keep working. Per-app volume is part of Dormer Pro, a one-time €10.99 license per Mac, with 14 days of Pro included in every download.</p>
+
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://support.apple.com/guide/mac-help/change-the-sound-output-settings-mchlp2256/mac">Change the sound output settings on Mac - Apple Support</a></li>
+<li><a href="https://support.apple.com/guide/mac-help/adjust-the-volume-mchl1f98810b/mac">Turn your Mac volume up or down - Apple Support</a></li>
+<li><a href="https://support.apple.com/en-us/102650">Mac keyboard shortcuts - Apple Support</a></li>
+<li><a href="https://support.apple.com/guide/mac-help/adjust-brightness-and-volume-mchlgtd_bright01/mac">Adjust brightness and volume on your Mac - Apple Support</a></li>
+<li><a href="https://support.apple.com/guide/mac-help/change-sound-settings-on-mac-mchl9777ee30/mac">Change Sound settings on Mac - Apple Support</a></li>
+<li><a href="https://support.apple.com/guide/mac-help/quickly-change-settings-with-control-center-mchlc9d0e1f2/mac">Quickly change settings with Control Center on Mac - Apple Support</a></li>
+<li><a href="https://www.forbes.com/sites/barrycollins/2026/05/06/apple-still-hasnt-built-a-mac-volume-mixer-these-apps-fill-the-gap/">Apple still hasn't built a Mac volume mixer - Forbes</a></li>
+</ul>
+
+<div class="cta"><p><strong>Try Dormer free.</strong> For MacBooks with a notch, on macOS 14.2 or later. Every download includes 14 days of Dormer Pro. No account, no card.</p><a class="btn" href="/">Get Dormer</a></div>
+</section>
+</main>
+<footer><div class="wrap">
+  <span>© 2026 Dormer</span>
+  <a href="/">Back to Dormer</a>
+  <a href="/blog/">Blog</a>
+  <a href="/compare/">Compare notch apps</a>
+  <a href="/changelog/">Versions</a>
+  <a href="/privacy/">Privacy</a>
+  <a href="https://github.com/Zerdoxy741/dormer">GitHub</a>
+</div></footer>
+</body>
+</html>

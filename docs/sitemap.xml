@@ -60,4 +60,6 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://dormernotch.com/fr/versions/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dormernotch.com/changelog/"/>
   </url>
+  <url><loc>https://dormernotch.com/blog/</loc><lastmod>2026-11-27</lastmod></url>
+  <url><loc>https://dormernotch.com/blog/mac-volume-mixer/</loc><lastmod>2026-11-27</lastmod></url>
 </urlset>
